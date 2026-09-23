@@ -1,0 +1,205 @@
+[
+ {
+  "id": 1,
+  "nome_exibicao": "Alexandre",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 7
+ },
+ {
+  "id": 2,
+  "nome_exibicao": "Andrea",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 3
+ },
+ {
+  "id": 3,
+  "nome_exibicao": "André",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 1
+ },
+ {
+  "id": 4,
+  "nome_exibicao": "Arissa",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 2
+ },
+ {
+  "id": 5,
+  "nome_exibicao": "Carlos",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 3
+ },
+ {
+  "id": 6,
+  "nome_exibicao": "Clayson",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 5
+ },
+ {
+  "id": 7,
+  "nome_exibicao": "Diony",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 2
+ },
+ {
+  "id": 8,
+  "nome_exibicao": "Ernesto",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 2
+ },
+ {
+  "id": 9,
+  "nome_exibicao": "Isabela",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 10,
+  "nome_exibicao": "Ivan",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 8
+ },
+ {
+  "id": 11,
+  "nome_exibicao": "Jonas",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 3
+ },
+ {
+  "id": 12,
+  "nome_exibicao": "Katiulcy",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 1
+ },
+ {
+  "id": 13,
+  "nome_exibicao": "Leonardo",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 6
+ },
+ {
+  "id": 14,
+  "nome_exibicao": "Linda",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 7
+ },
+ {
+  "id": 15,
+  "nome_exibicao": "Lisiane",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 16,
+  "nome_exibicao": "Luciene",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 3
+ },
+ {
+  "id": 17,
+  "nome_exibicao": "Mauro",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 1
+ },
+ {
+  "id": 18,
+  "nome_exibicao": "Monatha",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 1
+ },
+ {
+  "id": 19,
+  "nome_exibicao": "Pablo",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 2
+ },
+ {
+  "id": 20,
+  "nome_exibicao": "Pedro",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 21,
+  "nome_exibicao": "Renato",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 1
+ },
+ {
+  "id": 22,
+  "nome_exibicao": "Roberpaulo",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 6
+ },
+ {
+  "id": 23,
+  "nome_exibicao": "Rogério",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 5
+ },
+ {
+  "id": 24,
+  "nome_exibicao": "Rovilson",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 25,
+  "nome_exibicao": "Régis",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 5
+ },
+ {
+  "id": 26,
+  "nome_exibicao": "Sandra",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 27,
+  "nome_exibicao": "Vanessa",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 28,
+  "nome_exibicao": "Victória",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 4
+ },
+ {
+  "id": 29,
+  "nome_exibicao": "Washington",
+  "nome_completo": null,
+  "ativo": true,
+  "ofertas": 3
+ }
+]

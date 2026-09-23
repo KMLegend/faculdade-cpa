@@ -1,0 +1,458 @@
+[
+ {
+  "id": 1,
+  "nome": "Algoritmos e Lógica de Programação",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 2,
+  "nome": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 3,
+  "nome": "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 4,
+  "nome": "Aprendizagem Motora",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 5,
+  "nome": "Atenção Integral à Saúde da Criança e do Adolescente",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 6,
+  "nome": "Atletismo",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 7,
+  "nome": "Bioestatística",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 8,
+  "nome": "Biologia Celular",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 9,
+  "nome": "Biologia Molecular",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 10,
+  "nome": "Biomedicina Estética",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 11,
+  "nome": "Biomedicina Forense",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 12,
+  "nome": "Bioquímica",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 13,
+  "nome": "Bioética",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 14,
+  "nome": "Bioética e Deontologia",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 15,
+  "nome": "Caso Problematizador e Avaliação Interdisciplina M",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 16,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 17,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar AB",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 18,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 19,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar CL",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 20,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar EF",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 21,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 22,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar M",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 23,
+  "nome": "Caso Problematizador e Avaliação Interdisciplinar P",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 24,
+  "nome": "Cinesiologia e Biomecânica",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 25,
+  "nome": "Computação Evolutiva",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 26,
+  "nome": "Cálculo",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 27,
+  "nome": "Diagnóstico por Imagem",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 28,
+  "nome": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 29,
+  "nome": "Educação Cívica e Social",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 30,
+  "nome": "Elaboração de Projeto Científico",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 31,
+  "nome": "Esportes de Raquete",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 32,
+  "nome": "Estatística Aplicada a Informática",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 33,
+  "nome": "Estudos Disciplinares e Projeto Integrador II",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 34,
+  "nome": "Estudos Disciplinares e Projeto Integrador IV",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 35,
+  "nome": "Estágio Supervisionado I ou II",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 36,
+  "nome": "Estágio em Saúde II",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 37,
+  "nome": "Farmacologia",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 38,
+  "nome": "Fisiologia do Esporte",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 39,
+  "nome": "Fisiologia do Exercício I",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 40,
+  "nome": "Fundamentos Filosóficos e Antropológicos Aplicados à Saúde",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 41,
+  "nome": "Gestão de Projetos em Tecnologia da Informação",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 42,
+  "nome": "Gestão e Empreendedorismo na Educação Física e Esporte",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 43,
+  "nome": "Handebol",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 44,
+  "nome": "Hematologia clínica – série branca e hemostasia",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 45,
+  "nome": "Hemoterapia Laboratorial",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 46,
+  "nome": "Histologia e Embriologia",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 47,
+  "nome": "História da Educação Física",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 48,
+  "nome": "Imunologia",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 49,
+  "nome": "Imunologia Clínica",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 50,
+  "nome": "Inglês Instrumental",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 51,
+  "nome": "Instrumentos Básicos de Enfermagem",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 52,
+  "nome": "Introdução a Inteligência Artificial",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 53,
+  "nome": "Introdução a Rede de Computadores",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 54,
+  "nome": "Lógica Matemática",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 55,
+  "nome": "Matemática para IA",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 56,
+  "nome": "Metodologia Científica",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 57,
+  "nome": "Microbiologia Clínica",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 58,
+  "nome": "Modelagem de Dados",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 59,
+  "nome": "Noções de Práticas Integrativas Complementares",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 60,
+  "nome": "Nutrição Aplicada a Enfermagem",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 61,
+  "nome": "O cuidar em Saúde Mental",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 62,
+  "nome": "O cuidar nos Processos Críticos",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 63,
+  "nome": "Optativa I ou II - Endocrinologia laboratorial",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 64,
+  "nome": "Parasitologia Clínica",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 65,
+  "nome": "Prescrição do Exercício físico e treinamento EB-D",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 66,
+  "nome": "Promoção da Saúde",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 67,
+  "nome": "Práticas Biomédicas - Química",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 68,
+  "nome": "Psicologia do Desenvolvimento",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 69,
+  "nome": "Recuperação musculoesquelética",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 70,
+  "nome": "Reprodução Humana",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 71,
+  "nome": "TCC 1 ou TCC 2",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 72,
+  "nome": "TCC 2",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 73,
+  "nome": "Tecnologia da Informação",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 74,
+  "nome": "Toxicologia",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 75,
+  "nome": "Treinamento Funcional",
+  "curso_id": null,
+  "ativo": true
+ },
+ {
+  "id": 76,
+  "nome": "Treinamento Resistido",
+  "curso_id": null,
+  "ativo": true
+ }
+]

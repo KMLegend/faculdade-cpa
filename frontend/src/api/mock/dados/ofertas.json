@@ -1,0 +1,1865 @@
+[
+ {
+  "id": 1,
+  "disciplina": "Algoritmos e Lógica de Programação",
+  "professor": "Rovilson",
+  "rotulo": "Algoritmos e Lógica de Programação · Prof. Rovilson",
+  "turmas": [
+   6,
+   7
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Algoritmos e Lógica de Programação - Prof Rovilson"
+  ]
+ },
+ {
+  "id": 2,
+  "disciplina": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório",
+  "professor": "Andrea",
+  "rotulo": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório · Prof. Andrea",
+  "turmas": [
+   9,
+   10
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório - (Prática) - Profa Andrea"
+  ]
+ },
+ {
+  "id": 3,
+  "disciplina": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório",
+  "professor": "Ivan",
+  "rotulo": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório · Prof. Ivan",
+  "turmas": [
+   9,
+   10
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório - (Preleção) - Prof Ivan"
+  ]
+ },
+ {
+  "id": 4,
+  "disciplina": "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório",
+  "professor": "Lisiane",
+  "rotulo": "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório · Prof. Lisiane",
+  "turmas": [
+   1,
+   2
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório (Preleção) - Prof Lisiane",
+   "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório (Prática) - Prof Lisiane"
+  ]
+ },
+ {
+  "id": 5,
+  "disciplina": "Aprendizagem Motora",
+  "professor": "Ivan",
+  "rotulo": "Aprendizagem Motora · Prof. Ivan",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Aprendizagem Motora - Prof Ivan"
+  ]
+ },
+ {
+  "id": 6,
+  "disciplina": "Atenção Integral à Saúde da Criança e do Adolescente",
+  "professor": "Régis",
+  "rotulo": "Atenção Integral à Saúde da Criança e do Adolescente · Prof. Régis",
+  "turmas": [
+   15
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Atenção Integral à Saúde da Criança e do Adolescente - Prof Régis"
+  ]
+ },
+ {
+  "id": 7,
+  "disciplina": "Atletismo",
+  "professor": "Ernesto",
+  "rotulo": "Atletismo · Prof. Ernesto",
+  "turmas": [
+   3,
+   16
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Atletismo - Prof Ernesto"
+  ]
+ },
+ {
+  "id": 8,
+  "disciplina": "Bioestatística",
+  "professor": "Sandra",
+  "rotulo": "Bioestatística · Prof. Sandra",
+  "turmas": [
+   1,
+   2,
+   9,
+   10
+  ],
+  "qtd_turmas": 4,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Bioestatística - Profa Sandra"
+  ]
+ },
+ {
+  "id": 9,
+  "disciplina": "Bioética",
+  "professor": "Rogério",
+  "rotulo": "Bioética · Prof. Rogério",
+  "turmas": [
+   3,
+   16
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Bioética - Prof Rogério",
+   "Bioética -Prof Rogério"
+  ]
+ },
+ {
+  "id": 10,
+  "disciplina": "Bioética e Deontologia",
+  "professor": "Clayson",
+  "rotulo": "Bioética e Deontologia · Prof. Clayson",
+  "turmas": [
+   5,
+   12
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Bioética e Deontologia - Prof Clayson"
+  ]
+ },
+ {
+  "id": 11,
+  "disciplina": "Biologia Celular",
+  "professor": "Andrea",
+  "rotulo": "Biologia Celular · Prof. Andrea",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Biologia Celular - Profa Andrea"
+  ]
+ },
+ {
+  "id": 12,
+  "disciplina": "Biologia Molecular",
+  "professor": "Isabela",
+  "rotulo": "Biologia Molecular · Prof. Isabela",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Biologia Molecular - Profa Isabela"
+  ]
+ },
+ {
+  "id": 13,
+  "disciplina": "Biomedicina Estética",
+  "professor": "Alexandre",
+  "rotulo": "Biomedicina Estética · Prof. Alexandre",
+  "turmas": [
+   5,
+   12
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Biomedicina Estética - Prof Alexandre"
+  ]
+ },
+ {
+  "id": 14,
+  "disciplina": "Biomedicina Forense",
+  "professor": "Isabela",
+  "rotulo": "Biomedicina Forense · Prof. Isabela",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Biomedicina Forense (EAD) - Profa Isabela"
+  ]
+ },
+ {
+  "id": 15,
+  "disciplina": "Bioquímica",
+  "professor": "Andrea",
+  "rotulo": "Bioquímica · Prof. Andrea",
+  "turmas": [
+   1,
+   2,
+   9,
+   10
+  ],
+  "qtd_turmas": 4,
+  "modalidades": [
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Bioquímica (Preleção) - Profa Andrea"
+  ]
+ },
+ {
+  "id": 16,
+  "disciplina": "Bioquímica",
+  "professor": "Vanessa",
+  "rotulo": "Bioquímica · Prof. Vanessa",
+  "turmas": [
+   1,
+   2
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Bioquímica (Prática) - Profa Vanessa"
+  ]
+ },
+ {
+  "id": 17,
+  "disciplina": "Bioquímica",
+  "professor": "Victória",
+  "rotulo": "Bioquímica · Prof. Victória",
+  "turmas": [
+   9,
+   10
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Bioquímica (Prática) - Profa Victória"
+  ]
+ },
+ {
+  "id": 18,
+  "disciplina": "Cálculo",
+  "professor": "Leonardo",
+  "rotulo": "Cálculo · Prof. Leonardo",
+  "turmas": [
+   7
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Cálculo - Prof Leonardo"
+  ]
+ },
+ {
+  "id": 19,
+  "disciplina": "Cálculo",
+  "professor": "Sandra",
+  "rotulo": "Cálculo · Prof. Sandra",
+  "turmas": [
+   6
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Cálculo - Prof Sandra"
+  ]
+ },
+ {
+  "id": 20,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplina M",
+  "professor": "Ivan",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplina M · Prof. Ivan",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplina M - Prof Ivan (EAD-Extensão)"
+  ]
+ },
+ {
+  "id": 21,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar AB",
+  "professor": "Victória",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar AB · Prof. Victória",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar AB - Profa Victória",
+   "Caso Problematizador e Avaliação Interdisciplinar AB - Profa Victória (EAD- Extensão)"
+  ]
+ },
+ {
+  "id": 22,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas",
+  "professor": "Isabela",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas · Prof. Isabela",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EXTENSAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas - Profa Isabela",
+   "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas - Profa Isabela (Extensão)"
+  ]
+ },
+ {
+  "id": 23,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar CL",
+  "professor": "Roberpaulo",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar CL · Prof. Roberpaulo",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar CL - Prof Roberpaulo",
+   "Caso Problematizador e Avaliação Interdisciplinar CL - Prof Roberpaulo (EAD - Extensão)"
+  ]
+ },
+ {
+  "id": 24,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar EF",
+  "professor": "Ivan",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar EF · Prof. Ivan",
+  "turmas": [
+   16
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar EF - Prof Ivan",
+   "Caso Problematizador e Avaliação Interdisciplinar EF - Prof Ivan (EAD - Extensão)"
+  ]
+ },
+ {
+  "id": 25,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar EF",
+  "professor": "Lisiane",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar EF · Prof. Lisiane",
+  "turmas": [
+   3
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EXTENSAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar EF - Profa Lisiane",
+   "Caso Problematizador e Avaliação Interdisciplinar EF - Profa Lisiane (Extensão)"
+  ]
+ },
+ {
+  "id": 26,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos",
+  "professor": "Pedro",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos · Prof. Pedro",
+  "turmas": [
+   4,
+   14
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos - Prof Pedro",
+   "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos - Prof Pedro (EAD - Extensão)",
+   "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos - Prof Pedro (EAD- Extensão)"
+  ]
+ },
+ {
+  "id": 27,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar M",
+  "professor": "Ivan",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar M · Prof. Ivan",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar M - Prof Ivan"
+  ]
+ },
+ {
+  "id": 28,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar P",
+  "professor": "Alexandre",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar P · Prof. Alexandre",
+  "turmas": [
+   9,
+   10
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar P - Prof Alexandre",
+   "Caso Problematizador e Avaliação Interdisciplinar P - Prof Alexandre (EAD-Extensão)"
+  ]
+ },
+ {
+  "id": 29,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar P",
+  "professor": "Isabela",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar P · Prof. Isabela",
+  "turmas": [
+   1,
+   2
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "EXTENSAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar P - (Profa Isabela)",
+   "Caso Problematizador e Avaliação Interdisciplinar P - (Profa Isabela) (Extensão)"
+  ]
+ },
+ {
+  "id": 30,
+  "disciplina": "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos",
+  "professor": "Pedro",
+  "rotulo": "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos · Prof. Pedro",
+  "turmas": [
+   15
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos - Prof Pedro",
+   "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos - Prof Pedro (EAD- Extensão)"
+  ]
+ },
+ {
+  "id": 31,
+  "disciplina": "Cinesiologia e Biomecânica",
+  "professor": "Linda",
+  "rotulo": "Cinesiologia e Biomecânica · Prof. Linda",
+  "turmas": [
+   16
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Cinesiologia e Biomecânica - Profa Linda"
+  ]
+ },
+ {
+  "id": 32,
+  "disciplina": "Cinesiologia e Biomecânica",
+  "professor": "Lisiane",
+  "rotulo": "Cinesiologia e Biomecânica · Prof. Lisiane",
+  "turmas": [
+   3
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Cinnesiologia e Biomecânica - Profa Lisiane"
+  ]
+ },
+ {
+  "id": 33,
+  "disciplina": "Computação Evolutiva",
+  "professor": "Jonas",
+  "rotulo": "Computação Evolutiva · Prof. Jonas",
+  "turmas": [
+   8
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Computação Evolutiva - Prof Jonas"
+  ]
+ },
+ {
+  "id": 34,
+  "disciplina": "Diagnóstico por Imagem",
+  "professor": "Alexandre",
+  "rotulo": "Diagnóstico por Imagem · Prof. Alexandre",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Diagnóstico por Imagem - Prof Alexandre"
+  ]
+ },
+ {
+  "id": 35,
+  "disciplina": "Diagnóstico por Imagem",
+  "professor": "Washington",
+  "rotulo": "Diagnóstico por Imagem · Prof. Washington",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Diagnóstico por Imagem - Prof Washington"
+  ]
+ },
+ {
+  "id": 36,
+  "disciplina": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental",
+  "professor": "Monatha",
+  "rotulo": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental · Prof. Monatha",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Preleção) - Profa Monatha",
+   "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Prática) - Profa Monatha",
+   "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Prática)- - Profa Monatha"
+  ]
+ },
+ {
+  "id": 37,
+  "disciplina": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental",
+  "professor": "Vanessa",
+  "rotulo": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental · Prof. Vanessa",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Preleção) - Profa Vanessa",
+   "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Prática) - Profa Vanessa"
+  ]
+ },
+ {
+  "id": 38,
+  "disciplina": "Educação Cívica e Social",
+  "professor": "Rogério",
+  "rotulo": "Educação Cívica e Social · Prof. Rogério",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Educação Cívica e Social - Prof Rogério"
+  ]
+ },
+ {
+  "id": 39,
+  "disciplina": "Elaboração de Projeto Científico",
+  "professor": "Rogério",
+  "rotulo": "Elaboração de Projeto Científico · Prof. Rogério",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Elaboração de Projeto Científico - Prof Rogério"
+  ]
+ },
+ {
+  "id": 40,
+  "disciplina": "Esportes de Raquete",
+  "professor": "Ernesto",
+  "rotulo": "Esportes de Raquete · Prof. Ernesto",
+  "turmas": [
+   3,
+   16
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Esportes de Raquete - Prof Ernesto"
+  ]
+ },
+ {
+  "id": 41,
+  "disciplina": "Estágio em Saúde II",
+  "professor": "Linda",
+  "rotulo": "Estágio em Saúde II · Prof. Linda",
+  "turmas": [
+   17
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "ESTAGIO",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Estágio em Saúde II (Estágio) - Profa Linda (5hrs)",
+   "Estágio em Saúde II (Preleção) - Profa Linda"
+  ]
+ },
+ {
+  "id": 42,
+  "disciplina": "Estágio Supervisionado I ou II",
+  "professor": "Alexandre",
+  "rotulo": "Estágio Supervisionado I ou II · Prof. Alexandre",
+  "turmas": [],
+  "qtd_turmas": 0,
+  "modalidades": [],
+  "avaliavel": false,
+  "flags": [
+   "DISCIPLINA_AMBIGUA_OU"
+  ],
+  "celulas_origem": [
+   "Estágio Supervisionado I ou II (Prof Alexandre)"
+  ]
+ },
+ {
+  "id": 43,
+  "disciplina": "Estágio Supervisionado I ou II",
+  "professor": "Washington",
+  "rotulo": "Estágio Supervisionado I ou II · Prof. Washington",
+  "turmas": [],
+  "qtd_turmas": 0,
+  "modalidades": [],
+  "avaliavel": false,
+  "flags": [
+   "DISCIPLINA_AMBIGUA_OU"
+  ],
+  "celulas_origem": [
+   "Estágio Supervisionado I ou II (Prof Washington)"
+  ]
+ },
+ {
+  "id": 44,
+  "disciplina": "Estatística Aplicada a Informática",
+  "professor": "Leonardo",
+  "rotulo": "Estatística Aplicada a Informática · Prof. Leonardo",
+  "turmas": [
+   7
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Estatística Aplicada a Informática- Prof Leonardo"
+  ]
+ },
+ {
+  "id": 45,
+  "disciplina": "Estatística Aplicada a Informática",
+  "professor": "Sandra",
+  "rotulo": "Estatística Aplicada a Informática · Prof. Sandra",
+  "turmas": [
+   6
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Estatística Aplicada a Informática- Prof Sandra"
+  ]
+ },
+ {
+  "id": 46,
+  "disciplina": "Estudos Disciplinares e Projeto Integrador II",
+  "professor": "Leonardo",
+  "rotulo": "Estudos Disciplinares e Projeto Integrador II · Prof. Leonardo",
+  "turmas": [
+   7
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "PARENTESE_NAO_FECHADO"
+  ],
+  "celulas_origem": [
+   "Estudos Disciplinares e Projeto Integrador II- Prof Leonardo",
+   "Estudos Disciplinares e Projeto Integrador II- Prof Leonardo (EAD"
+  ]
+ },
+ {
+  "id": 47,
+  "disciplina": "Estudos Disciplinares e Projeto Integrador II",
+  "professor": "Pablo",
+  "rotulo": "Estudos Disciplinares e Projeto Integrador II · Prof. Pablo",
+  "turmas": [
+   6
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Estudos Disciplinares e Projeto Integrador II - Prof Pablo"
+  ]
+ },
+ {
+  "id": 48,
+  "disciplina": "Estudos Disciplinares e Projeto Integrador IV",
+  "professor": "Rovilson",
+  "rotulo": "Estudos Disciplinares e Projeto Integrador IV · Prof. Rovilson",
+  "turmas": [
+   8
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Estudos Disciplinares e Projeto Integrador IV - Prof Rovilson"
+  ]
+ },
+ {
+  "id": 49,
+  "disciplina": "Farmacologia",
+  "professor": "Luciene",
+  "rotulo": "Farmacologia · Prof. Luciene",
+  "turmas": [
+   4
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Farmacologia - Profa Luciene"
+  ]
+ },
+ {
+  "id": 50,
+  "disciplina": "Farmacologia",
+  "professor": "Victória",
+  "rotulo": "Farmacologia · Prof. Victória",
+  "turmas": [
+   14
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Farmacologia - Profa Vitória"
+  ]
+ },
+ {
+  "id": 51,
+  "disciplina": "Fisiologia do Esporte",
+  "professor": "Linda",
+  "rotulo": "Fisiologia do Esporte · Prof. Linda",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Fisiologia do Esporte - Profa Linda"
+  ]
+ },
+ {
+  "id": 52,
+  "disciplina": "Fisiologia do Esporte",
+  "professor": "Roberpaulo",
+  "rotulo": "Fisiologia do Esporte · Prof. Roberpaulo",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Fisiologia do Esporte - Prof Roberpaulo"
+  ]
+ },
+ {
+  "id": 53,
+  "disciplina": "Fisiologia do Exercício I",
+  "professor": "Linda",
+  "rotulo": "Fisiologia do Exercício I · Prof. Linda",
+  "turmas": [
+   3,
+   16
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Fisiologia do Exercício I - Prof Linda",
+   "Fisiologia do Exercício I - Profa Linda"
+  ]
+ },
+ {
+  "id": 54,
+  "disciplina": "Fundamentos Filosóficos e Antropológicos Aplicados à Saúde",
+  "professor": "Rogério",
+  "rotulo": "Fundamentos Filosóficos e Antropológicos Aplicados à Saúde · Prof. Rogério",
+  "turmas": [
+   1,
+   2,
+   9,
+   10
+  ],
+  "qtd_turmas": 4,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Fundamentos Filosóficos e Antropológicos Aplicados à Saúde - Prof Rogério"
+  ]
+ },
+ {
+  "id": 55,
+  "disciplina": "Gestão de Projetos em Tecnologia da Informação",
+  "professor": "Rovilson",
+  "rotulo": "Gestão de Projetos em Tecnologia da Informação · Prof. Rovilson",
+  "turmas": [
+   6,
+   7
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Gestão de Projetos em Tecnologia da Informação - Prof Rovilson",
+   "Gestão de Projetos em Tecnologia de Informação - Prof Rovilson"
+  ]
+ },
+ {
+  "id": 56,
+  "disciplina": "Gestão e Empreendedorismo na Educação Física e Esporte",
+  "professor": "Renato",
+  "rotulo": "Gestão e Empreendedorismo na Educação Física e Esporte · Prof. Renato",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Gestão e Empreendedorismo na Educação Física e Esporte - Prof Renato",
+   "Gestão e Empreendedorismo na Educação Física e Esporte - Prof Renato (EAD-Extensão)"
+  ]
+ },
+ {
+  "id": 57,
+  "disciplina": "Handebol",
+  "professor": "Carlos",
+  "rotulo": "Handebol · Prof. Carlos",
+  "turmas": [
+   3
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Handebol - Prof Carlos"
+  ]
+ },
+ {
+  "id": 58,
+  "disciplina": "Handebol",
+  "professor": "Diony",
+  "rotulo": "Handebol · Prof. Diony",
+  "turmas": [
+   16
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Handebol - Prof Diony"
+  ]
+ },
+ {
+  "id": 59,
+  "disciplina": "Hematologia clínica – série branca e hemostasia",
+  "professor": "Arissa",
+  "rotulo": "Hematologia clínica – série branca e hemostasia · Prof. Arissa",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Hematologia clínica – série branca e hemostasia (Preleção) - Profa Arissa",
+   "Hematologia clínica – série branca e hemostasia (prática) - Profa Arissa"
+  ]
+ },
+ {
+  "id": 60,
+  "disciplina": "Hemoterapia Laboratorial",
+  "professor": "Mauro",
+  "rotulo": "Hemoterapia Laboratorial · Prof. Mauro",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "EAD"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Hemoterapia Laboratorial (EAD) - Prof Mauro"
+  ]
+ },
+ {
+  "id": 61,
+  "disciplina": "Histologia e Embriologia",
+  "professor": "André",
+  "rotulo": "Histologia e Embriologia · Prof. André",
+  "turmas": [
+   1,
+   2
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "PREFIXO_DUPLICADO"
+  ],
+  "celulas_origem": [
+   "Histologia e Embriologia (Preleção)- Prof Prof André",
+   "Histologia e Embriologia (Prática)- Prof André"
+  ]
+ },
+ {
+  "id": 62,
+  "disciplina": "Histologia e Embriologia",
+  "professor": "Victória",
+  "rotulo": "Histologia e Embriologia · Prof. Victória",
+  "turmas": [
+   9,
+   10
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Histologia e Embriologia (Preleção) - Profa Victória",
+   "Histologia e Embriologia (Prática) - Profa Victória"
+  ]
+ },
+ {
+  "id": 63,
+  "disciplina": "História da Educação Física",
+  "professor": "Diony",
+  "rotulo": "História da Educação Física · Prof. Diony",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "História da Educação Física - Prof Diony"
+  ]
+ },
+ {
+  "id": 64,
+  "disciplina": "Imunologia",
+  "professor": "Clayson",
+  "rotulo": "Imunologia · Prof. Clayson",
+  "turmas": [
+   1,
+   2
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Imunologia - Prof Clayson"
+  ]
+ },
+ {
+  "id": 65,
+  "disciplina": "Imunologia",
+  "professor": "Vanessa",
+  "rotulo": "Imunologia · Prof. Vanessa",
+  "turmas": [
+   9,
+   10
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Imunologia - Profa Vanessa"
+  ]
+ },
+ {
+  "id": 66,
+  "disciplina": "Imunologia Clínica",
+  "professor": "Arissa",
+  "rotulo": "Imunologia Clínica · Prof. Arissa",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Imunologia Clínica - prática - Profa Arissa"
+  ]
+ },
+ {
+  "id": 67,
+  "disciplina": "Imunologia Clínica",
+  "professor": "Vanessa",
+  "rotulo": "Imunologia Clínica · Prof. Vanessa",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Imunologia Clínica - Preleção - Profa Vanessa"
+  ]
+ },
+ {
+  "id": 68,
+  "disciplina": "Inglês Instrumental",
+  "professor": "Ivan",
+  "rotulo": "Inglês Instrumental · Prof. Ivan",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Inglês Instrumental - Prof Ivan"
+  ]
+ },
+ {
+  "id": 69,
+  "disciplina": "Instrumentos Básicos de Enfermagem",
+  "professor": "Luciene",
+  "rotulo": "Instrumentos Básicos de Enfermagem · Prof. Luciene",
+  "turmas": [
+   4,
+   14
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRATICA_HOSPITALAR"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Instrumentos Básicos de Enfermagem (Prática Hospitalar) - Prof Luciene",
+   "Instrumentos Básicos de Enfermagem - Prof Luciene"
+  ]
+ },
+ {
+  "id": 70,
+  "disciplina": "Instrumentos Básicos de Enfermagem",
+  "professor": "Pedro",
+  "rotulo": "Instrumentos Básicos de Enfermagem · Prof. Pedro",
+  "turmas": [
+   4,
+   14
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Instrumentos Básicos de Enfermagem (Preleção) - Prof Pedro",
+   "Instrumentos Básicos de Enfermagem - Prof Pedro"
+  ]
+ },
+ {
+  "id": 71,
+  "disciplina": "Introdução a Inteligência Artificial",
+  "professor": "Rovilson",
+  "rotulo": "Introdução a Inteligência Artificial · Prof. Rovilson",
+  "turmas": [
+   8
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Introdução a Inteligência Artificial - Prof Rovilson"
+  ]
+ },
+ {
+  "id": 72,
+  "disciplina": "Introdução a Rede de Computadores",
+  "professor": "Jonas",
+  "rotulo": "Introdução a Rede de Computadores · Prof. Jonas",
+  "turmas": [
+   7
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Introdução a Rede de Computadores - Prof Jonas"
+  ]
+ },
+ {
+  "id": 73,
+  "disciplina": "Introdução a Rede de Computadores",
+  "professor": "Pablo",
+  "rotulo": "Introdução a Rede de Computadores · Prof. Pablo",
+  "turmas": [
+   6
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Introdução a Rede de Computadores - Prof Pablo"
+  ]
+ },
+ {
+  "id": 74,
+  "disciplina": "Lógica Matemática",
+  "professor": "Leonardo",
+  "rotulo": "Lógica Matemática · Prof. Leonardo",
+  "turmas": [
+   7
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Lógica Matemática - Prof Leonardo"
+  ]
+ },
+ {
+  "id": 75,
+  "disciplina": "Lógica Matemática",
+  "professor": "Sandra",
+  "rotulo": "Lógica Matemática · Prof. Sandra",
+  "turmas": [
+   6
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Lógica Matemática- Profa Sandra"
+  ]
+ },
+ {
+  "id": 76,
+  "disciplina": "Matemática para IA",
+  "professor": "Jonas",
+  "rotulo": "Matemática para IA · Prof. Jonas",
+  "turmas": [
+   8
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Matemática para IA - Prof Jonas"
+  ]
+ },
+ {
+  "id": 77,
+  "disciplina": "Metodologia Científica",
+  "professor": "Rogério",
+  "rotulo": "Metodologia Científica · Prof. Rogério",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Metodologia Científica - Prof Rogério"
+  ]
+ },
+ {
+  "id": 78,
+  "disciplina": "Microbiologia Clínica",
+  "professor": "Alexandre",
+  "rotulo": "Microbiologia Clínica · Prof. Alexandre",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Microbiologia Clínica - Prática - Prof Alexandre"
+  ]
+ },
+ {
+  "id": 79,
+  "disciplina": "Microbiologia Clínica",
+  "professor": "Roberpaulo",
+  "rotulo": "Microbiologia Clínica · Prof. Roberpaulo",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Microbiologia Clínica - Preleção - Prof Roberpaulo"
+  ]
+ },
+ {
+  "id": 80,
+  "disciplina": "Modelagem de Dados",
+  "professor": "Leonardo",
+  "rotulo": "Modelagem de Dados · Prof. Leonardo",
+  "turmas": [
+   8
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Modelagem de Dados - Prof Leonardo"
+  ]
+ },
+ {
+  "id": 81,
+  "disciplina": "Noções de Práticas Integrativas Complementares",
+  "professor": "Alexandre",
+  "rotulo": "Noções de Práticas Integrativas Complementares · Prof. Alexandre",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Noções de Práticas Integrativas Complementares - Prof Alexandre"
+  ]
+ },
+ {
+  "id": 82,
+  "disciplina": "Noções de Práticas Integrativas Complementares",
+  "professor": "Lisiane",
+  "rotulo": "Noções de Práticas Integrativas Complementares · Prof. Lisiane",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Noções de Práticas Integrativas Complementares - Profa Lisiane"
+  ]
+ },
+ {
+  "id": 83,
+  "disciplina": "Nutrição Aplicada a Enfermagem",
+  "professor": "Katiulcy",
+  "rotulo": "Nutrição Aplicada a Enfermagem · Prof. Katiulcy",
+  "turmas": [
+   14
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Nutrição Aplicada a Enfermagem - Profa Katiulcy"
+  ]
+ },
+ {
+  "id": 84,
+  "disciplina": "Nutrição Aplicada a Enfermagem",
+  "professor": "Luciene",
+  "rotulo": "Nutrição Aplicada a Enfermagem · Prof. Luciene",
+  "turmas": [
+   4
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Nutrição Aplicada a Enfermagem - Profa Luciene"
+  ]
+ },
+ {
+  "id": 85,
+  "disciplina": "O cuidar em Saúde Mental",
+  "professor": "Régis",
+  "rotulo": "O cuidar em Saúde Mental · Prof. Régis",
+  "turmas": [
+   15
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "O cuidar em Saúde Mental - Prof Régis"
+  ]
+ },
+ {
+  "id": 86,
+  "disciplina": "O cuidar nos Processos Críticos",
+  "professor": "Régis",
+  "rotulo": "O cuidar nos Processos Críticos · Prof. Régis",
+  "turmas": [
+   15
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "O cuidar nos Processos Críticos - Prof Régis"
+  ]
+ },
+ {
+  "id": 87,
+  "disciplina": "Optativa I ou II - Endocrinologia laboratorial",
+  "professor": "Roberpaulo",
+  "rotulo": "Optativa I ou II - Endocrinologia laboratorial · Prof. Roberpaulo",
+  "turmas": [],
+  "qtd_turmas": 0,
+  "modalidades": [],
+  "avaliavel": false,
+  "flags": [
+   "DISCIPLINA_AMBIGUA_OU",
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Optativa I ou II - Endocrinologia laboratorial - Prof Roberpaulo"
+  ]
+ },
+ {
+  "id": 88,
+  "disciplina": "Parasitologia Clínica",
+  "professor": "Clayson",
+  "rotulo": "Parasitologia Clínica · Prof. Clayson",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Parasitologia Clínica - Preleção - Prof Clayson"
+  ]
+ },
+ {
+  "id": 89,
+  "disciplina": "Parasitologia Clínica",
+  "professor": "Roberpaulo",
+  "rotulo": "Parasitologia Clínica · Prof. Roberpaulo",
+  "turmas": [
+   13
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Parasitologia Clínica - Prática - Prof Roberpaulo"
+  ]
+ },
+ {
+  "id": 90,
+  "disciplina": "Práticas Biomédicas - Química",
+  "professor": "Alexandre",
+  "rotulo": "Práticas Biomédicas - Química · Prof. Alexandre",
+  "turmas": [
+   1,
+   2,
+   9,
+   10
+  ],
+  "qtd_turmas": 4,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Práticas Biomédicas - Química (Prática) - Prof Alexandre",
+   "Práticas Biomédicas - Química - Prof Alexandre"
+  ]
+ },
+ {
+  "id": 91,
+  "disciplina": "Prescrição do Exercício físico e treinamento EB-D",
+  "professor": "Carlos",
+  "rotulo": "Prescrição do Exercício físico e treinamento EB-D · Prof. Carlos",
+  "turmas": [
+   17
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [
+   "HIFEN_NO_NOME"
+  ],
+  "celulas_origem": [
+   "Prescrição do Exercício físico e treinamento EB-D - Prof Carlos"
+  ]
+ },
+ {
+  "id": 92,
+  "disciplina": "Promoção da Saúde",
+  "professor": "Pedro",
+  "rotulo": "Promoção da Saúde · Prof. Pedro",
+  "turmas": [
+   14
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Promoção a Saúde - Prof Pedro"
+  ]
+ },
+ {
+  "id": 93,
+  "disciplina": "Promoção da Saúde",
+  "professor": "Régis",
+  "rotulo": "Promoção da Saúde · Prof. Régis",
+  "turmas": [
+   4,
+   14
+  ],
+  "qtd_turmas": 2,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [
+   "SEM_PREFIXO_PROF"
+  ],
+  "celulas_origem": [
+   "Promoção a Saúde - Prof Régis",
+   "Promoção da Saúde - Régis"
+  ]
+ },
+ {
+  "id": 94,
+  "disciplina": "Psicologia do Desenvolvimento",
+  "professor": "Ivan",
+  "rotulo": "Psicologia do Desenvolvimento · Prof. Ivan",
+  "turmas": [
+   16
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Psicologia do Desenvolvimento - Prof Ivan"
+  ]
+ },
+ {
+  "id": 95,
+  "disciplina": "Psicologia do Desenvolvimento",
+  "professor": "Linda",
+  "rotulo": "Psicologia do Desenvolvimento · Prof. Linda",
+  "turmas": [
+   3
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Psicologia do Desenvolvimento - Profa Linda"
+  ]
+ },
+ {
+  "id": 96,
+  "disciplina": "Recuperação musculoesquelética",
+  "professor": "Linda",
+  "rotulo": "Recuperação musculoesquelética · Prof. Linda",
+  "turmas": [
+   17
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Recuperação musculoesquelética - Profa Linda"
+  ]
+ },
+ {
+  "id": 97,
+  "disciplina": "Reprodução Humana",
+  "professor": "Clayson",
+  "rotulo": "Reprodução Humana · Prof. Clayson",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Reprodução Humana - Prof Clayson"
+  ]
+ },
+ {
+  "id": 98,
+  "disciplina": "Reprodução Humana",
+  "professor": "Roberpaulo",
+  "rotulo": "Reprodução Humana · Prof. Roberpaulo",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Reprodução Humana - Prof Roberpaulo"
+  ]
+ },
+ {
+  "id": 99,
+  "disciplina": "TCC 1 ou TCC 2",
+  "professor": "Clayson",
+  "rotulo": "TCC 1 ou TCC 2 · Prof. Clayson",
+  "turmas": [],
+  "qtd_turmas": 0,
+  "modalidades": [],
+  "avaliavel": false,
+  "flags": [
+   "DISCIPLINA_AMBIGUA_OU"
+  ],
+  "celulas_origem": [
+   "TCC 1 ou TCC 2 (Prof Clayson)"
+  ]
+ },
+ {
+  "id": 100,
+  "disciplina": "TCC 2",
+  "professor": "Ivan",
+  "rotulo": "TCC 2 · Prof. Ivan",
+  "turmas": [
+   17
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "TCC 2 - Prof Ivan"
+  ]
+ },
+ {
+  "id": 101,
+  "disciplina": "Tecnologia da Informação",
+  "professor": "Leonardo",
+  "rotulo": "Tecnologia da Informação · Prof. Leonardo",
+  "turmas": [
+   11
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Tecnologia da Informação - Prof Leonardo"
+  ]
+ },
+ {
+  "id": 102,
+  "disciplina": "Toxicologia",
+  "professor": "Régis",
+  "rotulo": "Toxicologia · Prof. Régis",
+  "turmas": [
+   5
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA"
+  ],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Toxicologia (Prática)- Prof Régis",
+   "Toxicologia - Prof Régis"
+  ]
+ },
+ {
+  "id": 103,
+  "disciplina": "Toxicologia",
+  "professor": "Washington",
+  "rotulo": "Toxicologia · Prof. Washington",
+  "turmas": [
+   12
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [
+   "PRATICA",
+   "PRELECAO"
+  ],
+  "avaliavel": true,
+  "flags": [
+   "MODALIDADE_SEM_PARENTESES"
+  ],
+  "celulas_origem": [
+   "Toxicologia - Preleção - Prof Washignton",
+   "Toxicologia - Prática - Prof Washignton"
+  ]
+ },
+ {
+  "id": 104,
+  "disciplina": "Treinamento Funcional",
+  "professor": "Linda",
+  "rotulo": "Treinamento Funcional · Prof. Linda",
+  "turmas": [
+   17
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Treinamento Funcional - Profa Linda"
+  ]
+ },
+ {
+  "id": 105,
+  "disciplina": "Treinamento Resistido",
+  "professor": "Carlos",
+  "rotulo": "Treinamento Resistido · Prof. Carlos",
+  "turmas": [
+   17
+  ],
+  "qtd_turmas": 1,
+  "modalidades": [],
+  "avaliavel": true,
+  "flags": [],
+  "celulas_origem": [
+   "Treinamento Resistido - Prof Carlos"
+  ]
+ }
+]

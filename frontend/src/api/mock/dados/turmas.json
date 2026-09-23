@@ -1,0 +1,321 @@
+[
+ {
+  "id": 1,
+  "rotulo": "Biomedicina · Matutino · 2º período",
+  "curso": "Biomedicina",
+  "curso_slug": "BIOMEDICINA",
+  "turno": "MATUTINO",
+  "periodo_numero": 2,
+  "modulo": "P",
+  "compartilhada_ciclo_basico": true,
+  "rotulos_origem": [
+   "Turma A",
+   "Turma B"
+  ],
+  "colunas_origem": [
+   " Matutino (Ciclo básico)!D",
+   " Matutino (Ciclo básico)!E"
+  ],
+  "total_ofertas": 9,
+  "total_perguntas": 138
+ },
+ {
+  "id": 2,
+  "rotulo": "Enfermagem · Matutino · 2º período",
+  "curso": "Enfermagem",
+  "curso_slug": "ENFERMAGEM",
+  "turno": "MATUTINO",
+  "periodo_numero": 2,
+  "modulo": "P",
+  "compartilhada_ciclo_basico": true,
+  "rotulos_origem": [
+   "Turma A",
+   "Turma B"
+  ],
+  "colunas_origem": [
+   " Matutino (Ciclo básico)!D",
+   " Matutino (Ciclo básico)!E"
+  ],
+  "total_ofertas": 9,
+  "total_perguntas": 138
+ },
+ {
+  "id": 3,
+  "rotulo": "Educação Física · Matutino · 4º período",
+  "curso": "Educação Física",
+  "curso_slug": "EDUCACAO_FISICA",
+  "turno": "MATUTINO",
+  "periodo_numero": 4,
+  "modulo": "EB-A",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma única"
+  ],
+  "colunas_origem": [
+   "Educação Física_Matutino!D,E"
+  ],
+  "total_ofertas": 8,
+  "total_perguntas": 128
+ },
+ {
+  "id": 4,
+  "rotulo": "Enfermagem · Matutino · 4º período",
+  "curso": "Enfermagem",
+  "curso_slug": "ENFERMAGEM",
+  "turno": "MATUTINO",
+  "periodo_numero": 4,
+  "modulo": null,
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Sub - Turma A",
+   "Sub - Turma B"
+  ],
+  "colunas_origem": [
+   "Enfermagem_Matutino!D",
+   "Enfermagem_Matutino!E"
+  ],
+  "total_ofertas": 6,
+  "total_perguntas": 108
+ },
+ {
+  "id": 5,
+  "rotulo": "Biomedicina · Matutino · 4º período",
+  "curso": "Biomedicina",
+  "curso_slug": "BIOMEDICINA",
+  "turno": "MATUTINO",
+  "periodo_numero": 4,
+  "modulo": "Análises Biomédicas",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Sub - Turma A",
+   "Sub - Turma B"
+  ],
+  "colunas_origem": [
+   "Biomedicina- Matutino!D",
+   "Biomedicina- Matutino!E"
+  ],
+  "total_ofertas": 9,
+  "total_perguntas": 138
+ },
+ {
+  "id": 6,
+  "rotulo": "GTI · Matutino · 2º período",
+  "curso": "GTI",
+  "curso_slug": "GTI",
+  "turno": "MATUTINO",
+  "periodo_numero": 2,
+  "modulo": "I",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "GTI - Matutino!D"
+  ],
+  "total_ofertas": 7,
+  "total_perguntas": 118
+ },
+ {
+  "id": 7,
+  "rotulo": "GTI · Noturno · 2º período",
+  "curso": "GTI",
+  "curso_slug": "GTI",
+  "turno": "NOTURNO",
+  "periodo_numero": 2,
+  "modulo": "I",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "GTI - Noturno!D"
+  ],
+  "total_ofertas": 7,
+  "total_perguntas": 118
+ },
+ {
+  "id": 8,
+  "rotulo": "GTI · Noturno · 4º período",
+  "curso": "GTI",
+  "curso_slug": "GTI",
+  "turno": "NOTURNO",
+  "periodo_numero": 4,
+  "modulo": "IA",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "GTI - Noturno!E"
+  ],
+  "total_ofertas": 5,
+  "total_perguntas": 98
+ },
+ {
+  "id": 9,
+  "rotulo": "Biomedicina · Noturno · 2º período",
+  "curso": "Biomedicina",
+  "curso_slug": "BIOMEDICINA",
+  "turno": "NOTURNO",
+  "periodo_numero": 2,
+  "modulo": "P",
+  "compartilhada_ciclo_basico": true,
+  "rotulos_origem": [
+   "Biomedicina - Turma A",
+   "Biomedicina Turma B"
+  ],
+  "colunas_origem": [
+   "Ciclo Básico Integrado - Noturn!D",
+   "Ciclo Básico Integrado - Noturn!E"
+  ],
+  "total_ofertas": 10,
+  "total_perguntas": 148
+ },
+ {
+  "id": 10,
+  "rotulo": "Enfermagem · Noturno · 2º período",
+  "curso": "Enfermagem",
+  "curso_slug": "ENFERMAGEM",
+  "turno": "NOTURNO",
+  "periodo_numero": 2,
+  "modulo": "P",
+  "compartilhada_ciclo_basico": true,
+  "rotulos_origem": [
+   "Biomedicina - Turma A",
+   "Biomedicina Turma B"
+  ],
+  "colunas_origem": [
+   "Ciclo Básico Integrado - Noturn!D",
+   "Ciclo Básico Integrado - Noturn!E"
+  ],
+  "total_ofertas": 10,
+  "total_perguntas": 148
+ },
+ {
+  "id": 11,
+  "rotulo": "Educação Física · Noturno · 3º período",
+  "curso": "Educação Física",
+  "curso_slug": "EDUCACAO_FISICA",
+  "turno": "NOTURNO",
+  "periodo_numero": 3,
+  "modulo": "M",
+  "compartilhada_ciclo_basico": true,
+  "rotulos_origem": [
+   "Educação Física - Turma Única"
+  ],
+  "colunas_origem": [
+   "Ciclo Básico Integrado - Noturn!F"
+  ],
+  "total_ofertas": 10,
+  "total_perguntas": 148
+ },
+ {
+  "id": 12,
+  "rotulo": "Biomedicina · Noturno · 4º período",
+  "curso": "Biomedicina",
+  "curso_slug": "BIOMEDICINA",
+  "turno": "NOTURNO",
+  "periodo_numero": 4,
+  "modulo": "AB",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma A"
+  ],
+  "colunas_origem": [
+   "Biomedicina Noturno!D",
+   "Biomedicina Noturno!E"
+  ],
+  "total_ofertas": 9,
+  "total_perguntas": 138
+ },
+ {
+  "id": 13,
+  "rotulo": "Biomedicina · Noturno · 6º período",
+  "curso": "Biomedicina",
+  "curso_slug": "BIOMEDICINA",
+  "turno": "NOTURNO",
+  "periodo_numero": 6,
+  "modulo": "CL",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "Biomedicina Noturno!F"
+  ],
+  "total_ofertas": 12,
+  "total_perguntas": 168
+ },
+ {
+  "id": 14,
+  "rotulo": "Enfermagem · Noturno · 4º período",
+  "curso": "Enfermagem",
+  "curso_slug": "ENFERMAGEM",
+  "turno": "NOTURNO",
+  "periodo_numero": 4,
+  "modulo": "de Instrumentos",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "Enfermagem - Noturno!D"
+  ],
+  "total_ofertas": 7,
+  "total_perguntas": 118
+ },
+ {
+  "id": 15,
+  "rotulo": "Enfermagem · Noturno · 8º período",
+  "curso": "Enfermagem",
+  "curso_slug": "ENFERMAGEM",
+  "turno": "NOTURNO",
+  "periodo_numero": 8,
+  "modulo": null,
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "Enfermagem - Noturno!E"
+  ],
+  "total_ofertas": 4,
+  "total_perguntas": 88
+ },
+ {
+  "id": 16,
+  "rotulo": "Educação Física · Noturno · 4º período",
+  "curso": "Educação Física",
+  "curso_slug": "EDUCACAO_FISICA",
+  "turno": "NOTURNO",
+  "periodo_numero": 4,
+  "modulo": "EB-A",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "Educação Física - Noturno!D"
+  ],
+  "total_ofertas": 8,
+  "total_perguntas": 128
+ },
+ {
+  "id": 17,
+  "rotulo": "Educação Física · Noturno · 8º período",
+  "curso": "Educação Física",
+  "curso_slug": "EDUCACAO_FISICA",
+  "turno": "NOTURNO",
+  "periodo_numero": 8,
+  "modulo": "EB-E",
+  "compartilhada_ciclo_basico": false,
+  "rotulos_origem": [
+   "Turma Única"
+  ],
+  "colunas_origem": [
+   "Educação Física - Noturno!E"
+  ],
+  "total_ofertas": 6,
+  "total_perguntas": 108
+ }
+]

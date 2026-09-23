@@ -1,0 +1,26 @@
+[
+ {
+  "id": 1,
+  "nome": "Biomedicina",
+  "slug": "BIOMEDICINA",
+  "ativo": true
+ },
+ {
+  "id": 2,
+  "nome": "Enfermagem",
+  "slug": "ENFERMAGEM",
+  "ativo": true
+ },
+ {
+  "id": 3,
+  "nome": "Educação Física",
+  "slug": "EDUCACAO_FISICA",
+  "ativo": true
+ },
+ {
+  "id": 4,
+  "nome": "GTI",
+  "slug": "GTI",
+  "ativo": true
+ }
+]

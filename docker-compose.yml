@@ -1,0 +1,56 @@
+services:
+  banco:
+    image: postgres:16-alpine
+    profiles: ["offline"]
+    environment:
+      POSTGRES_USER: cpa
+      POSTGRES_PASSWORD: cpa
+      POSTGRES_DB: cpa
+    ports:
+      - "5432:5432"
+    volumes:
+      - dados_banco:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cpa"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Use o Postgres local (perfil offline) ou aponte para o Supabase.
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://cpa:cpa@banco:5432/cpa}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+      ADMIN_USER: ${ADMIN_USER:-cpa}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?defina ADMIN_PASSWORD no .env}
+      MIN_RESPOSTAS_EXIBICAO: ${MIN_RESPOSTAS_EXIBICAO:-5}
+      MIN_RESPOSTAS_EXIBICAO_RESTRITO: ${MIN_RESPOSTAS_EXIBICAO_RESTRITO:-10}
+      LIMITE_ALERTA_PERGUNTAS: ${LIMITE_ALERTA_PERGUNTAS:-150}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REFRESH_TOKEN: ${GOOGLE_REFRESH_TOKEN:-}
+      GOOGLE_DRIVE_FOLDER_ID: ${GOOGLE_DRIVE_FOLDER_ID:-}
+    volumes:
+      - ./backend:/app
+      - ./.agent/02-especificacao/anexos:/anexos:ro
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build:
+      context: ./frontend
+      # Vite resolve VITE_* no BUILD, não em runtime: precisam ser build args.
+      # Mudar VITE_USE_MOCK exige rebuild:
+      #   docker compose up -d --build frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
+        VITE_USE_MOCK: ${VITE_USE_MOCK:-true}
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  dados_banco:

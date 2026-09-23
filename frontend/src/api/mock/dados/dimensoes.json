@@ -1,0 +1,96 @@
+{
+ "eixos": [
+  {
+   "numero": 1,
+   "nome": "Planejamento e Avaliação Institucional"
+  },
+  {
+   "numero": 2,
+   "nome": "Desenvolvimento Institucional"
+  },
+  {
+   "numero": 3,
+   "nome": "Políticas Acadêmicas"
+  },
+  {
+   "numero": 4,
+   "nome": "Políticas de Gestão"
+  },
+  {
+   "numero": 5,
+   "nome": "Infraestrutura Física"
+  }
+ ],
+ "dimensoes": [
+  {
+   "numero": 1,
+   "nome": "Missão e Plano de Desenvolvimento Institucional",
+   "eixo": 2,
+   "eixo_nome": "Desenvolvimento Institucional",
+   "nome_institucional": "Missão e Plano de Desenvolvimento Institucional"
+  },
+  {
+   "numero": 2,
+   "nome": "Políticas para o Ensino, a Pesquisa e a Extensão",
+   "eixo": 3,
+   "eixo_nome": "Políticas Acadêmicas",
+   "nome_institucional": "Políticas para o Ensino, a Pesquisa e a Extensão"
+  },
+  {
+   "numero": 3,
+   "nome": "Responsabilidade Social da Instituição",
+   "eixo": 2,
+   "eixo_nome": "Desenvolvimento Institucional",
+   "nome_institucional": "Responsabilidade Social da Instituição"
+  },
+  {
+   "numero": 4,
+   "nome": "Comunicação com a Sociedade",
+   "eixo": 3,
+   "eixo_nome": "Políticas Acadêmicas",
+   "nome_institucional": "Comunicação com a Sociedade"
+  },
+  {
+   "numero": 5,
+   "nome": "Políticas de Pessoal",
+   "eixo": 4,
+   "eixo_nome": "Políticas de Gestão",
+   "nome_institucional": "Políticas de Pessoal"
+  },
+  {
+   "numero": 6,
+   "nome": "Organização e Gestão da Instituição",
+   "eixo": 4,
+   "eixo_nome": "Políticas de Gestão",
+   "nome_institucional": "Organização e Gestão da Instituição"
+  },
+  {
+   "numero": 7,
+   "nome": "Infraestrutura Física",
+   "eixo": 5,
+   "eixo_nome": "Infraestrutura Física",
+   "nome_institucional": "Infraestrutura Física"
+  },
+  {
+   "numero": 8,
+   "nome": "Planejamento e Avaliação",
+   "eixo": 1,
+   "eixo_nome": "Planejamento e Avaliação Institucional",
+   "nome_institucional": "Planejamento e Avaliação"
+  },
+  {
+   "numero": 9,
+   "nome": "Política de Atendimento aos Discentes",
+   "eixo": 3,
+   "eixo_nome": "Políticas Acadêmicas",
+   "nome_institucional": "Política de Atendimento aos Discentes"
+  },
+  {
+   "numero": 10,
+   "nome": "Sustentabilidade Financeira",
+   "eixo": 4,
+   "eixo_nome": "Políticas de Gestão",
+   "nome_institucional": "Sustentabilidade Financeira"
+  }
+ ]
+}

@@ -1,0 +1,1066 @@
+[
+ {
+  "equivalencia_id": 1,
+  "texto": "Você conhece o Plano de Desenvolvimento Institucional (PDI) da FPM",
+  "dimensao": 1,
+  "codigos": [
+   1,
+   59,
+   119
+  ],
+  "por_segmento": {
+   "DISCENTE": 1,
+   "DOCENTE": 59,
+   "TECNICO_ADMINISTRATIVO": 119
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 2,
+  "texto": "Existe uma formulação clara dos objetivos, missão e valores da FPM?",
+  "dimensao": 1,
+  "codigos": [
+   2,
+   60,
+   120
+  ],
+  "por_segmento": {
+   "DISCENTE": 2,
+   "DOCENTE": 60,
+   "TECNICO_ADMINISTRATIVO": 120
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 3,
+  "texto": "Existe coerência entre as ações praticadas pela FPM e o proposto em sua missão?",
+  "dimensao": 1,
+  "codigos": [
+   3,
+   61,
+   121
+  ],
+  "por_segmento": {
+   "DISCENTE": 3,
+   "DOCENTE": 61,
+   "TECNICO_ADMINISTRATIVO": 121
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 4,
+  "texto": "As ações praticadas pela FPM favorecem a indissociabilidade entre Ensino, Pesquisa e Extensão?",
+  "dimensao": 1,
+  "codigos": [
+   4,
+   62,
+   122
+  ],
+  "por_segmento": {
+   "DISCENTE": 4,
+   "DOCENTE": 62,
+   "TECNICO_ADMINISTRATIVO": 122
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 5,
+  "texto": "O coordenador está empenhado no desenvolvimento, na busca de soluções para os problemas e na qualidade do curso?",
+  "dimensao": 2,
+  "codigos": [
+   5,
+   63
+  ],
+  "por_segmento": {
+   "DISCENTE": 5,
+   "DOCENTE": 63
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 6,
+  "texto": "O coordenador do curso relaciona-se bem com os discentes ou docentes?",
+  "dimensao": 2,
+  "codigos": [
+   6,
+   64
+  ],
+  "por_segmento": {
+   "DISCENTE": 6,
+   "DOCENTE": 64
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 7,
+  "texto": "O Projeto Pedagógico do Curso está sendo devidamente desenvolvido?",
+  "dimensao": 2,
+  "codigos": [
+   7,
+   65
+  ],
+  "por_segmento": {
+   "DISCENTE": 7,
+   "DOCENTE": 65
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 8,
+  "texto": "O curso oferece atividades de prática profissional ou acadêmica compatíveis com o proposto no Projeto Pedagógico do Curso?",
+  "dimensao": 2,
+  "codigos": [
+   8,
+   66
+  ],
+  "por_segmento": {
+   "DISCENTE": 8,
+   "DOCENTE": 66
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 9,
+  "texto": "Os membros do NDE do curso são atuantes?",
+  "dimensao": 2,
+  "codigos": [
+   9,
+   67
+  ],
+  "por_segmento": {
+   "DISCENTE": 9,
+   "DOCENTE": 67
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 10,
+  "texto": "O docente apresenta o plano de ensino da disciplina de forma sistematizada no início do semestre?",
+  "dimensao": 2,
+  "codigos": [
+   10,
+   68
+  ],
+  "por_segmento": {
+   "DISCENTE": 10,
+   "DOCENTE": 68
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 11,
+  "texto": "O docente domina o conteúdo e está atualizado?",
+  "dimensao": 2,
+  "codigos": [
+   11,
+   69
+  ],
+  "por_segmento": {
+   "DISCENTE": 11,
+   "DOCENTE": 69
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 12,
+  "texto": "O docente tem bom relacionamento com os discentes e é disponível para o esclarecimento de dúvidas?",
+  "dimensao": 2,
+  "codigos": [
+   12,
+   70
+  ],
+  "por_segmento": {
+   "DISCENTE": 12,
+   "DOCENTE": 70
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 13,
+  "texto": "O docente é pontual e assíduo em suas funções?",
+  "dimensao": 2,
+  "codigos": [
+   13,
+   71
+  ],
+  "por_segmento": {
+   "DISCENTE": 13,
+   "DOCENTE": 71
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 14,
+  "texto": "A didática do docente contribui para a aprendizagem?",
+  "dimensao": 2,
+  "codigos": [
+   14,
+   72
+  ],
+  "por_segmento": {
+   "DISCENTE": 14,
+   "DOCENTE": 72
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 15,
+  "texto": "A carga horária e organização dos conteúdos da disciplina são adequadas?",
+  "dimensao": 2,
+  "codigos": [
+   15,
+   73
+  ],
+  "por_segmento": {
+   "DISCENTE": 15,
+   "DOCENTE": 73
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 16,
+  "texto": "Há diversidade e compatibilidade dos instrumentos de avaliação (avaliações bimestrais, trabalhos, atividades onlines, atividades interdisciplinares semanais/quinzenais etc)?",
+  "dimensao": 2,
+  "codigos": [
+   16,
+   74
+  ],
+  "por_segmento": {
+   "DISCENTE": 16,
+   "DOCENTE": 74
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 17,
+  "texto": "O docente proporciona os resultados de avaliações como um momento formativo para os discentes?",
+  "dimensao": 2,
+  "codigos": [
+   17,
+   75
+  ],
+  "por_segmento": {
+   "DISCENTE": 17,
+   "DOCENTE": 75
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 18,
+  "texto": "Como você se avalia com a aprendizagem decorrente da disciplina?",
+  "dimensao": 2,
+  "codigos": [
+   18,
+   76
+  ],
+  "por_segmento": {
+   "DISCENTE": 18,
+   "DOCENTE": 76
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 19,
+  "texto": "Se você tiver que fazer outra disciplina com esse professor, qual seria seu grau de satisfação?",
+  "dimensao": 2,
+  "codigos": [
+   19
+  ],
+  "por_segmento": {
+   "DISCENTE": 19
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 20,
+  "texto": "Você já envolveu com alguma atividade de pesquisa ou extensão?",
+  "dimensao": 2,
+  "codigos": [
+   20,
+   77
+  ],
+  "por_segmento": {
+   "DISCENTE": 20,
+   "DOCENTE": 77
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 21,
+  "texto": "As atividades de pesquisa são integradas ao ensino e à extensão?",
+  "dimensao": 2,
+  "codigos": [
+   21,
+   78
+  ],
+  "por_segmento": {
+   "DISCENTE": 21,
+   "DOCENTE": 78
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 22,
+  "texto": "A relação entre orientadores e discentes interessados em desenvolver projetos de pesquisa é adequada?",
+  "dimensao": 2,
+  "codigos": [
+   22,
+   79
+  ],
+  "por_segmento": {
+   "DISCENTE": 22,
+   "DOCENTE": 79
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 23,
+  "texto": "O programa de bolsas de iniciação científica é adequado?",
+  "dimensao": 2,
+  "codigos": [
+   23,
+   80
+  ],
+  "por_segmento": {
+   "DISCENTE": 23,
+   "DOCENTE": 80
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 24,
+  "texto": "As atividades de extensão atendem às necessidades da comunidade local?",
+  "dimensao": 3,
+  "codigos": [
+   24,
+   29,
+   81,
+   86,
+   123
+  ],
+  "por_segmento": {
+   "DISCENTE": 29,
+   "DOCENTE": 86,
+   "TECNICO_ADMINISTRATIVO": 123
+  },
+  "duplicata_interna": [
+   "DISCENTES",
+   "DOCENTES"
+  ],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 25,
+  "texto": "A política institucional favorece a inclusão de pessoas com deficiências (PCDs)?",
+  "dimensao": 3,
+  "codigos": [
+   25,
+   82,
+   124
+  ],
+  "por_segmento": {
+   "DISCENTE": 25,
+   "DOCENTE": 82,
+   "TECNICO_ADMINISTRATIVO": 124
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 26,
+  "texto": "Você participa de algum projeto de extensão da FPM?",
+  "dimensao": 3,
+  "codigos": [
+   26,
+   83,
+   125
+  ],
+  "por_segmento": {
+   "DISCENTE": 26,
+   "DOCENTE": 83,
+   "TECNICO_ADMINISTRATIVO": 125
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 27,
+  "texto": "Existem ações que favoreçam a inclusão e permanência de discentes em situação econômica desfavorecida na FPM?",
+  "dimensao": 3,
+  "codigos": [
+   27,
+   84,
+   126
+  ],
+  "por_segmento": {
+   "DISCENTE": 27,
+   "DOCENTE": 84,
+   "TECNICO_ADMINISTRATIVO": 126
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 28,
+  "texto": "As atividades institucionais em interação com o meio social (Educação, Saúde, Lazer, Cultura, Esporte, Meio Ambiente, Cidadania, dentre outros) são efetivas?",
+  "dimensao": 3,
+  "codigos": [
+   28,
+   85,
+   127
+  ],
+  "por_segmento": {
+   "DISCENTE": 28,
+   "DOCENTE": 85,
+   "TECNICO_ADMINISTRATIVO": 127
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 29,
+  "texto": "A comunidade externa tem conhecimento das atividades desenvolvidas pela FPM através das mídias?",
+  "dimensao": 4,
+  "codigos": [
+   30,
+   87,
+   128,
+   161
+  ],
+  "por_segmento": {
+   "DISCENTE": 30,
+   "DOCENTE": 87,
+   "TECNICO_ADMINISTRATIVO": 128,
+   "COMUNIDADE": 161
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 4
+ },
+ {
+  "equivalencia_id": 30,
+  "texto": "A ouvidoria funciona segundo os padrões de qualidade claramente estabelecidos?",
+  "dimensao": 4,
+  "codigos": [
+   31,
+   88,
+   130,
+   162
+  ],
+  "por_segmento": {
+   "DISCENTE": 31,
+   "DOCENTE": 88,
+   "TECNICO_ADMINISTRATIVO": 130,
+   "COMUNIDADE": 162
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 4
+ },
+ {
+  "equivalencia_id": 31,
+  "texto": "Os registros e os resultados são efetivamente levados em consideração pelas instâncias acadêmicas e administrativas da FPM?",
+  "dimensao": 4,
+  "codigos": [
+   32,
+   89,
+   131,
+   163
+  ],
+  "por_segmento": {
+   "DISCENTE": 32,
+   "DOCENTE": 89,
+   "TECNICO_ADMINISTRATIVO": 131,
+   "COMUNIDADE": 163
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 4
+ },
+ {
+  "equivalencia_id": 32,
+  "texto": "Você conhece o organograma administrativo da FPM?",
+  "dimensao": 6,
+  "codigos": [
+   33,
+   97,
+   139
+  ],
+  "por_segmento": {
+   "DISCENTE": 33,
+   "DOCENTE": 97,
+   "TECNICO_ADMINISTRATIVO": 139
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 33,
+  "texto": "Você conhece os procedimentos administrativos da FPM?",
+  "dimensao": 6,
+  "codigos": [
+   34,
+   98,
+   140
+  ],
+  "por_segmento": {
+   "DISCENTE": 34,
+   "DOCENTE": 98,
+   "TECNICO_ADMINISTRATIVO": 140
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 34,
+  "texto": "As informações sobre os procedimentos administrativos são de fácil acesso?",
+  "dimensao": 6,
+  "codigos": [
+   35,
+   99,
+   141
+  ],
+  "por_segmento": {
+   "DISCENTE": 35,
+   "DOCENTE": 99,
+   "TECNICO_ADMINISTRATIVO": 141
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 35,
+  "texto": "A direção atende aos anseios da comunidade acadêmica e administrativa?",
+  "dimensao": 6,
+  "codigos": [
+   36,
+   100,
+   142
+  ],
+  "por_segmento": {
+   "DISCENTE": 36,
+   "DOCENTE": 100,
+   "TECNICO_ADMINISTRATIVO": 142
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 36,
+  "texto": "Os diretores demonstram interesse pelas reivindicações e agem no sentido de atendê-las?",
+  "dimensao": 6,
+  "codigos": [
+   37,
+   101,
+   143
+  ],
+  "por_segmento": {
+   "DISCENTE": 37,
+   "DOCENTE": 101,
+   "TECNICO_ADMINISTRATIVO": 143
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 37,
+  "texto": "O campus oferece condições adequadas de facilidade de acesso e segurança?",
+  "dimensao": 7,
+  "codigos": [
+   38,
+   102,
+   144
+  ],
+  "por_segmento": {
+   "DISCENTE": 38,
+   "DOCENTE": 102,
+   "TECNICO_ADMINISTRATIVO": 144
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 38,
+  "texto": "O ambiente para as aulas é apropriado quanto à acústica, luminosidade, carteiras e ventilação?",
+  "dimensao": 7,
+  "codigos": [
+   39,
+   103,
+   145
+  ],
+  "por_segmento": {
+   "DISCENTE": 39,
+   "DOCENTE": 103,
+   "TECNICO_ADMINISTRATIVO": 145
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 39,
+  "texto": "Os equipamentos dos laboratórios de informática atendem as necessidades acadêmicas?",
+  "dimensao": 7,
+  "codigos": [
+   40,
+   104,
+   146
+  ],
+  "por_segmento": {
+   "DISCENTE": 40,
+   "DOCENTE": 104,
+   "TECNICO_ADMINISTRATIVO": 146
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 40,
+  "texto": "Os recursos instrucionais (projetor multimídia, TV, áudio, vídeo etc) atendem as necessidades acadêmicas?",
+  "dimensao": 7,
+  "codigos": [
+   41,
+   105,
+   147
+  ],
+  "por_segmento": {
+   "DISCENTE": 41,
+   "DOCENTE": 105,
+   "TECNICO_ADMINISTRATIVO": 147
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 41,
+  "texto": "Os laboratórios de ensino atendem as necessidades acadêmicas?",
+  "dimensao": 7,
+  "codigos": [
+   42,
+   106,
+   148
+  ],
+  "por_segmento": {
+   "DISCENTE": 42,
+   "DOCENTE": 106,
+   "TECNICO_ADMINISTRATIVO": 148
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 42,
+  "texto": "A cantina atende as necessidades da comunidade acadêmica e administrativa?",
+  "dimensao": 7,
+  "codigos": [
+   43,
+   107,
+   149
+  ],
+  "por_segmento": {
+   "DISCENTE": 43,
+   "DOCENTE": 107,
+   "TECNICO_ADMINISTRATIVO": 149
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 43,
+  "texto": "As instalações físicas atendem aos critérios de acessibilidade às pessoas com deficiência (PCD)?",
+  "dimensao": 7,
+  "codigos": [
+   44,
+   108,
+   150
+  ],
+  "por_segmento": {
+   "DISCENTE": 44,
+   "DOCENTE": 108,
+   "TECNICO_ADMINISTRATIVO": 150
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 44,
+  "texto": "Os serviços de limpeza são adequados?",
+  "dimensao": 7,
+  "codigos": [
+   45,
+   109,
+   151
+  ],
+  "por_segmento": {
+   "DISCENTE": 45,
+   "DOCENTE": 109,
+   "TECNICO_ADMINISTRATIVO": 151
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 45,
+  "texto": "Os serviços de biblioteca atendem aos anseios da comunidade acadêmica?",
+  "dimensao": 7,
+  "codigos": [
+   46,
+   110,
+   152
+  ],
+  "por_segmento": {
+   "DISCENTE": 46,
+   "DOCENTE": 110,
+   "TECNICO_ADMINISTRATIVO": 152
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 46,
+  "texto": "Os serviços do ambiente virtual são adequados?",
+  "dimensao": 7,
+  "codigos": [
+   47,
+   111,
+   153
+  ],
+  "por_segmento": {
+   "DISCENTE": 47,
+   "DOCENTE": 111,
+   "TECNICO_ADMINISTRATIVO": 153
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 47,
+  "texto": "Os serviços do estacionamento interno são adequados?",
+  "dimensao": 7,
+  "codigos": [
+   48,
+   112,
+   154
+  ],
+  "por_segmento": {
+   "DISCENTE": 48,
+   "DOCENTE": 112,
+   "TECNICO_ADMINISTRATIVO": 154
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 48,
+  "texto": "Você considera importante a realização da auto avaliação institucional pela CPA?",
+  "dimensao": 8,
+  "codigos": [
+   49,
+   113,
+   155
+  ],
+  "por_segmento": {
+   "DISCENTE": 49,
+   "DOCENTE": 113,
+   "TECNICO_ADMINISTRATIVO": 155
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 49,
+  "texto": "Você participou de alguma pesquisa de avaliação, por disciplina, conteúdo, professores, didática etc?",
+  "dimensao": 8,
+  "codigos": [
+   50,
+   114,
+   156
+  ],
+  "por_segmento": {
+   "DISCENTE": 50,
+   "DOCENTE": 114,
+   "TECNICO_ADMINISTRATIVO": 156
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 50,
+  "texto": "Houveram ações para implementar melhorias após os processos de avaliação?",
+  "dimensao": 8,
+  "codigos": [
+   51,
+   115,
+   157
+  ],
+  "por_segmento": {
+   "DISCENTE": 51,
+   "DOCENTE": 115,
+   "TECNICO_ADMINISTRATIVO": 157
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 51,
+  "texto": "Você tem acesso aos resultados dos processos avaliativos?",
+  "dimensao": 8,
+  "codigos": [
+   52,
+   116,
+   158
+  ],
+  "por_segmento": {
+   "DISCENTE": 52,
+   "DOCENTE": 116,
+   "TECNICO_ADMINISTRATIVO": 158
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 3
+ },
+ {
+  "equivalencia_id": 52,
+  "texto": "Qual seu grau de satisfação em ser aluno da FPM?",
+  "dimensao": 8,
+  "codigos": [
+   53
+  ],
+  "por_segmento": {
+   "DISCENTE": 53
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 53,
+  "texto": "A faculdade oferece atendimento acadêmico e administrativo aos discentes?",
+  "dimensao": 9,
+  "codigos": [
+   54
+  ],
+  "por_segmento": {
+   "DISCENTE": 54
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 54,
+  "texto": "O programa de estágio funciona adequadamente?",
+  "dimensao": 9,
+  "codigos": [
+   55
+  ],
+  "por_segmento": {
+   "DISCENTE": 55
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 55,
+  "texto": "O sistema de registros acadêmicos funciona adequadamente?",
+  "dimensao": 9,
+  "codigos": [
+   56
+  ],
+  "por_segmento": {
+   "DISCENTE": 56
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 56,
+  "texto": "Os discentes têm acesso ao núcleo de apoio psicopedagógico (NAP)?",
+  "dimensao": 9,
+  "codigos": [
+   57
+  ],
+  "por_segmento": {
+   "DISCENTE": 57
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 57,
+  "texto": "Os programas de intercâmbio atendem a demanda acadêmica?",
+  "dimensao": 9,
+  "codigos": [
+   58
+  ],
+  "por_segmento": {
+   "DISCENTE": 58
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ },
+ {
+  "equivalencia_id": 58,
+  "texto": "As condições de trabalho oferecidas pela FPM são adequadas?",
+  "dimensao": 5,
+  "codigos": [
+   90,
+   132
+  ],
+  "por_segmento": {
+   "DOCENTE": 90,
+   "TECNICO_ADMINISTRATIVO": 132
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 59,
+  "texto": "O número de docentes é suficiente para atender satisfatoriamente a FPM?",
+  "dimensao": 5,
+  "codigos": [
+   91,
+   133
+  ],
+  "por_segmento": {
+   "DOCENTE": 91,
+   "TECNICO_ADMINISTRATIVO": 133
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 60,
+  "texto": "O número de técnico-administrativos é suficiente para atender satisfatoriamente a FPM?",
+  "dimensao": 5,
+  "codigos": [
+   92,
+   134
+  ],
+  "por_segmento": {
+   "DOCENTE": 92,
+   "TECNICO_ADMINISTRATIVO": 134
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 61,
+  "texto": "Os servidores recebem apoio para a sua qualificação?",
+  "dimensao": 5,
+  "codigos": [
+   93,
+   135
+  ],
+  "por_segmento": {
+   "DOCENTE": 93,
+   "TECNICO_ADMINISTRATIVO": 135
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 62,
+  "texto": "A FPM possibilita o crescimento profissional dos servidores?",
+  "dimensao": 5,
+  "codigos": [
+   94,
+   136
+  ],
+  "por_segmento": {
+   "DOCENTE": 94,
+   "TECNICO_ADMINISTRATIVO": 136
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 63,
+  "texto": "Há organização, por parte dos servidores, no desempenho de suas atividades?",
+  "dimensao": 5,
+  "codigos": [
+   95,
+   137
+  ],
+  "por_segmento": {
+   "DOCENTE": 95,
+   "TECNICO_ADMINISTRATIVO": 137
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 64,
+  "texto": "Os servidores desempenham suas tarefas com responsabilidade?",
+  "dimensao": 5,
+  "codigos": [
+   96,
+   138
+  ],
+  "por_segmento": {
+   "DOCENTE": 96,
+   "TECNICO_ADMINISTRATIVO": 138
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 65,
+  "texto": "Os recursos materiais disponíveis são adequados as necessidades dos cursos?",
+  "dimensao": 10,
+  "codigos": [
+   117,
+   159
+  ],
+  "por_segmento": {
+   "DOCENTE": 117,
+   "TECNICO_ADMINISTRATIVO": 159
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 66,
+  "texto": "A FPM dispõe de recursos para realização de pesquisa, ensino e extensão?",
+  "dimensao": 10,
+  "codigos": [
+   118,
+   160
+  ],
+  "por_segmento": {
+   "DOCENTE": 118,
+   "TECNICO_ADMINISTRATIVO": 160
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 2
+ },
+ {
+  "equivalencia_id": 67,
+  "texto": "As atividades de divulgação da FPM são eficientes?",
+  "dimensao": 4,
+  "codigos": [
+   129
+  ],
+  "por_segmento": {
+   "TECNICO_ADMINISTRATIVO": 129
+  },
+  "duplicata_interna": [],
+  "qtd_segmentos": 1
+ }
+]

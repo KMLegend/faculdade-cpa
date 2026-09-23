@@ -1,0 +1,2158 @@
+{
+ "periodo_letivo": "2026.2",
+ "arquivo_origem": "horario 20262.xlsx",
+ "chave_da_turma": "(curso, turno, periodo_numero) — módulo e rótulo A/B NÃO entram",
+ "chave_da_oferta": "(disciplina, professor) — global no período letivo",
+ "gerado_por": "backend/scripts/gerar_fixture_grade.py (leitor de produção)",
+ "turmas": [
+  {
+   "id": 1,
+   "curso": "BIOMEDICINA",
+   "turno": "MATUTINO",
+   "periodo_numero": 2,
+   "rotulo": "Biomedicina · Matutino · 2º período",
+   "modulos": [
+    "P"
+   ],
+   "rotulos_origem": [
+    "Turma A",
+    "Turma B"
+   ],
+   "colunas_origem": [
+    " Matutino (Ciclo básico)!D",
+    " Matutino (Ciclo básico)!E"
+   ],
+   "turma_compartilhada_ciclo_basico": true
+  },
+  {
+   "id": 2,
+   "curso": "ENFERMAGEM",
+   "turno": "MATUTINO",
+   "periodo_numero": 2,
+   "rotulo": "Enfermagem · Matutino · 2º período",
+   "modulos": [
+    "P"
+   ],
+   "rotulos_origem": [
+    "Turma A",
+    "Turma B"
+   ],
+   "colunas_origem": [
+    " Matutino (Ciclo básico)!D",
+    " Matutino (Ciclo básico)!E"
+   ],
+   "turma_compartilhada_ciclo_basico": true
+  },
+  {
+   "id": 3,
+   "curso": "EDUCACAO_FISICA",
+   "turno": "MATUTINO",
+   "periodo_numero": 4,
+   "rotulo": "Educação Física · Matutino · 4º período",
+   "modulos": [
+    "EB-A"
+   ],
+   "rotulos_origem": [
+    "Turma única"
+   ],
+   "colunas_origem": [
+    "Educação Física_Matutino!D,E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 4,
+   "curso": "ENFERMAGEM",
+   "turno": "MATUTINO",
+   "periodo_numero": 4,
+   "rotulo": "Enfermagem · Matutino · 4º período",
+   "modulos": [],
+   "rotulos_origem": [
+    "Sub - Turma A",
+    "Sub - Turma B"
+   ],
+   "colunas_origem": [
+    "Enfermagem_Matutino!D",
+    "Enfermagem_Matutino!E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 5,
+   "curso": "BIOMEDICINA",
+   "turno": "MATUTINO",
+   "periodo_numero": 4,
+   "rotulo": "Biomedicina · Matutino · 4º período",
+   "modulos": [
+    "Análises Biomédicas"
+   ],
+   "rotulos_origem": [
+    "Sub - Turma A",
+    "Sub - Turma B"
+   ],
+   "colunas_origem": [
+    "Biomedicina- Matutino!D",
+    "Biomedicina- Matutino!E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 6,
+   "curso": "GTI",
+   "turno": "MATUTINO",
+   "periodo_numero": 2,
+   "rotulo": "GTI · Matutino · 2º período",
+   "modulos": [
+    "I"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "GTI - Matutino!D"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 7,
+   "curso": "GTI",
+   "turno": "NOTURNO",
+   "periodo_numero": 2,
+   "rotulo": "GTI · Noturno · 2º período",
+   "modulos": [
+    "I"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "GTI - Noturno!D"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 8,
+   "curso": "GTI",
+   "turno": "NOTURNO",
+   "periodo_numero": 4,
+   "rotulo": "GTI · Noturno · 4º período",
+   "modulos": [
+    "IA"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "GTI - Noturno!E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 9,
+   "curso": "BIOMEDICINA",
+   "turno": "NOTURNO",
+   "periodo_numero": 2,
+   "rotulo": "Biomedicina · Noturno · 2º período",
+   "modulos": [
+    "P"
+   ],
+   "rotulos_origem": [
+    "Biomedicina - Turma A",
+    "Biomedicina Turma B"
+   ],
+   "colunas_origem": [
+    "Ciclo Básico Integrado - Noturn!D",
+    "Ciclo Básico Integrado - Noturn!E"
+   ],
+   "turma_compartilhada_ciclo_basico": true
+  },
+  {
+   "id": 10,
+   "curso": "ENFERMAGEM",
+   "turno": "NOTURNO",
+   "periodo_numero": 2,
+   "rotulo": "Enfermagem · Noturno · 2º período",
+   "modulos": [
+    "P"
+   ],
+   "rotulos_origem": [
+    "Biomedicina - Turma A",
+    "Biomedicina Turma B"
+   ],
+   "colunas_origem": [
+    "Ciclo Básico Integrado - Noturn!D",
+    "Ciclo Básico Integrado - Noturn!E"
+   ],
+   "turma_compartilhada_ciclo_basico": true
+  },
+  {
+   "id": 11,
+   "curso": "EDUCACAO_FISICA",
+   "turno": "NOTURNO",
+   "periodo_numero": 3,
+   "rotulo": "Educação Física · Noturno · 3º período",
+   "modulos": [
+    "M"
+   ],
+   "rotulos_origem": [
+    "Educação Física - Turma Única"
+   ],
+   "colunas_origem": [
+    "Ciclo Básico Integrado - Noturn!F"
+   ],
+   "turma_compartilhada_ciclo_basico": true
+  },
+  {
+   "id": 12,
+   "curso": "BIOMEDICINA",
+   "turno": "NOTURNO",
+   "periodo_numero": 4,
+   "rotulo": "Biomedicina · Noturno · 4º período",
+   "modulos": [
+    "AB"
+   ],
+   "rotulos_origem": [
+    "Turma A"
+   ],
+   "colunas_origem": [
+    "Biomedicina Noturno!D",
+    "Biomedicina Noturno!E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 13,
+   "curso": "BIOMEDICINA",
+   "turno": "NOTURNO",
+   "periodo_numero": 6,
+   "rotulo": "Biomedicina · Noturno · 6º período",
+   "modulos": [
+    "CL"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "Biomedicina Noturno!F"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 14,
+   "curso": "ENFERMAGEM",
+   "turno": "NOTURNO",
+   "periodo_numero": 4,
+   "rotulo": "Enfermagem · Noturno · 4º período",
+   "modulos": [
+    "de Instrumentos"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "Enfermagem - Noturno!D"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 15,
+   "curso": "ENFERMAGEM",
+   "turno": "NOTURNO",
+   "periodo_numero": 8,
+   "rotulo": "Enfermagem · Noturno · 8º período",
+   "modulos": [],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "Enfermagem - Noturno!E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 16,
+   "curso": "EDUCACAO_FISICA",
+   "turno": "NOTURNO",
+   "periodo_numero": 4,
+   "rotulo": "Educação Física · Noturno · 4º período",
+   "modulos": [
+    "EB-A"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "Educação Física - Noturno!D"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  },
+  {
+   "id": 17,
+   "curso": "EDUCACAO_FISICA",
+   "turno": "NOTURNO",
+   "periodo_numero": 8,
+   "rotulo": "Educação Física · Noturno · 8º período",
+   "modulos": [
+    "EB-E"
+   ],
+   "rotulos_origem": [
+    "Turma Única"
+   ],
+   "colunas_origem": [
+    "Educação Física - Noturno!E"
+   ],
+   "turma_compartilhada_ciclo_basico": false
+  }
+ ],
+ "ofertas": [
+  {
+   "id": 1,
+   "disciplina": "Algoritmos e Lógica de Programação",
+   "professor": "Rovilson",
+   "chave": "algoritmos e logica de programacao | rovilson",
+   "turmas": [
+    6,
+    7
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Algoritmos e Lógica de Programação - Prof Rovilson"
+   ]
+  },
+  {
+   "id": 2,
+   "disciplina": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório",
+   "professor": "Andrea",
+   "chave": "anatomofisiologia humana sistema nervoso urinario reprodutor cardiovascular e respiratorio | andrea",
+   "turmas": [
+    9,
+    10
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório - (Prática) - Profa Andrea"
+   ]
+  },
+  {
+   "id": 3,
+   "disciplina": "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório",
+   "professor": "Ivan",
+   "chave": "anatomofisiologia humana sistema nervoso urinario reprodutor cardiovascular e respiratorio | ivan",
+   "turmas": [
+    9,
+    10
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRELECAO"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Anatomofisiologia Humana - Sistema Nervoso, urinário, reprodutor, cardiovascular e respiratório - (Preleção) - Prof Ivan"
+   ]
+  },
+  {
+   "id": 4,
+   "disciplina": "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório",
+   "professor": "Lisiane",
+   "chave": "anatomofisiologia humana sistema nervoso urinario reprodutor cardiovascular e respiratorio | lisiane",
+   "turmas": [
+    1,
+    2
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório (Preleção) - Prof Lisiane",
+    "Anatomofisiologia Humana, Sistema Nervoso, Urinário. Reprodutor, Cardiovascular e Respiratório (Prática) - Prof Lisiane"
+   ]
+  },
+  {
+   "id": 5,
+   "disciplina": "Aprendizagem Motora",
+   "professor": "Ivan",
+   "chave": "aprendizagem motora | ivan",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Aprendizagem Motora - Prof Ivan"
+   ]
+  },
+  {
+   "id": 6,
+   "disciplina": "Atenção Integral à Saúde da Criança e do Adolescente",
+   "professor": "Régis",
+   "chave": "atencao integral a saude da crianca e do adolescente | regis",
+   "turmas": [
+    15
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Atenção Integral à Saúde da Criança e do Adolescente - Prof Régis"
+   ]
+  },
+  {
+   "id": 7,
+   "disciplina": "Atletismo",
+   "professor": "Ernesto",
+   "chave": "atletismo | ernesto",
+   "turmas": [
+    3,
+    16
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Atletismo - Prof Ernesto"
+   ]
+  },
+  {
+   "id": 8,
+   "disciplina": "Bioestatística",
+   "professor": "Sandra",
+   "chave": "bioestatistica | sandra",
+   "turmas": [
+    1,
+    2,
+    9,
+    10
+   ],
+   "qtd_turmas": 4,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Bioestatística - Profa Sandra"
+   ]
+  },
+  {
+   "id": 9,
+   "disciplina": "Bioética",
+   "professor": "Rogério",
+   "chave": "bioetica | rogerio",
+   "turmas": [
+    3,
+    16
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Bioética - Prof Rogério",
+    "Bioética -Prof Rogério"
+   ]
+  },
+  {
+   "id": 10,
+   "disciplina": "Bioética e Deontologia",
+   "professor": "Clayson",
+   "chave": "bioetica e deontologia | clayson",
+   "turmas": [
+    5,
+    12
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Bioética e Deontologia - Prof Clayson"
+   ]
+  },
+  {
+   "id": 11,
+   "disciplina": "Biologia Celular",
+   "professor": "Andrea",
+   "chave": "biologia celular | andrea",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Biologia Celular - Profa Andrea"
+   ]
+  },
+  {
+   "id": 12,
+   "disciplina": "Biologia Molecular",
+   "professor": "Isabela",
+   "chave": "biologia molecular | isabela",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Biologia Molecular - Profa Isabela"
+   ]
+  },
+  {
+   "id": 13,
+   "disciplina": "Biomedicina Estética",
+   "professor": "Alexandre",
+   "chave": "biomedicina estetica | alexandre",
+   "turmas": [
+    5,
+    12
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Biomedicina Estética - Prof Alexandre"
+   ]
+  },
+  {
+   "id": 14,
+   "disciplina": "Biomedicina Forense",
+   "professor": "Isabela",
+   "chave": "biomedicina forense | isabela",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Biomedicina Forense (EAD) - Profa Isabela"
+   ]
+  },
+  {
+   "id": 15,
+   "disciplina": "Bioquímica",
+   "professor": "Andrea",
+   "chave": "bioquimica | andrea",
+   "turmas": [
+    1,
+    2,
+    9,
+    10
+   ],
+   "qtd_turmas": 4,
+   "modalidades": [
+    "PRELECAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Bioquímica (Preleção) - Profa Andrea"
+   ]
+  },
+  {
+   "id": 16,
+   "disciplina": "Bioquímica",
+   "professor": "Vanessa",
+   "chave": "bioquimica | vanessa",
+   "turmas": [
+    1,
+    2
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Bioquímica (Prática) - Profa Vanessa"
+   ]
+  },
+  {
+   "id": 17,
+   "disciplina": "Bioquímica",
+   "professor": "Victória",
+   "chave": "bioquimica | victoria",
+   "turmas": [
+    9,
+    10
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Bioquímica (Prática) - Profa Victória"
+   ]
+  },
+  {
+   "id": 18,
+   "disciplina": "Cálculo",
+   "professor": "Leonardo",
+   "chave": "calculo | leonardo",
+   "turmas": [
+    7
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Cálculo - Prof Leonardo"
+   ]
+  },
+  {
+   "id": 19,
+   "disciplina": "Cálculo",
+   "professor": "Sandra",
+   "chave": "calculo | sandra",
+   "turmas": [
+    6
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Cálculo - Prof Sandra"
+   ]
+  },
+  {
+   "id": 20,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplina M",
+   "professor": "Ivan",
+   "chave": "caso problematizador e avaliacao interdisciplina m | ivan",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplina M - Prof Ivan (EAD-Extensão)"
+   ]
+  },
+  {
+   "id": 21,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar AB",
+   "professor": "Victória",
+   "chave": "caso problematizador e avaliacao interdisciplinar ab | victoria",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar AB - Profa Victória",
+    "Caso Problematizador e Avaliação Interdisciplinar AB - Profa Victória (EAD- Extensão)"
+   ]
+  },
+  {
+   "id": 22,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas",
+   "professor": "Isabela",
+   "chave": "caso problematizador e avaliacao interdisciplinar analises biomedicas | isabela",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EXTENSAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas - Profa Isabela",
+    "Caso Problematizador e Avaliação Interdisciplinar Análises Biomédicas - Profa Isabela (Extensão)"
+   ]
+  },
+  {
+   "id": 23,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar CL",
+   "professor": "Roberpaulo",
+   "chave": "caso problematizador e avaliacao interdisciplinar cl | roberpaulo",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar CL - Prof Roberpaulo",
+    "Caso Problematizador e Avaliação Interdisciplinar CL - Prof Roberpaulo (EAD - Extensão)"
+   ]
+  },
+  {
+   "id": 24,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar EF",
+   "professor": "Ivan",
+   "chave": "caso problematizador e avaliacao interdisciplinar ef | ivan",
+   "turmas": [
+    16
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar EF - Prof Ivan",
+    "Caso Problematizador e Avaliação Interdisciplinar EF - Prof Ivan (EAD - Extensão)"
+   ]
+  },
+  {
+   "id": 25,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar EF",
+   "professor": "Lisiane",
+   "chave": "caso problematizador e avaliacao interdisciplinar ef | lisiane",
+   "turmas": [
+    3
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EXTENSAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar EF - Profa Lisiane",
+    "Caso Problematizador e Avaliação Interdisciplinar EF - Profa Lisiane (Extensão)"
+   ]
+  },
+  {
+   "id": 26,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos",
+   "professor": "Pedro",
+   "chave": "caso problematizador e avaliacao interdisciplinar instrumentos basicos | pedro",
+   "turmas": [
+    4,
+    14
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos - Prof Pedro",
+    "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos - Prof Pedro (EAD - Extensão)",
+    "Caso Problematizador e Avaliação Interdisciplinar Instrumentos Básicos - Prof Pedro (EAD- Extensão)"
+   ]
+  },
+  {
+   "id": 27,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar M",
+   "professor": "Ivan",
+   "chave": "caso problematizador e avaliacao interdisciplinar m | ivan",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar M - Prof Ivan"
+   ]
+  },
+  {
+   "id": 28,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar P",
+   "professor": "Alexandre",
+   "chave": "caso problematizador e avaliacao interdisciplinar p | alexandre",
+   "turmas": [
+    9,
+    10
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar P - Prof Alexandre",
+    "Caso Problematizador e Avaliação Interdisciplinar P - Prof Alexandre (EAD-Extensão)"
+   ]
+  },
+  {
+   "id": 29,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar P",
+   "professor": "Isabela",
+   "chave": "caso problematizador e avaliacao interdisciplinar p | isabela",
+   "turmas": [
+    1,
+    2
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "EXTENSAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar P - (Profa Isabela)",
+    "Caso Problematizador e Avaliação Interdisciplinar P - (Profa Isabela) (Extensão)"
+   ]
+  },
+  {
+   "id": 30,
+   "disciplina": "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos",
+   "professor": "Pedro",
+   "chave": "caso problematizador e avaliacao interdisciplinar processos criticos | pedro",
+   "turmas": [
+    15
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos - Prof Pedro",
+    "Caso Problematizador e Avaliação Interdisciplinar - Processos Críticos - Prof Pedro (EAD- Extensão)"
+   ]
+  },
+  {
+   "id": 31,
+   "disciplina": "Cinesiologia e Biomecânica",
+   "professor": "Linda",
+   "chave": "cinesiologia e biomecanica | linda",
+   "turmas": [
+    16
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Cinesiologia e Biomecânica - Profa Linda"
+   ]
+  },
+  {
+   "id": 32,
+   "disciplina": "Cinesiologia e Biomecânica",
+   "professor": "Lisiane",
+   "chave": "cinesiologia e biomecanica | lisiane",
+   "turmas": [
+    3
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Cinnesiologia e Biomecânica - Profa Lisiane"
+   ]
+  },
+  {
+   "id": 33,
+   "disciplina": "Computação Evolutiva",
+   "professor": "Jonas",
+   "chave": "computacao evolutiva | jonas",
+   "turmas": [
+    8
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Computação Evolutiva - Prof Jonas"
+   ]
+  },
+  {
+   "id": 34,
+   "disciplina": "Diagnóstico por Imagem",
+   "professor": "Alexandre",
+   "chave": "diagnostico por imagem | alexandre",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Diagnóstico por Imagem - Prof Alexandre"
+   ]
+  },
+  {
+   "id": 35,
+   "disciplina": "Diagnóstico por Imagem",
+   "professor": "Washington",
+   "chave": "diagnostico por imagem | washington",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Diagnóstico por Imagem - Prof Washington"
+   ]
+  },
+  {
+   "id": 36,
+   "disciplina": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental",
+   "professor": "Monatha",
+   "chave": "ecologia analises fisico quimicas e microbiologicas em saneamento ambiental | monatha",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Preleção) - Profa Monatha",
+    "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Prática) - Profa Monatha",
+    "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Prática)- - Profa Monatha"
+   ]
+  },
+  {
+   "id": 37,
+   "disciplina": "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental",
+   "professor": "Vanessa",
+   "chave": "ecologia analises fisico quimicas e microbiologicas em saneamento ambiental | vanessa",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Preleção) - Profa Vanessa",
+    "Ecologia, análises físico-químicas e microbiológicas em saneamento ambiental (Prática) - Profa Vanessa"
+   ]
+  },
+  {
+   "id": 38,
+   "disciplina": "Educação Cívica e Social",
+   "professor": "Rogério",
+   "chave": "educacao civica e social | rogerio",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Educação Cívica e Social - Prof Rogério"
+   ]
+  },
+  {
+   "id": 39,
+   "disciplina": "Elaboração de Projeto Científico",
+   "professor": "Rogério",
+   "chave": "elaboracao de projeto cientifico | rogerio",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Elaboração de Projeto Científico - Prof Rogério"
+   ]
+  },
+  {
+   "id": 40,
+   "disciplina": "Esportes de Raquete",
+   "professor": "Ernesto",
+   "chave": "esportes de raquete | ernesto",
+   "turmas": [
+    3,
+    16
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Esportes de Raquete - Prof Ernesto"
+   ]
+  },
+  {
+   "id": 41,
+   "disciplina": "Estágio em Saúde II",
+   "professor": "Linda",
+   "chave": "estagio em saude ii | linda",
+   "turmas": [
+    17
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "ESTAGIO",
+    "PRELECAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Estágio em Saúde II (Estágio) - Profa Linda (5hrs)",
+    "Estágio em Saúde II (Preleção) - Profa Linda"
+   ]
+  },
+  {
+   "id": 42,
+   "disciplina": "Estágio Supervisionado I ou II",
+   "professor": "Alexandre",
+   "chave": "estagio supervisionado i ou ii | alexandre",
+   "turmas": [],
+   "qtd_turmas": 0,
+   "modalidades": [],
+   "flags": [
+    "DISCIPLINA_AMBIGUA_OU"
+   ],
+   "celulas_origem": [
+    "Estágio Supervisionado I ou II (Prof Alexandre)"
+   ]
+  },
+  {
+   "id": 43,
+   "disciplina": "Estágio Supervisionado I ou II",
+   "professor": "Washington",
+   "chave": "estagio supervisionado i ou ii | washington",
+   "turmas": [],
+   "qtd_turmas": 0,
+   "modalidades": [],
+   "flags": [
+    "DISCIPLINA_AMBIGUA_OU"
+   ],
+   "celulas_origem": [
+    "Estágio Supervisionado I ou II (Prof Washington)"
+   ]
+  },
+  {
+   "id": 44,
+   "disciplina": "Estatística Aplicada a Informática",
+   "professor": "Leonardo",
+   "chave": "estatistica aplicada a informatica | leonardo",
+   "turmas": [
+    7
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Estatística Aplicada a Informática- Prof Leonardo"
+   ]
+  },
+  {
+   "id": 45,
+   "disciplina": "Estatística Aplicada a Informática",
+   "professor": "Sandra",
+   "chave": "estatistica aplicada a informatica | sandra",
+   "turmas": [
+    6
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Estatística Aplicada a Informática- Prof Sandra"
+   ]
+  },
+  {
+   "id": 46,
+   "disciplina": "Estudos Disciplinares e Projeto Integrador II",
+   "professor": "Leonardo",
+   "chave": "estudos disciplinares e projeto integrador ii | leonardo",
+   "turmas": [
+    7
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [
+    "PARENTESE_NAO_FECHADO"
+   ],
+   "celulas_origem": [
+    "Estudos Disciplinares e Projeto Integrador II- Prof Leonardo",
+    "Estudos Disciplinares e Projeto Integrador II- Prof Leonardo (EAD"
+   ]
+  },
+  {
+   "id": 47,
+   "disciplina": "Estudos Disciplinares e Projeto Integrador II",
+   "professor": "Pablo",
+   "chave": "estudos disciplinares e projeto integrador ii | pablo",
+   "turmas": [
+    6
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Estudos Disciplinares e Projeto Integrador II - Prof Pablo"
+   ]
+  },
+  {
+   "id": 48,
+   "disciplina": "Estudos Disciplinares e Projeto Integrador IV",
+   "professor": "Rovilson",
+   "chave": "estudos disciplinares e projeto integrador iv | rovilson",
+   "turmas": [
+    8
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Estudos Disciplinares e Projeto Integrador IV - Prof Rovilson"
+   ]
+  },
+  {
+   "id": 49,
+   "disciplina": "Farmacologia",
+   "professor": "Luciene",
+   "chave": "farmacologia | luciene",
+   "turmas": [
+    4
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Farmacologia - Profa Luciene"
+   ]
+  },
+  {
+   "id": 50,
+   "disciplina": "Farmacologia",
+   "professor": "Victória",
+   "chave": "farmacologia | victoria",
+   "turmas": [
+    14
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Farmacologia - Profa Vitória"
+   ]
+  },
+  {
+   "id": 51,
+   "disciplina": "Fisiologia do Esporte",
+   "professor": "Linda",
+   "chave": "fisiologia do esporte | linda",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Fisiologia do Esporte - Profa Linda"
+   ]
+  },
+  {
+   "id": 52,
+   "disciplina": "Fisiologia do Esporte",
+   "professor": "Roberpaulo",
+   "chave": "fisiologia do esporte | roberpaulo",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Fisiologia do Esporte - Prof Roberpaulo"
+   ]
+  },
+  {
+   "id": 53,
+   "disciplina": "Fisiologia do Exercício I",
+   "professor": "Linda",
+   "chave": "fisiologia do exercicio i | linda",
+   "turmas": [
+    3,
+    16
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Fisiologia do Exercício I - Prof Linda",
+    "Fisiologia do Exercício I - Profa Linda"
+   ]
+  },
+  {
+   "id": 54,
+   "disciplina": "Fundamentos Filosóficos e Antropológicos Aplicados à Saúde",
+   "professor": "Rogério",
+   "chave": "fundamentos filosoficos e antropologicos aplicados a saude | rogerio",
+   "turmas": [
+    1,
+    2,
+    9,
+    10
+   ],
+   "qtd_turmas": 4,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Fundamentos Filosóficos e Antropológicos Aplicados à Saúde - Prof Rogério"
+   ]
+  },
+  {
+   "id": 55,
+   "disciplina": "Gestão de Projetos em Tecnologia da Informação",
+   "professor": "Rovilson",
+   "chave": "gestao de projetos em tecnologia da informacao | rovilson",
+   "turmas": [
+    6,
+    7
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Gestão de Projetos em Tecnologia da Informação - Prof Rovilson",
+    "Gestão de Projetos em Tecnologia de Informação - Prof Rovilson"
+   ]
+  },
+  {
+   "id": 56,
+   "disciplina": "Gestão e Empreendedorismo na Educação Física e Esporte",
+   "professor": "Renato",
+   "chave": "gestao e empreendedorismo na educacao fisica e esporte | renato",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Gestão e Empreendedorismo na Educação Física e Esporte - Prof Renato",
+    "Gestão e Empreendedorismo na Educação Física e Esporte - Prof Renato (EAD-Extensão)"
+   ]
+  },
+  {
+   "id": 57,
+   "disciplina": "Handebol",
+   "professor": "Carlos",
+   "chave": "handebol | carlos",
+   "turmas": [
+    3
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Handebol - Prof Carlos"
+   ]
+  },
+  {
+   "id": 58,
+   "disciplina": "Handebol",
+   "professor": "Diony",
+   "chave": "handebol | diony",
+   "turmas": [
+    16
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Handebol - Prof Diony"
+   ]
+  },
+  {
+   "id": 59,
+   "disciplina": "Hematologia clínica – série branca e hemostasia",
+   "professor": "Arissa",
+   "chave": "hematologia clinica serie branca e hemostasia | arissa",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Hematologia clínica – série branca e hemostasia (Preleção) - Profa Arissa",
+    "Hematologia clínica – série branca e hemostasia (prática) - Profa Arissa"
+   ]
+  },
+  {
+   "id": 60,
+   "disciplina": "Hemoterapia Laboratorial",
+   "professor": "Mauro",
+   "chave": "hemoterapia laboratorial | mauro",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "EAD"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Hemoterapia Laboratorial (EAD) - Prof Mauro"
+   ]
+  },
+  {
+   "id": 61,
+   "disciplina": "Histologia e Embriologia",
+   "professor": "André",
+   "chave": "histologia e embriologia | andre",
+   "turmas": [
+    1,
+    2
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [
+    "PREFIXO_DUPLICADO"
+   ],
+   "celulas_origem": [
+    "Histologia e Embriologia (Preleção)- Prof Prof André",
+    "Histologia e Embriologia (Prática)- Prof André"
+   ]
+  },
+  {
+   "id": 62,
+   "disciplina": "Histologia e Embriologia",
+   "professor": "Victória",
+   "chave": "histologia e embriologia | victoria",
+   "turmas": [
+    9,
+    10
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Histologia e Embriologia (Preleção) - Profa Victória",
+    "Histologia e Embriologia (Prática) - Profa Victória"
+   ]
+  },
+  {
+   "id": 63,
+   "disciplina": "História da Educação Física",
+   "professor": "Diony",
+   "chave": "historia da educacao fisica | diony",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "História da Educação Física - Prof Diony"
+   ]
+  },
+  {
+   "id": 64,
+   "disciplina": "Imunologia",
+   "professor": "Clayson",
+   "chave": "imunologia | clayson",
+   "turmas": [
+    1,
+    2
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Imunologia - Prof Clayson"
+   ]
+  },
+  {
+   "id": 65,
+   "disciplina": "Imunologia",
+   "professor": "Vanessa",
+   "chave": "imunologia | vanessa",
+   "turmas": [
+    9,
+    10
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Imunologia - Profa Vanessa"
+   ]
+  },
+  {
+   "id": 66,
+   "disciplina": "Imunologia Clínica",
+   "professor": "Arissa",
+   "chave": "imunologia clinica | arissa",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Imunologia Clínica - prática - Profa Arissa"
+   ]
+  },
+  {
+   "id": 67,
+   "disciplina": "Imunologia Clínica",
+   "professor": "Vanessa",
+   "chave": "imunologia clinica | vanessa",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRELECAO"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Imunologia Clínica - Preleção - Profa Vanessa"
+   ]
+  },
+  {
+   "id": 68,
+   "disciplina": "Inglês Instrumental",
+   "professor": "Ivan",
+   "chave": "ingles instrumental | ivan",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Inglês Instrumental - Prof Ivan"
+   ]
+  },
+  {
+   "id": 69,
+   "disciplina": "Instrumentos Básicos de Enfermagem",
+   "professor": "Luciene",
+   "chave": "instrumentos basicos de enfermagem | luciene",
+   "turmas": [
+    4,
+    14
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRATICA_HOSPITALAR"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Instrumentos Básicos de Enfermagem (Prática Hospitalar) - Prof Luciene",
+    "Instrumentos Básicos de Enfermagem - Prof Luciene"
+   ]
+  },
+  {
+   "id": 70,
+   "disciplina": "Instrumentos Básicos de Enfermagem",
+   "professor": "Pedro",
+   "chave": "instrumentos basicos de enfermagem | pedro",
+   "turmas": [
+    4,
+    14
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [
+    "PRELECAO"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Instrumentos Básicos de Enfermagem (Preleção) - Prof Pedro",
+    "Instrumentos Básicos de Enfermagem - Prof Pedro"
+   ]
+  },
+  {
+   "id": 71,
+   "disciplina": "Introdução a Inteligência Artificial",
+   "professor": "Rovilson",
+   "chave": "introducao a inteligencia artificial | rovilson",
+   "turmas": [
+    8
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Introdução a Inteligência Artificial - Prof Rovilson"
+   ]
+  },
+  {
+   "id": 72,
+   "disciplina": "Introdução a Rede de Computadores",
+   "professor": "Jonas",
+   "chave": "introducao a rede de computadores | jonas",
+   "turmas": [
+    7
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Introdução a Rede de Computadores - Prof Jonas"
+   ]
+  },
+  {
+   "id": 73,
+   "disciplina": "Introdução a Rede de Computadores",
+   "professor": "Pablo",
+   "chave": "introducao a rede de computadores | pablo",
+   "turmas": [
+    6
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Introdução a Rede de Computadores - Prof Pablo"
+   ]
+  },
+  {
+   "id": 74,
+   "disciplina": "Lógica Matemática",
+   "professor": "Leonardo",
+   "chave": "logica matematica | leonardo",
+   "turmas": [
+    7
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Lógica Matemática - Prof Leonardo"
+   ]
+  },
+  {
+   "id": 75,
+   "disciplina": "Lógica Matemática",
+   "professor": "Sandra",
+   "chave": "logica matematica | sandra",
+   "turmas": [
+    6
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Lógica Matemática- Profa Sandra"
+   ]
+  },
+  {
+   "id": 76,
+   "disciplina": "Matemática para IA",
+   "professor": "Jonas",
+   "chave": "matematica para ia | jonas",
+   "turmas": [
+    8
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Matemática para IA - Prof Jonas"
+   ]
+  },
+  {
+   "id": 77,
+   "disciplina": "Metodologia Científica",
+   "professor": "Rogério",
+   "chave": "metodologia cientifica | rogerio",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Metodologia Científica - Prof Rogério"
+   ]
+  },
+  {
+   "id": 78,
+   "disciplina": "Microbiologia Clínica",
+   "professor": "Alexandre",
+   "chave": "microbiologia clinica | alexandre",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Microbiologia Clínica - Prática - Prof Alexandre"
+   ]
+  },
+  {
+   "id": 79,
+   "disciplina": "Microbiologia Clínica",
+   "professor": "Roberpaulo",
+   "chave": "microbiologia clinica | roberpaulo",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRELECAO"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Microbiologia Clínica - Preleção - Prof Roberpaulo"
+   ]
+  },
+  {
+   "id": 80,
+   "disciplina": "Modelagem de Dados",
+   "professor": "Leonardo",
+   "chave": "modelagem de dados | leonardo",
+   "turmas": [
+    8
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Modelagem de Dados - Prof Leonardo"
+   ]
+  },
+  {
+   "id": 81,
+   "disciplina": "Noções de Práticas Integrativas Complementares",
+   "professor": "Alexandre",
+   "chave": "nocoes de praticas integrativas complementares | alexandre",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Noções de Práticas Integrativas Complementares - Prof Alexandre"
+   ]
+  },
+  {
+   "id": 82,
+   "disciplina": "Noções de Práticas Integrativas Complementares",
+   "professor": "Lisiane",
+   "chave": "nocoes de praticas integrativas complementares | lisiane",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Noções de Práticas Integrativas Complementares - Profa Lisiane"
+   ]
+  },
+  {
+   "id": 83,
+   "disciplina": "Nutrição Aplicada a Enfermagem",
+   "professor": "Katiulcy",
+   "chave": "nutricao aplicada a enfermagem | katiulcy",
+   "turmas": [
+    14
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Nutrição Aplicada a Enfermagem - Profa Katiulcy"
+   ]
+  },
+  {
+   "id": 84,
+   "disciplina": "Nutrição Aplicada a Enfermagem",
+   "professor": "Luciene",
+   "chave": "nutricao aplicada a enfermagem | luciene",
+   "turmas": [
+    4
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Nutrição Aplicada a Enfermagem - Profa Luciene"
+   ]
+  },
+  {
+   "id": 85,
+   "disciplina": "O cuidar em Saúde Mental",
+   "professor": "Régis",
+   "chave": "o cuidar em saude mental | regis",
+   "turmas": [
+    15
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "O cuidar em Saúde Mental - Prof Régis"
+   ]
+  },
+  {
+   "id": 86,
+   "disciplina": "O cuidar nos Processos Críticos",
+   "professor": "Régis",
+   "chave": "o cuidar nos processos criticos | regis",
+   "turmas": [
+    15
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "O cuidar nos Processos Críticos - Prof Régis"
+   ]
+  },
+  {
+   "id": 87,
+   "disciplina": "Optativa I ou II - Endocrinologia laboratorial",
+   "professor": "Roberpaulo",
+   "chave": "optativa i ou ii endocrinologia laboratorial | roberpaulo",
+   "turmas": [],
+   "qtd_turmas": 0,
+   "modalidades": [],
+   "flags": [
+    "DISCIPLINA_AMBIGUA_OU",
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Optativa I ou II - Endocrinologia laboratorial - Prof Roberpaulo"
+   ]
+  },
+  {
+   "id": 88,
+   "disciplina": "Parasitologia Clínica",
+   "professor": "Clayson",
+   "chave": "parasitologia clinica | clayson",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRELECAO"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Parasitologia Clínica - Preleção - Prof Clayson"
+   ]
+  },
+  {
+   "id": 89,
+   "disciplina": "Parasitologia Clínica",
+   "professor": "Roberpaulo",
+   "chave": "parasitologia clinica | roberpaulo",
+   "turmas": [
+    13
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Parasitologia Clínica - Prática - Prof Roberpaulo"
+   ]
+  },
+  {
+   "id": 90,
+   "disciplina": "Práticas Biomédicas - Química",
+   "professor": "Alexandre",
+   "chave": "praticas biomedicas quimica | alexandre",
+   "turmas": [
+    1,
+    2,
+    9,
+    10
+   ],
+   "qtd_turmas": 4,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Práticas Biomédicas - Química (Prática) - Prof Alexandre",
+    "Práticas Biomédicas - Química - Prof Alexandre"
+   ]
+  },
+  {
+   "id": 91,
+   "disciplina": "Prescrição do Exercício físico e treinamento EB-D",
+   "professor": "Carlos",
+   "chave": "prescricao do exercicio fisico e treinamento eb d | carlos",
+   "turmas": [
+    17
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [
+    "HIFEN_NO_NOME"
+   ],
+   "celulas_origem": [
+    "Prescrição do Exercício físico e treinamento EB-D - Prof Carlos"
+   ]
+  },
+  {
+   "id": 92,
+   "disciplina": "Promoção da Saúde",
+   "professor": "Pedro",
+   "chave": "promocao da saude | pedro",
+   "turmas": [
+    14
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Promoção a Saúde - Prof Pedro"
+   ]
+  },
+  {
+   "id": 93,
+   "disciplina": "Promoção da Saúde",
+   "professor": "Régis",
+   "chave": "promocao da saude | regis",
+   "turmas": [
+    4,
+    14
+   ],
+   "qtd_turmas": 2,
+   "modalidades": [],
+   "flags": [
+    "SEM_PREFIXO_PROF"
+   ],
+   "celulas_origem": [
+    "Promoção a Saúde - Prof Régis",
+    "Promoção da Saúde - Régis"
+   ]
+  },
+  {
+   "id": 94,
+   "disciplina": "Psicologia do Desenvolvimento",
+   "professor": "Ivan",
+   "chave": "psicologia do desenvolvimento | ivan",
+   "turmas": [
+    16
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Psicologia do Desenvolvimento - Prof Ivan"
+   ]
+  },
+  {
+   "id": 95,
+   "disciplina": "Psicologia do Desenvolvimento",
+   "professor": "Linda",
+   "chave": "psicologia do desenvolvimento | linda",
+   "turmas": [
+    3
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Psicologia do Desenvolvimento - Profa Linda"
+   ]
+  },
+  {
+   "id": 96,
+   "disciplina": "Recuperação musculoesquelética",
+   "professor": "Linda",
+   "chave": "recuperacao musculoesqueletica | linda",
+   "turmas": [
+    17
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Recuperação musculoesquelética - Profa Linda"
+   ]
+  },
+  {
+   "id": 97,
+   "disciplina": "Reprodução Humana",
+   "professor": "Clayson",
+   "chave": "reproducao humana | clayson",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Reprodução Humana - Prof Clayson"
+   ]
+  },
+  {
+   "id": 98,
+   "disciplina": "Reprodução Humana",
+   "professor": "Roberpaulo",
+   "chave": "reproducao humana | roberpaulo",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Reprodução Humana - Prof Roberpaulo"
+   ]
+  },
+  {
+   "id": 99,
+   "disciplina": "TCC 1 ou TCC 2",
+   "professor": "Clayson",
+   "chave": "tcc 1 ou tcc 2 | clayson",
+   "turmas": [],
+   "qtd_turmas": 0,
+   "modalidades": [],
+   "flags": [
+    "DISCIPLINA_AMBIGUA_OU"
+   ],
+   "celulas_origem": [
+    "TCC 1 ou TCC 2 (Prof Clayson)"
+   ]
+  },
+  {
+   "id": 100,
+   "disciplina": "TCC 2",
+   "professor": "Ivan",
+   "chave": "tcc 2 | ivan",
+   "turmas": [
+    17
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "TCC 2 - Prof Ivan"
+   ]
+  },
+  {
+   "id": 101,
+   "disciplina": "Tecnologia da Informação",
+   "professor": "Leonardo",
+   "chave": "tecnologia da informacao | leonardo",
+   "turmas": [
+    11
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Tecnologia da Informação - Prof Leonardo"
+   ]
+  },
+  {
+   "id": 102,
+   "disciplina": "Toxicologia",
+   "professor": "Régis",
+   "chave": "toxicologia | regis",
+   "turmas": [
+    5
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA"
+   ],
+   "flags": [],
+   "celulas_origem": [
+    "Toxicologia (Prática)- Prof Régis",
+    "Toxicologia - Prof Régis"
+   ]
+  },
+  {
+   "id": 103,
+   "disciplina": "Toxicologia",
+   "professor": "Washington",
+   "chave": "toxicologia | washington",
+   "turmas": [
+    12
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [
+    "PRATICA",
+    "PRELECAO"
+   ],
+   "flags": [
+    "MODALIDADE_SEM_PARENTESES"
+   ],
+   "celulas_origem": [
+    "Toxicologia - Preleção - Prof Washignton",
+    "Toxicologia - Prática - Prof Washignton"
+   ]
+  },
+  {
+   "id": 104,
+   "disciplina": "Treinamento Funcional",
+   "professor": "Linda",
+   "chave": "treinamento funcional | linda",
+   "turmas": [
+    17
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Treinamento Funcional - Profa Linda"
+   ]
+  },
+  {
+   "id": 105,
+   "disciplina": "Treinamento Resistido",
+   "professor": "Carlos",
+   "chave": "treinamento resistido | carlos",
+   "turmas": [
+    17
+   ],
+   "qtd_turmas": 1,
+   "modalidades": [],
+   "flags": [],
+   "celulas_origem": [
+    "Treinamento Resistido - Prof Carlos"
+   ]
+  }
+ ],
+ "avisos": [
+  {
+   "tipo": "CICLO_BASICO_EXPANDIDO",
+   "aba": " Matutino (Ciclo básico)",
+   "colunas": [
+    4
+   ],
+   "cursos": [
+    "BIOMEDICINA",
+    "ENFERMAGEM"
+   ],
+   "periodo_numero": 2
+  },
+  {
+   "tipo": "CICLO_BASICO_EXPANDIDO",
+   "aba": " Matutino (Ciclo básico)",
+   "colunas": [
+    5
+   ],
+   "cursos": [
+    "BIOMEDICINA",
+    "ENFERMAGEM"
+   ],
+   "periodo_numero": 2
+  },
+  {
+   "tipo": "CICLO_BASICO_EXPANDIDO",
+   "aba": "Ciclo Básico Integrado - Noturn",
+   "colunas": [
+    4
+   ],
+   "cursos": [
+    "BIOMEDICINA",
+    "ENFERMAGEM"
+   ],
+   "periodo_numero": 2
+  },
+  {
+   "tipo": "CICLO_BASICO_EXPANDIDO",
+   "aba": "Ciclo Básico Integrado - Noturn",
+   "colunas": [
+    5
+   ],
+   "cursos": [
+    "BIOMEDICINA",
+    "ENFERMAGEM"
+   ],
+   "periodo_numero": 2
+  },
+  {
+   "tipo": "CICLO_BASICO_EXPANDIDO",
+   "aba": "Ciclo Básico Integrado - Noturn",
+   "colunas": [
+    6
+   ],
+   "cursos": [
+    "EDUCACAO_FISICA"
+   ],
+   "periodo_numero": 3
+  },
+  {
+   "tipo": "COLUNA_NAO_E_TURMA",
+   "aba": "Biomedicina Noturno",
+   "colunas": [
+    7,
+    8
+   ],
+   "cursos": [
+    "BIOMEDICINA"
+   ],
+   "periodo_numero": 8
+  }
+ ],
+ "resumo": {
+  "turmas": 17,
+  "ofertas": 105,
+  "ofertas_avaliaveis": 101,
+  "ofertas_sem_turma": 4,
+  "ofertas_multiturma": 27,
+  "vinculos_oferta_turma": 136,
+  "alocacoes": 164,
+  "linhas_por_status": {
+   "OK": 158,
+   "REVISAR": 5,
+   "ERRO": 1
+  },
+  "professores": 29,
+  "disciplinas": 76,
+  "formularios_discente_turma": 17,
+  "formularios_total": 20
+ }
+}
