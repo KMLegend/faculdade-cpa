@@ -118,7 +118,7 @@ Ao criar/editar:
   `Aplicação: Específicas`, com multiselect de disciplinas/professores/cursos.
 - Demais instrumentos ⇒ bloco fixo `INSTITUCIONAL`, sem vínculo (RN-20).
 - Perguntas do Anexo B são marcadas **"oficial CPA"** e avisam ao editar: alterar o
-  enunciado quebra o comparativo com 2024.
+  enunciado quebra o comparativo com 2025.2.
 - Painel lateral **"Prévia do formulário"**: escolhe uma turma e mostra o total de
   perguntas resultante, com alerta em vermelho acima de `LIMITE_ALERTA_PERGUNTAS` (doc 04 §7).
 

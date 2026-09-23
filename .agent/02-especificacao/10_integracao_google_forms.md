@@ -60,10 +60,10 @@ Esta é a pergunta central: *"alterar as questões que mudam anualmente"*.
 | **Bloco por matéria (10 × N ofertas)** | **a grade importada** | **Sim, todo ciclo** |
 | Configurações (anonimato, janela) | constantes do sistema | Não |
 
-O bloco por matéria é exatamente o que era digitado à mão em 2024:
+O bloco por matéria é exatamente o que era digitado à mão em 2025.2:
 
 ```
-2024 (manual):  "O docente domina o conteúdo e está atualizado?   (Bioestatística - Pedro)"
+2025.2 (manual):  "O docente domina o conteúdo e está atualizado?   (Bioestatística - Pedro)"
 2026 (gerado):  grade "Bioestatística · Prof. Pedro" com as 10 perguntas como linhas
 ```
 
@@ -189,14 +189,14 @@ def garantir_anonimato(form_id: str) -> None:
 2. O formulário é compartilhado como **"qualquer pessoa com o link"**. Restringir ao
    domínio faz o Google identificar o respondente.
 3. **Não** ative "limitar a 1 resposta" — exige login e quebra o anonimato.
-   Consequência assumida: não há como impedir resposta duplicada (era assim em 2024).
+   Consequência assumida: não há como impedir resposta duplicada (era assim em 2025.2).
 4. Na ingestão, **descarte o `lastSubmittedTime` com hora**; grave apenas a data (RN-31).
 5. A planilha vinculada (`linkedSheetId`) não deve ser criada — ela duplica os dados em
    um artefato fora do controle do sistema.
 
 > **Seja honesto com a CPA:** as respostas passam a residir na infraestrutura do Google,
 > sob a conta institucional. Quem tiver acesso a essa conta vê as respostas brutas — o
-> mesmo que acontecia em 2024. O que o sistema garante é que **nenhum dado de identidade
+> mesmo que acontecia em 2025.2. O que o sistema garante é que **nenhum dado de identidade
 > é coletado**; não que a instituição não possa ver o conteúdo.
 
 ---
@@ -223,7 +223,7 @@ Acrescentar a `formulario_pergunta`:
 | `google_item_id` | varchar(40) NULL | id do item (grade) |
 | `google_question_id` | varchar(40) NULL | ⭐ id da pergunta — **chave da ingestão** |
 
-> **`google_question_id` é o que conserta o defeito de 2024.** O pipeline antigo casava
+> **`google_question_id` é o que conserta o defeito de 2025.2.** O pipeline antigo casava
 > pergunta com dimensão **pelo texto**, e como a mesma frase existe em até 3
 > questionários, o ISG histórico mistura segmentos (Anexo B §B.5). Com o id estável do
 > Google, cada resposta aponta para exatamente uma `formulario_pergunta`, que já carrega
@@ -231,7 +231,7 @@ Acrescentar a `formulario_pergunta`:
 
 ### 6.1.1 ⭐ A cadeia de identificadores
 
-Nenhum elo usa texto — é o que separa este desenho do de 2024:
+Nenhum elo usa texto — é o que separa este desenho do de 2025.2:
 
 ```
 resposta no Google
@@ -259,7 +259,7 @@ nosso snapshot, que é quem carrega `codigo`.
 
 Se o mapeamento `google_question_id → formulario_pergunta` se perder (restauração de
 backup, sincronização interrompida no meio), **não recase por texto** — foi assim que o
-pipeline de 2024 se contaminou. Recupere por:
+pipeline de 2025.2 se contaminou. Recupere por:
 
 1. `sincronizacao_log.detalhe` — guarda o JSON completo do formulário devolvido pelo
    último `batchUpdate`, com todos os `itemId`/`questionId` na ordem enviada;
@@ -394,7 +394,7 @@ Obrigatório mesmo assim:
 
 ## 9. Ingestão das respostas
 
-Substitui o `main.py` de 2024 (que baixava 17 CSVs por URL de exportação).
+Substitui o `main.py` de 2025.2 (que baixava 17 CSVs por URL de exportação).
 
 ```python
 def ingerir(formulario, desde: datetime | None) -> int:

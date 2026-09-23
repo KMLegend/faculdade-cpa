@@ -1,12 +1,17 @@
 # Anexo B — Banco de perguntas oficial da CPA
 
 > **Fonte primária:** `historico/dimensoes.xlsx` (mapeamento questão→dimensão→questionário)
-> e `historico/consolidado_cpa.xlsx` (193 respostas do ciclo 2024).
+> e `historico/consolidado_cpa.xlsx` (193 respostas do ciclo **2025.2**).
+>
+> O ciclo anterior foi aplicado entre **24/11/2025 e 01/12/2025** — 8 dias, com 172
+> respostas em novembro e 21 em dezembro. Data confirmada na coluna *Carimbo de data/hora*
+> do consolidado; o arquivo `2024 Relatório de Autoavaliação Institucional.docx` na pasta
+> `historico/` é de outro ciclo e não descreve estes dados.
 > Substitui integralmente o seed sugerido em `04_banco_de_perguntas.md` §5.
 
 ## B.1 Estrutura: 163 questões, 4 questionários
 
-| Questionário | Segmento | Nº | Questões | Respostas 2024 |
+| Questionário | Segmento | Nº | Questões | Respostas 2025.2 |
 |---|---|---|---|---|
 | DISCENTES | `DISCENTE` | 1–58 | 58 | 166 |
 | DOCENTES | `DOCENTE` | 59–118 | 60 | 16 |
@@ -37,7 +42,7 @@
 - Dimensão **5** (Políticas de Pessoal) e **10** (Sustentabilidade): não há questão para discentes — correto, não é percepção deles.
 - Dimensão **9** (Atendimento aos Discentes): só no questionário discente.
 - Dimensão **2** (Ensino/Pesquisa/Extensão): ausente no técnico-administrativo.
-- **COMUNIDADE tem apenas 3 questões, todas da dimensão 4**, e **nenhuma resposta em 2024**.
+- **COMUNIDADE tem apenas 3 questões, todas da dimensão 4**, e **nenhuma resposta em 2025.2**.
   É o instrumento mais frágil do conjunto — ver B.5.
 
 ## B.3 ⭐ Questionário DISCENTES — a estrutura que o sistema automatiza
@@ -63,7 +68,7 @@ Q1–Q9 e Q20–Q58.
 | 18 | `DISCIPLINA` | Como você se avalia com a aprendizagem decorrente da disciplina? |
 | 19 | `PROFESSOR` | Se você tiver que fazer outra disciplina com esse professor, qual seria seu grau de satisfação? |
 
-No ciclo 2024 essas questões apareciam no Google Forms com o sufixo literal
+No ciclo 2025.2 essas questões apareciam no Google Forms com o sufixo literal
 `(Disciplina - Professor)`:
 
 ```
@@ -76,7 +81,7 @@ O docente é pontual e assíduo em suas funções?   (Bioestatística - Pedro)
 **É exatamente a chave `Disciplina | Professor`.** O que era montado à mão em 17 Google
 Forms passa a ser gerado da grade — é o coração deste projeto.
 
-Conferência aritmética no formulário *Educação Física Matutino* (2024):
+Conferência aritmética no formulário *Educação Física Matutino* (2025.2):
 `48 institucionais + 10 × 11 matérias + 2 demográficas + 1 comentário = 161 colunas` ✓
 
 ## B.4 ⭐ Fórmula do ISG — **RESOLVIDA**
@@ -89,7 +94,7 @@ ISG % = ISG × 100                             # formato do painel: 0.00%
 Deduzida empiricamente comparando `consolidado_cpa.xlsx` com os valores publicados no
 Power BI. **Duas correspondências exatas**, em escopos diferentes:
 
-| Questão | Média 2024 | `(m−1)/4` | Publicado no BI |
+| Questão | Média 2025.2 | `(m−1)/4` | Publicado no BI |
 |---|---|---|---|
 | Q68 (docentes, coluna única) | 4,8125 | **95,31%** | **95,31%** |
 | Q49 (todos os segmentos) | 4,4093 | **85,23%** | **85,23%** |
@@ -99,7 +104,7 @@ As demais fórmulas testadas foram descartadas: `média/5` erra 5,4 pp em média
 
 Faixas de cor do painel (do `Report/Layout` do `.pbix`): **0,25 · 0,46 · 0,72**.
 
-## B.5 ⚠️ Problemas encontrados no pipeline de 2024
+## B.5 ⚠️ Problemas encontrados no pipeline de 2025.2
 
 | # | Problema | Consequência | Como o novo sistema resolve |
 |---|---|---|---|
@@ -113,21 +118,21 @@ Faixas de cor do painel (do `Report/Layout` do `.pbix`): **0,25 · 0,46 · 0,72*
 
 ## B.6 ⭐ Identidade das perguntas — `codigo` e `equivalencia_id`
 
-Em 2024 o cruzamento era feito **pelo texto da pergunta**. Como 155 das 163 perguntas
+Em 2025.2 o cruzamento era feito **pelo texto da pergunta**. Como 155 das 163 perguntas
 têm texto repetido em mais de um questionário, o resultado misturava segmentos de forma
 imprevisível (§B.5). Duas colunas novas resolvem isso de forma definitiva.
 
 ### `codigo` — identidade da pergunta ao longo dos anos
 
 Inteiro estável, atribuído **uma vez**, **nunca renumerado, nunca reutilizado**.
-O seed usa a numeração de 2024 (1–163); o próximo livre é **164**.
+O seed usa a numeração de 2025.2 (1–163); o próximo livre é **164**.
 
 | Regra | Porquê |
 |---|---|
 | Pergunta nova recebe o próximo código livre (164, 165…), **não** um número no bloco do segmento | Preservar identidade vale mais que a estética dos blocos 1–58 / 59–118 |
 | Pergunta removida deixa o código **vago para sempre** | Reutilizar faria o relatório somar duas perguntas diferentes |
 | Correção de grafia mantém o código e incrementa `versao_texto` | As respostas continuam somáveis |
-| Mudança de **sentido** exige código novo + desativar o antigo | Se as respostas de 2024 e 2026 não podem ser somadas, é outra pergunta |
+| Mudança de **sentido** exige código novo + desativar o antigo | Se as respostas de 2025.2 e 2026 não podem ser somadas, é outra pergunta |
 
 > **O teste decisivo:** *as respostas dos dois ciclos podem ser somadas na mesma média?*
 > Sim → mesmo código. Não → código novo.
@@ -148,7 +153,7 @@ Q119(técnico)   mesma pergunta               →  ISG 68,9%
 - 29 grupos cobrem 3 segmentos
 - 3 grupos cobrem 4 ou mais
 
-✅ **Nenhum grupo tem dimensão divergente entre segmentos** — o mapeamento de 2024 é
+✅ **Nenhum grupo tem dimensão divergente entre segmentos** — o mapeamento de 2025.2 é
 consistente nesse ponto. É um bom sinal sobre a qualidade do `dimensoes.xlsx`.
 
 ### ⚠️ Uma duplicata real encontrada
@@ -182,7 +187,7 @@ resposta no Google  ──►  google_question_id      (id do Google, por formul
         CICLOS         SEGMENTOS       SINAES         professor
 ```
 
-**Nenhum elo dessa cadeia usa texto.** É a diferença entre o cruzamento de 2024 e este.
+**Nenhum elo dessa cadeia usa texto.** É a diferença entre o cruzamento de 2025.2 e este.
 
 ## B.7 As 163 questões
 

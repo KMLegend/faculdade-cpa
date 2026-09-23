@@ -29,7 +29,7 @@ export default function Relatorios() {
 
   return (
     <>
-      <Titulo sub="ISG = (média − 1) / 4 · métrica oficial da CPA, conferida contra o painel 2024">
+      <Titulo sub="ISG = (média − 1) / 4 · métrica oficial da CPA, conferida contra o painel 2025.2">
         Relatórios
       </Titulo>
 
@@ -55,7 +55,7 @@ export default function Relatorios() {
       {visao === 'dimensoes' ? (
         <>
           <Tabela
-            colunas={['Eixo', 'Dim.', 'Nome', 'Discente', 'Docente', 'Téc.-adm.', 'ISG', '2024', 'Δ']}
+            colunas={['Eixo', 'Dim.', 'Nome', 'Discente', 'Docente', 'Téc.-adm.', 'ISG', '2025.2', 'Δ']}
           >
             {dims.dado.eixos.flatMap((e) =>
               e.dimensoes.map((d) => (
@@ -81,7 +81,7 @@ export default function Relatorios() {
                     <Isg pct={d.isg_geral_pct} />
                   </td>
                   <td className="px-3 py-2 tabular-nums text-slate-500">
-                    {d.isg_2024_pct.toFixed(2).replace('.', ',')}%
+                    {d.isg_2025_pct.toFixed(2).replace('.', ',')}%
                   </td>
                   <td
                     className={`px-3 py-2 tabular-nums ${
@@ -102,7 +102,7 @@ export default function Relatorios() {
         </>
       ) : (
         <>
-          <Tabela colunas={['Código', 'Pergunta', 'Dim.', 'Respostas', 'Média', 'ISG', '2024', 'Δ pp']}>
+          <Tabela colunas={['Código', 'Pergunta', 'Dim.', 'Respostas', 'Média', 'ISG', '2025.2', 'Δ pp']}>
             {questoes.dado.slice(0, 25).map((q) => (
               <tr key={q.codigo}>
                 <td className="px-3 py-2 font-mono text-xs">Q{q.codigo}</td>
@@ -114,7 +114,7 @@ export default function Relatorios() {
                   <Isg pct={q.isg_pct} />
                 </td>
                 <td className="px-3 py-2 tabular-nums text-slate-500">
-                  {q.isg_2024_pct.toFixed(2).replace('.', ',')}%
+                  {q.isg_2025_pct.toFixed(2).replace('.', ',')}%
                 </td>
                 <td
                   className={`px-3 py-2 tabular-nums ${
@@ -129,7 +129,7 @@ export default function Relatorios() {
           </Tabela>
           <p className="mt-3 text-xs text-slate-500">
             Comparação por <strong>código</strong>, não por texto — é o que o pipeline de
-            2024 não conseguia fazer. Mostrando as 25 primeiras de {questoes.dado.length}.
+            2025.2 não conseguia fazer. Mostrando as 25 primeiras de {questoes.dado.length}.
           </p>
         </>
       )}

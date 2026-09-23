@@ -172,7 +172,7 @@ const relatorioDimensoes = {
           nome_institucional: d.nome_institucional,
           por_segmento: porSegmento,
           isg_geral_pct: isgDe(base),
-          isg_2024_pct: isgDe(base - 0.08),
+          isg_2025_pct: isgDe(base - 0.08),
           variacao_pp: Number((isgDe(base) - isgDe(base - 0.08)).toFixed(2)),
         }
       }),
@@ -192,7 +192,7 @@ const relatorioQuestoes = perguntas
       respostas: p.por_materia ? 1200 : 160,
       media: Number(media.toFixed(2)),
       isg_pct: isgDe(media),
-      isg_2024_pct: isgDe(media - 0.1),
+      isg_2025_pct: isgDe(media - 0.1),
       variacao_pp: Number((isgDe(media) - isgDe(media - 0.1)).toFixed(2)),
     }
   })
@@ -257,10 +257,10 @@ const ROTAS = [
     () => ({
       periodo_letivo: '2026.2',
       instrumentos: [
-        { nome: 'Turma', formularios: 17, publicados: 12, submissoes: 210, em_2024: 166 },
-        { nome: 'Docente', formularios: 1, publicados: 1, submissoes: 23, em_2024: 16 },
-        { nome: 'Técnico-administrativo', formularios: 1, publicados: 1, submissoes: 9, em_2024: 11 },
-        { nome: 'Comunidade', formularios: 1, publicados: 1, submissoes: 41, em_2024: 0 },
+        { nome: 'Turma', formularios: 17, publicados: 12, submissoes: 210, em_2025: 166 },
+        { nome: 'Docente', formularios: 1, publicados: 1, submissoes: 23, em_2025: 16 },
+        { nome: 'Técnico-administrativo', formularios: 1, publicados: 1, submissoes: 9, em_2025: 11 },
+        { nome: 'Comunidade', formularios: 1, publicados: 1, submissoes: 41, em_2025: 0 },
       ],
     }),
   ],

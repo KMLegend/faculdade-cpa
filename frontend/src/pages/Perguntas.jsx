@@ -72,7 +72,7 @@ export default function Perguntas() {
             {materia.map(linha)}
           </Tabela>
           <p className="mb-6 mt-2 text-xs text-slate-500">
-            Em 2024 estas apareciam com o sufixo “(Disciplina - Professor)” digitado à mão.
+            Em 2025.2 estas apareciam com o sufixo “(Disciplina - Professor)” digitado à mão.
             Agora o rótulo vem da oferta, já conciliada.
           </p>
         </>

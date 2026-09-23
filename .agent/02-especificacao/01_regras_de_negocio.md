@@ -133,7 +133,7 @@ Cada segmento tem seu próprio instrumento e sua própria forma de acesso.
 - **RN-19** **Perguntas do professor daquela disciplina** *(regra 3 do usuário)*: as 10
   de `bloco IN (DISCIPLINA, PROFESSOR)` (Q10–Q19), **repetidas para cada oferta** da
   turma. Cada repetição carrega `oferta_id` e o rótulo `Disciplina · Prof. Nome`, que em
-  2024 era digitado à mão no título da pergunta.
+  2025.2 era digitado à mão no título da pergunta.
 - **RN-20** `aplicacao`: `TODAS` (o caso comum) ou `ESPECIFICA` (só para alvos vinculados
   em `pergunta_vinculo`: disciplina, professor ou curso).
 - **RN-21** Tipos: `LIKERT_5` (padrão), `SIM_NAO`, `TEXTO_LIVRE`, `MULTIPLA_ESCOLHA_UNICA`.
@@ -149,7 +149,7 @@ Cada segmento tem seu próprio instrumento e sua própria forma de acesso.
      (`Disciplina | Professor`) que a turma cursa.
 
   Em 2026.2: **17 formulários**, de 88 a 168 perguntas (média 129).
-  É a mesma estrutura do ciclo 2024 (Anexo B §B.3), que era montada à mão em Google Forms.
+  É a mesma estrutura do ciclo 2025.2 (Anexo B §B.3), que era montada à mão em Google Forms.
 - **RN-23** ⭐ A ordem dos blocos de matéria é **determinística**, por
   `slug(disciplina), slug(professor)` — o mesmo aluno, reabrindo o formulário, vê a mesma
   sequência, e o rascunho local continua válido.
@@ -182,7 +182,7 @@ Cada segmento tem seu próprio instrumento e sua própria forma de acesso.
 - **RN-32** Submissão **atômica**: ou grava tudo, ou nada. Rascunho fica no `localStorage`.
 - **RN-33** ⭐ A coleta acontece em **Google Forms** (doc 10). Não implementamos
   antifraude própria: sem login não há como impedir resposta duplicada, e exigir login
-  quebraria o anonimato. **Limitação assumida — era assim em 2024.**
+  quebraria o anonimato. **Limitação assumida — era assim em 2025.2.**
   Em contrapartida, a API do Google **não nos expõe IP nem *user agent***, então a
   garantia de anonimato fica mais forte do que no portal próprio.
 - **RN-34** **Limiar de exibição (k-anonimato):** nenhum resultado — número ou comentário —
@@ -199,10 +199,10 @@ Cada segmento tem seu próprio instrumento e sua própria forma de acesso.
 
 - **RN-37** ⭐ **ISG (Índice de Satisfação Geral) é a métrica oficial:**
   `ISG = (média das respostas − 1) / 4`, exibido como percentual. Confirmada contra o
-  painel 2024 (Anexo B §B.4). Toda agregação — por questão, dimensão, eixo, oferta,
+  painel 2025.2 (Anexo B §B.4). Toda agregação — por questão, dimensão, eixo, oferta,
   professor, turma, curso e segmento — é publicada em ISG %.
 - **RN-38** O banco de perguntas nasce do **Anexo B** (163 perguntas oficiais).
-  Reescrever enunciado quebra a comparação com 2024; só a CPA autoriza.
+  Reescrever enunciado quebra a comparação com 2025.2; só a CPA autoriza.
 
 ---
 
@@ -219,7 +219,7 @@ Cada segmento tem seu próprio instrumento e sua própria forma de acesso.
   primeira resposta exige decisão explícita do admin (doc 10 §6.4).
 - **RN-43** A ingestão de respostas usa `google_response_id` como chave de idempotência e
   `google_question_id` para mapear cada resposta à `formulario_pergunta` — **nunca** por
-  texto da pergunta, que é o defeito do pipeline de 2024 (Anexo B §B.5).
+  texto da pergunta, que é o defeito do pipeline de 2025.2 (Anexo B §B.5).
 - **RN-44** Resposta cujo `questionId` não existe no snapshot é **registrada como órfã e
   alertada**, nunca descartada em silêncio: é o sintoma de que alguém editou o formulário
   à mão.
@@ -241,7 +241,7 @@ Cada segmento tem seu próprio instrumento e sua própria forma de acesso.
 | D-1 | Estágio, TCC e Extensão entram na CPA? | Viram oferta, mas nascem `avaliavel = false` (RN-15) |
 | D-2 | `Educação Física · Noturno · 3º período` (aba do ciclo básico integrado, `3º PER- Módulo M`) é a única turma de período ímpar e não se encaixa no padrão 2/4/6/8. É turma própria ou pertence a outra? | Mantida como turma própria → **17**. Se ela se funde a outra, o total vai a **16** |
 | D-3 | As 10 dimensões do SINAES valem integralmente para os 4 segmentos, ou cada segmento responde só as dimensões aplicáveis? | Cada segmento responde as dimensões que a CPA marcar — o banco permite as duas |
-| D-4 | Limiar de exibição para docente/técnico: 5 ou 10? | ⚠️ Em 2024 **docentes tiveram 16 respostas e técnicos 11**. Limiar 10 quase zera o relatório técnico. Proposto: **5** para todos, com aviso de amostra pequena |
-| D-6 | Introduzir "Não sei responder"? | **Não** no primeiro ciclo — muda a base do ISG e quebra a comparação com 2024 |
-| D-7 | O instrumento de COMUNIDADE tem só 3 perguntas e teve 0 respostas em 2024. Ampliar? | Manter as 3 e priorizar a **divulgação**; ampliar só com aval da CPA |
+| D-4 | Limiar de exibição para docente/técnico: 5 ou 10? | ⚠️ Em 2025.2 **docentes tiveram 16 respostas e técnicos 11**. Limiar 10 quase zera o relatório técnico. Proposto: **5** para todos, com aviso de amostra pequena |
+| D-6 | Introduzir "Não sei responder"? | **Não** no primeiro ciclo — muda a base do ISG e quebra a comparação com 2025.2 |
+| D-7 | O instrumento de COMUNIDADE tem só 3 perguntas e teve 0 respostas em 2025.2. Ampliar? | Manter as 3 e priorizar a **divulgação**; ampliar só com aval da CPA |
 | D-5 | Como a comunidade externa chega ao formulário? | Link público no site + QR em cartaz |

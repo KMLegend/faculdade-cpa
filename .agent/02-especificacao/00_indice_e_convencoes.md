@@ -18,7 +18,7 @@ as respostas para os relatórios por **dimensão do SINAES**, tudo **100% anôni
 
 ## A arquitetura em um quadro
 
-O ciclo 2024 foi feito à mão em **17 Google Forms** (ver `historico/`). Esta é a mesma
+O ciclo 2025.2 foi feito à mão em **17 Google Forms** (ver `historico/`). Esta é a mesma
 estrutura, gerada automaticamente da grade. Com o período **2026.2**:
 
 | Instrumento | Segmento | Chave | Qtd. | Tamanho |
@@ -46,7 +46,7 @@ O formulário da turma tem **dois blocos**, e é essa divisão que resolve tudo:
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-> **A chave da avaliação é `Disciplina | Professor`** — sem a turma. Em 2024 isso
+> **A chave da avaliação é `Disciplina | Professor`** — sem a turma. Em 2025.2 isso
 > aparecia no título da pergunta como sufixo digitado à mão:
 > `O docente domina o conteúdo e está atualizado? (Bioquímica- Prática - Victória)`.
 > Se a mesma disciplina tem professores diferentes, são blocos independentes.
@@ -81,8 +81,8 @@ Ver `04_banco_de_perguntas.md` §6.
 |---|---|---|
 | **Segmento** | Público respondente exigido pelo SINAES: `DISCENTE`, `DOCENTE`, `TECNICO_ADMINISTRATIVO`, `COMUNIDADE` | Curso |
 | **Dimensão** | Uma das **10 dimensões** do SINAES (Lei 10.861/2004), agrupadas em **5 eixos**. Toda pergunta pertence a uma. Confirmadas idênticas às do Power BI da CPA (Anexo B) | Escopo |
-| **ISG** | Índice de Satisfação Geral: **`(média − 1) / 4`**, exibido como %. Métrica oficial da CPA, confirmada contra o painel 2024 | Média 1–5 |
-| **`codigo`** | Identidade permanente de uma pergunta (1–163 em 2024, novas a partir de 164). **Nunca renumerado nem reutilizado** | `pergunta.id`, `ordem_exibicao` |
+| **ISG** | Índice de Satisfação Geral: **`(média − 1) / 4`**, exibido como %. Métrica oficial da CPA, confirmada contra o painel 2025.2 | Média 1–5 |
+| **`codigo`** | Identidade permanente de uma pergunta (1–163 em 2025.2, novas a partir de 164). **Nunca renumerado nem reutilizado** | `pergunta.id`, `ordem_exibicao` |
 | **`equivalencia_id`** | Grupo que reúne a mesma pergunta nos vários segmentos (67 grupos) | `dimensao_id` |
 | **Instrumento** | Um dos 5 tipos de formulário da tabela acima | Formulário (a instância) |
 | **Curso** | Graduação: **apenas** `BIOMEDICINA`, `ENFERMAGEM`, `EDUCACAO_FISICA`, `GTI`. **`CICLO_BASICO` não é curso** — é grade compartilhada (RN-03) | Disciplina |
@@ -121,7 +121,7 @@ Ver `04_banco_de_perguntas.md` §6.
   por quê: a planilha real tem typos, rótulos duplicados e bilhetes administrativos.
 - **Escreva o teste do importador contra** `anexos/grade_20262_esperado.json`.
 - **Semeie o banco de perguntas a partir do Anexo B** (163 perguntas reais da CPA).
-  Reescrever enunciado quebra a comparação com o ciclo 2024.
+  Reescrever enunciado quebra a comparação com o ciclo 2025.2.
 - **Nunca inclua a turma na chave da oferta** — multiplicaria as 105 ofertas para 136.
 - **Nunca edite um Google Forms que já tem respostas** — desloca colunas e corrompe a
   série (doc 10 §6.4).
@@ -130,7 +130,7 @@ Ver `04_banco_de_perguntas.md` §6.
 - **O ISG é `(média − 1) / 4`** — não invente outra normalização (Anexo B §B.4).
 - ⭐ **Nunca case pergunta por texto, em etapa alguma.** Use `codigo` (entre ciclos) e
   `equivalencia_id` (entre segmentos). Foi o cruzamento por texto que contaminou o
-  histórico de 2024 (Anexo B §B.5).
+  histórico de 2025.2 (Anexo B §B.5).
 - **Nunca inclua módulo ou rótulo `Turma A/B` na chave da turma** — inflaria 17 turmas
   para 21 e criaria formulários institucionais duplicados para os mesmos alunos.
 - Mantenha as dependências mínimas (restrição herdada de `01-init`).

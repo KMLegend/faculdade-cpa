@@ -53,7 +53,7 @@ export default function Dashboard() {
           valor={forms.dado.length}
           detalhe={`${publicados.length} publicados`}
         />
-        <Cartao rotulo="Submissões" valor={submissoes} detalhe="2024: 193" destaque />
+        <Cartao rotulo="Submissões" valor={submissoes} detalhe="2025.2: 193" destaque />
         <Cartao
           rotulo="Sem resposta"
           valor={semResposta}
@@ -65,7 +65,7 @@ export default function Dashboard() {
         Adesão por instrumento
       </h2>
       {adesao.dado && (
-        <Tabela colunas={['Instrumento', 'Formulários', 'Publicados', 'Submissões', '2024']}>
+        <Tabela colunas={['Instrumento', 'Formulários', 'Publicados', 'Submissões', '2025.2']}>
           {adesao.dado.instrumentos.map((i) => (
             <tr key={i.nome}>
               <td className="px-3 py-2">{i.nome}</td>
@@ -73,7 +73,7 @@ export default function Dashboard() {
               <td className="px-3 py-2 tabular-nums">{i.publicados}</td>
               <td className="px-3 py-2 font-medium tabular-nums">{i.submissoes}</td>
               <td className="px-3 py-2 tabular-nums text-slate-500">
-                {i.em_2024 === 0 ? <Selo tom="atencao">nenhuma</Selo> : i.em_2024}
+                {i.em_2025 === 0 ? <Selo tom="atencao">nenhuma</Selo> : i.em_2025}
               </td>
             </tr>
           ))}
@@ -81,7 +81,7 @@ export default function Dashboard() {
       )}
 
       <p className="mt-3 text-xs text-slate-500">
-        A coluna de 2024 é o alvo: o ciclo anterior teve 193 respostas. A comunidade
+        A coluna de 2025.2 é o alvo: o ciclo anterior teve 193 respostas. A comunidade
         externa não teve nenhuma — é a lacuna mais séria do instrumento atual.
       </p>
     </>

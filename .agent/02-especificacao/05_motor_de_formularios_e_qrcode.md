@@ -65,7 +65,7 @@ def upsert_formulario(periodo, tipo, *, turma=None, janela) -> Formulario:
   (o módulo entra como subtítulo, nunca como identidade — RN-04)
 - Segmentos: `CPA {periodo} — Avaliação {segmento}`
 
-> **Comparação com 2024:** eram **17 Google Forms montados à mão** (15 turmas + docentes
+> **Comparação com 2025.2:** eram **17 Google Forms montados à mão** (15 turmas + docentes
 > + técnicos), com os IDs fixos em um dicionário no `main.py` e o sufixo
 > `(Disciplina - Professor)` digitado pergunta por pergunta, para cada matéria de cada
 > turma. Agora são 20 formulários gerados em um clique a partir da grade.
@@ -168,14 +168,14 @@ frontend. Escolha uma e documente — não faça as duas.
 
 Durante a janela o admin vê **apenas contagens** — nunca conteúdo (RN-34).
 
-| Instrumento | Formulários | Publicados | Submissões | 2024 (referência) |
+| Instrumento | Formulários | Publicados | Submissões | 2025.2 (referência) |
 |---|---|---|---|---|
 | Turma | 17 | 17 | 210 | 166 |
 | Docente | 1 | 1 | 23 | 16 |
 | Técnico-administrativo | 1 | 1 | 9 | 11 |
 | Comunidade | 1 | 1 | 41 | **0** |
 
-A coluna de 2024 é o alvo: o ciclo anterior teve **193 respostas no total**. Turma sem
+A coluna de 2025.2 é o alvo: o ciclo anterior teve **193 respostas no total**. Turma sem
 nenhuma submissão é acionável — a aplicação não aconteteceu e a CPA precisa cobrar.
 
 ## 6. Critérios de aceite

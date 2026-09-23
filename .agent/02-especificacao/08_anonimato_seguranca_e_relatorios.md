@@ -19,7 +19,7 @@ suspeitar que pode ser identificado, ele responde o que é seguro, não o que é
 | Não coletar identidade | portal próprio sem login | `emailCollectionType = DO_NOT_COLLECT`, afirmado e **relido** a cada sync |
 | Não gravar IP | nosso backend | Google não nos expõe IP na API — garantia **melhorou** |
 | Sem hora na submissão | nossa tabela | descartamos o `lastSubmittedTime`, gravando só a data |
-| Antifraude | honeypot + rate limit | **removido** — sem login não há como impedir duplicata (era assim em 2024) |
+| Antifraude | honeypot + rate limit | **removido** — sem login não há como impedir duplicata (era assim em 2025.2) |
 | Limiar de exibição (k-anonimato) | nosso relatório | **inalterado** — continua nosso |
 
 ### O que o sistema **nunca** faz
@@ -47,7 +47,7 @@ porque a API do Google não nos entrega identificador algum do respondente.
 > ⚠️ **Honestidade técnica sobre a arquitetura Google Forms:** não guardamos nenhum
 > identificador de dispositivo — a API não nos expõe IP nem *user agent*, então do nosso
 > lado o anonimato é estrutural. **Porém as respostas residem na conta Google
-> institucional**, e quem tiver acesso a essa conta vê o conteúdo bruto. Era assim em 2024.
+> institucional**, e quem tiver acesso a essa conta vê o conteúdo bruto. Era assim em 2025.2.
 > O que o sistema garante é que **nenhum dado de identidade é coletado** — não que a
 > instituição não possa ler as respostas. Diga isso à CPA nesses termos.
 
@@ -83,7 +83,7 @@ API devolve:
 | Coleta de e-mail ativada por engano | Releitura obrigatória a cada sync; publicação bloqueada em divergência (doc 10 §5) |
 | Formulário restrito ao domínio | Compartilhamento sempre "qualquer pessoa com o link"; verificado no sync |
 | Envio em massa / bot | Proteção nativa do Google Forms. Não implementamos antifraude própria |
-| Envio duplicado do mesmo aluno | **Sem mitigação** — "limitar a 1 resposta" exigiria login e quebraria o anonimato. Limitação assumida, igual a 2024 |
+| Envio duplicado do mesmo aluno | **Sem mitigação** — "limitar a 1 resposta" exigiria login e quebraria o anonimato. Limitação assumida, igual a 2025.2 |
 | Credencial do Google vazada | Conta de serviço com escopos mínimos; `GOOGLE_CREDENTIALS_JSON` fora do repositório |
 | XSS via comentário importado | Sanitizar na **ingestão**, escapar na saída do relatório |
 | SQL injection | Exclusivamente SQLAlchemy parametrizado; zero SQL por concatenação |
@@ -149,7 +149,7 @@ com o segmento. É a saída que a CPA leva ao relatório de autoavaliação.
             "DOCENTE":    { "respostas": 92,   "media": 3.74, "isg_pct": 68.50, "suprimido": false },
             "TECNICO_ADMINISTRATIVO": { "respostas": 0, "suprimido": true,
                                         "motivo": "DIMENSAO_NAO_APLICADA" } },
-          "isg_geral_pct": 77.10, "isg_2024_pct": 75.31, "variacao_pp": +1.79 } ] } ] }
+          "isg_geral_pct": 77.10, "isg_2025_pct": 75.31, "variacao_pp": +1.79 } ] } ] }
 ```
 
 Regras:
@@ -178,7 +178,7 @@ sempre respeitando o limiar.
 ```python
 def calcular_isg(valores: list[int]) -> float:
     """Métrica oficial da CPA. Escala 1–5 normalizada para 0..1.
-    Confirmada contra o painel 2024: Q68 -> 95,31% e Q49 -> 85,23%, ambos exatos."""
+    Confirmada contra o painel 2025.2: Q68 -> 95,31% e Q49 -> 85,23%, ambos exatos."""
     if not valores:
         return None
     return (statistics.mean(valores) - 1) / 4
@@ -209,12 +209,12 @@ Os dois relatórios que só existem porque as perguntas têm identidade estável
 **Entre ciclos** — agrega por `formulario_pergunta.codigo`:
 
 ```jsonc
-{ "de": "2024", "para": "2026.2",
+{ "de": "2025.2", "para": "2026.2",
   "questoes": [
     { "codigo": 11, "texto": "O docente domina o conteúdo e está atualizado?",
       "dimensao": 2, "versao_texto": 1,
-      "isg_2024_pct": 81.48, "isg_2026_pct": 84.20, "variacao_pp": +2.72,
-      "respostas_2024": 1214, "respostas_2026": 1602 } ],
+      "isg_2025_pct": 81.48, "isg_2026_pct": 84.20, "variacao_pp": +2.72,
+      "respostas_2025": 1214, "respostas_2026": 1602 } ],
   "nao_comparaveis": [
     { "codigo": 164, "motivo": "PERGUNTA_NOVA" },
     { "codigo": 29,  "motivo": "DESATIVADA_DUPLICATA" } ] }
@@ -241,7 +241,7 @@ são o achado mais acionável para a CPA — onde a instituição se vê de um j
 comunidade de outro.
 
 ⚠️ O limiar de exibição (§RN-34) se aplica **por célula segmento × pergunta**. Com 11
-respostas de técnicos em 2024, boa parte dessas células ficaria suprimida sob limiar 10 —
+respostas de técnicos em 2025.2, boa parte dessas células ficaria suprimida sob limiar 10 —
 ver a decisão D-4 no doc 01.
 
 ### 3.9 Exportação CSV
@@ -277,7 +277,7 @@ submissão (só à oferta), e apenas os não ocultos.
 | `MIN_RESPOSTAS_EXIBICAO` | `5` | não (padrão 5) — discentes |
 | `MIN_RESPOSTAS_EXIBICAO_RESTRITO` | `10` | não (padrão 10) — técnico-adm. e comunidade (RN-34) |
 | `POWERBI_URL_HISTORICO` | link do painel do ciclo anterior | não — exibido no admin como referência |
-| `ISG_FAIXAS` | `0.25,0.46,0.72` | não — faixas de cor herdadas do painel 2024 |
+| `ISG_FAIXAS` | `0.25,0.46,0.72` | não — faixas de cor herdadas do painel 2025.2 |
 | `LIMITE_ALERTA_PERGUNTAS` | `40` | não (padrão 40) |
 | `TIMEZONE` | `America/Sao_Paulo` | não |
 | `MAX_UPLOAD_MB` | `5` | não |

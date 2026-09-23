@@ -68,10 +68,10 @@ Três pontos exigem decisão da CPA antes de semear (Anexo B §B.4 e §B.5):
 
 ## 2. Os quatro instrumentos
 
-Estrutura confirmada pelo ciclo 2024 (`historico/dimensoes.xlsx`): **163 perguntas
+Estrutura confirmada pelo ciclo 2025.2 (`historico/dimensoes.xlsx`): **163 perguntas
 oficiais**, numeração contínua, divididas em 4 questionários.
 
-| Instrumento | Segmento | Nº das perguntas | Qtd. | Respostas 2024 |
+| Instrumento | Segmento | Nº das perguntas | Qtd. | Respostas 2025.2 |
 |---|---|---|---|---|
 | `DISCENTE_TURMA` | `DISCENTE` | 1–58 | 58 | 166 |
 | `DOCENTE` | `DOCENTE` | 59–118 | 60 | 16 |
@@ -106,7 +106,7 @@ As 10 por matéria, com o bloco a que pertencem:
 2 e 3 do usuário pedem: perguntas padrão a todos os formulários (Q1–Q9, Q20–Q58) e
 perguntas destinadas ao professor daquela disciplina (Q10–Q19).
 
-Em 2024 o sufixo era digitado à mão no título da pergunta:
+Em 2025.2 o sufixo era digitado à mão no título da pergunta:
 
 ```
 O docente domina o conteúdo e está atualizado?   (Bioestatística - Pedro)
@@ -121,7 +121,7 @@ mesma disciplina virar duas por erro de digitação.
 
 Não são vinculados a turma nem a oferta; um de cada por período letivo.
 O de **comunidade** é o ponto fraco herdado: 3 perguntas, todas da dimensão 4, e nenhuma
-resposta em 2024 — ver Anexo B §B.5.
+resposta em 2025.2 — ver Anexo B §B.5.
 
 ## 3. Aplicação: `TODAS` vs `ESPECIFICA` (RN-20)
 
@@ -139,7 +139,7 @@ Exemplos reais:
 - "O laboratório dispunha dos reagentes necessários?" → bloco `DISCIPLINA`, `ESPECIFICA`,
   vinculada a `Práticas Biomédicas - Química` e `Toxicologia`. Dimensão **7**.
   ⚠️ É uma pergunta **nova**, fora do Anexo B — só entra com aval da CPA, e não terá
-  comparativo com 2024.
+  comparativo com 2025.2.
 - "As atividades de extensão foram bem articuladas com o conteúdo?" → `DISCIPLINA`,
   `ESPECIFICA`, vinculada às disciplinas de Caso Problematizador. Dimensão **2**.
 - "A prática hospitalar foi bem supervisionada?" → `DISCIPLINA`, `ESPECIFICA`,
@@ -208,26 +208,26 @@ extraídas de `historico/dimensoes.xlsx`. Estão em `anexos/B_banco_perguntas_cp
 e `anexos/B_banco_perguntas_cpa.json`, com número, dimensão, bloco e questionário.
 
 Cada pergunta carrega `codigo` (1–163) e `equivalencia_id` — é o que permite ao
-relatório dizer *"Q11 subiu de 81,5% para 84,2% entre 2024 e 2026"* e
+relatório dizer *"Q11 subiu de 81,5% para 84,2% entre 2025.2 e 2026.2"* e
 *"na equivalência 1, discentes deram 72,4% e docentes 81,2%"*. Ver §5.1.
 
 ### Escala
-`LIKERT_5`: `1 · 2 · 3 · 4 · 5`. O ciclo 2024 usou exatamente essa escala
+`LIKERT_5`: `1 · 2 · 3 · 4 · 5`. O ciclo 2025.2 usou exatamente essa escala
 (distribuição real: 12.732 notas 5, 3.134 notas 4, 2.519 notas 3, 945 notas 2, 2.179 notas 1).
 
-⚠️ **O instrumento de 2024 não tinha opção "Não sei responder".** Introduzi-la muda a
+⚠️ **O instrumento de 2025.2 não tinha opção "Não sei responder".** Introduzi-la muda a
 base de cálculo do ISG e quebra a comparabilidade. Decisão da CPA — ver D-6 no doc 01.
 
 ## 5.1 ⭐ Identidade das perguntas — a regra que sustenta todo cruzamento
 
-Em 2024 o cruzamento era **por texto**, e 155 das 163 perguntas têm texto repetido em
+Em 2025.2 o cruzamento era **por texto**, e 155 das 163 perguntas têm texto repetido em
 mais de um questionário. O resultado misturava segmentos (Anexo B §B.5). A correção são
 dois identificadores estáveis.
 
 ### `codigo` — a mesma pergunta ao longo dos anos
 
 Inteiro atribuído **uma vez**, **nunca renumerado, nunca reutilizado**.
-Seed: 1–163 do ciclo 2024; próximo livre **164**.
+Seed: 1–163 do ciclo 2025.2; próximo livre **164**.
 
 | Evento | O que fazer com o código |
 |---|---|
@@ -237,7 +237,7 @@ Seed: 1–163 do ciclo 2024; próximo livre **164**.
 | Mudança de sentido | **novo** código; o antigo vira `ativo = false` |
 | Pergunta movida de segmento | **novo** código no segmento de destino |
 
-> **O teste decisivo, e é só um:** *as respostas de 2024 e de 2026 podem entrar na mesma
+> **O teste decisivo, e é só um:** *as respostas de 2025.2 e de 2026 podem entrar na mesma
 > média?* Sim → mesmo código. Não → código novo. Na dúvida, código novo: perder um
 > comparativo é reparável, somar duas perguntas diferentes não.
 
@@ -254,7 +254,7 @@ equivalencia_id = 1  "Você conhece o PDI da FPM?"
 ```
 
 Regra de integridade: **todos os membros de um grupo têm a mesma `dimensao_id`.**
-Verificado no ciclo 2024 — zero divergências.
+Verificado no ciclo 2025.2 — zero divergências.
 
 ### O que o sistema nunca faz
 
@@ -275,7 +275,7 @@ Com o banco real e a grade 2026.2:
 | Enfermagem · Noturno · 8º período | 4 | **88** |
 | **Média** | **8,1** | **129** |
 
-Em 2024 isso funcionou — 166 respostas discentes com formulários de até 161 colunas.
+Em 2025.2 isso funcionou — 166 respostas discentes com formulários de até 161 colunas.
 Mas é longo, e o abandono no meio não aparece nos dados (só os envios completos chegam).
 
 **Mitigações obrigatórias no frontend** (doc 07):

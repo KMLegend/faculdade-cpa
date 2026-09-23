@@ -48,7 +48,7 @@ export default function Layout() {
       <div className="min-w-0 flex-1">
         {USANDO_MOCK && (
           <div className="bg-amber-100 px-4 py-1.5 text-center text-xs text-amber-900">
-            Modo demonstração — dados reais da grade 2026.2 e do ciclo 2024, sem backend
+            Modo demonstração — dados reais da grade 2026.2 e do ciclo 2025.2, sem backend
           </div>
         )}
         <main className="p-4 lg:p-8">

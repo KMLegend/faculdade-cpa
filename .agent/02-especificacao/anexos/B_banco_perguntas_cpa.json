@@ -1,5 +1,5 @@
 {
- "origem": "historico/dimensoes.xlsx + consolidado_cpa.xlsx (ciclo 2024)",
+ "origem": "historico/dimensoes.xlsx + consolidado_cpa.xlsx (ciclo 2025.2)",
  "instituicao": "FPM",
  "total_respostas": 193,
  "formula_isg": "(media - 1) / 4  -> 0..1, exibido como %",
@@ -3192,8 +3192,10 @@
  ],
  "politica_de_id": {
   "codigo": "inteiro estável, atribuído uma vez, NUNCA renumerado nem reutilizado",
-  "faixa_2024": "1-163",
   "proximo_livre": 164,
-  "equivalencia_id": "agrupa a mesma pergunta entre segmentos — 67 grupos"
- }
+  "equivalencia_id": "agrupa a mesma pergunta entre segmentos — 67 grupos",
+  "faixa_2025_2": "1-163"
+ },
+ "periodo_letivo_origem": "2025.2",
+ "janela_de_aplicacao": "24/11/2025 a 01/12/2025"
 }

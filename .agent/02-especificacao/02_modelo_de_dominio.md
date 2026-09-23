@@ -180,7 +180,7 @@ Conteúdo do seed em `04_banco_de_perguntas.md` §1; alinhamento com o BI em §1
 |---|---|---|
 | `id` | PK int | |
 | `texto` | text NOT NULL | |
-| `codigo` | int **UNIQUE** NOT NULL | ⭐ **identidade permanente da pergunta.** 1–163 do ciclo 2024; novas a partir de 164. **Nunca renumerado, nunca reutilizado** |
+| `codigo` | int **UNIQUE** NOT NULL | ⭐ **identidade permanente da pergunta.** 1–163 do ciclo 2025.2; novas a partir de 164. **Nunca renumerado, nunca reutilizado** |
 | `equivalencia_id` | FK NOT NULL | ⭐ agrupa a mesma pergunta entre segmentos (67 grupos) |
 | `versao_texto` | smallint default 1 | incrementa em correção de grafia; o código permanece |
 | `ordem_exibicao` | int default 0 | posição no formulário — **independente** do código |
@@ -207,7 +207,7 @@ institucionais não há disciplina/professor a que vincular.
 Seed: **163 registros** do Anexo B. Em `DISCENTE_TURMA`, 48 com `bloco=INSTITUCIONAL`
 e 10 com `bloco IN (DISCIPLINA, PROFESSOR)`.
 
-> ⚠️ **`codigo` não é posição.** A numeração de 2024 é blocada por segmento
+> ⚠️ **`codigo` não é posição.** A numeração de 2025.2 é blocada por segmento
 > (DIS 1–58, DOC 59–118, TEC 119–160, COM 161–163), mas uma pergunta discente nova
 > **não** pode virar 59 — esse código já é de outra. Ela recebe 164. Preservar identidade
 > vale mais que a estética dos blocos.
@@ -229,7 +229,7 @@ CREATE CONSTRAINT TRIGGER ... -- ou validação na camada de serviço
 ```
 
 > É `equivalencia_id` que permite dizer *"discentes avaliam o PDI em 72,4% e docentes em
-> 81,2%"* **de propósito** — em vez do cruzamento por texto de 2024, que fazia isso por
+> 81,2%"* **de propósito** — em vez do cruzamento por texto de 2025.2, que fazia isso por
 > acidente e de forma inconsistente (Anexo B §B.5).
 
 ### `pergunta_vinculo` (só quando `aplicacao = ESPECIFICA`)
@@ -282,7 +282,7 @@ Em 2026.2: **20 formulários** — 17 de turma + 3 institucionais.
 | `dimensao_id` | FK NOT NULL | **copiado** — relatório por dimensão imune a reclassificação |
 | `oferta_id` | FK NULL | ⭐ `NULL` = bloco institucional; preenchido = bloco da matéria |
 | `bloco` | enum `BlocoPergunta` | |
-| `rotulo_oferta` | varchar(240) NULL | `Toxicologia · Prof. Washington` — substitui o sufixo manual de 2024 |
+| `rotulo_oferta` | varchar(240) NULL | `Toxicologia · Prof. Washington` — substitui o sufixo manual de 2025.2 |
 | `google_item_id` | varchar(40) NULL | id do item (grade) no Google |
 | `google_question_id` | varchar(40) NULL | ⭐ id da pergunta — **chave da ingestão** (doc 10 §9) |
 | `texto_snapshot` | text NOT NULL | |

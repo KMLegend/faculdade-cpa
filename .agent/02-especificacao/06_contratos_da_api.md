@@ -120,7 +120,7 @@ Erros próprios: `ANONIMATO_VIOLADO`, `ESTRUTURA_CONGELADA`, `REVISAO_DESATUALIZ
 | `GET` | `/api/admin/relatorios/adesao?periodo_letivo_id=1` |
 | `GET` | `/api/admin/relatorios/dimensoes?periodo_letivo_id=1&segmento=DISCENTE` ⭐ **o relatório que o MEC pede**, em ISG % |
 | `GET` | `/api/admin/relatorios/questoes?periodo_letivo_id=1` — ISG por `codigo`, reproduzindo a página *ISG por Questão* do painel |
-| `GET` | `/api/admin/relatorios/comparativo?de=2024&para=2026.2` — variação do ISG por questão entre ciclos |
+| `GET` | `/api/admin/relatorios/comparativo?de=2025.2&para=2026.2` — variação do ISG por questão entre ciclos |
 | `GET` | `/api/admin/relatorios/oferta/{oferta_id}` |
 | `GET` | `/api/admin/relatorios/professor/{professor_id}?periodo_letivo_id=1` |
 | `GET` | `/api/admin/relatorios/curso/{curso_id}?periodo_letivo_id=1` |

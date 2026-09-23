@@ -84,7 +84,7 @@ Substitui o antigo "portal do aluno". Ver `10_integracao_google_forms.md`.
 - Limiares `MIN_RESPOSTAS_EXIBICAO` e `..._RESTRITO`, moderação, exportação CSV com
   as colunas de eixo e dimensão.
 
-**Aceite:** `calcular_isg([5]*16 + ...)` reproduz **95,31%** para a Q68 do ciclo 2024;
+**Aceite:** `calcular_isg([5]*16 + ...)` reproduz **95,31%** para a Q68 do ciclo 2025.2;
 oferta com 4 submissões suprimida, com 5 exibida; o relatório por dimensão distingue
 `AMOSTRA_INSUFICIENTE` de `DIMENSAO_NAO_APLICADA`; CSV sem linha por submissão.
 
@@ -112,7 +112,7 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 ## Depois do MVP (não implementar sem pedido)
 | Item | Motivo de estar fora |
 |---|---|
-| Importar as respostas de 2024 para dentro do sistema | O comparativo pode ler o `consolidado_cpa.xlsx` como fonte externa; migrar 946 colunas esparsas não compensa |
+| Importar as respostas de 2025.2 para dentro do sistema | O comparativo pode ler o `consolidado_cpa.xlsx` como fonte externa; migrar 946 colunas esparsas não compensa |
 | Perfil de Coordenação (D-4) | Exige autorização por papel, JWT |
 | Comparativo entre semestres | Só faz sentido com 2+ períodos importados |
 | Importação direta do sistema acadêmico | Depende da instituição |
@@ -130,7 +130,7 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 - [ ] Banco semeado com as **163 perguntas do Anexo B**, com `codigo` e `equivalencia_id`
 - [ ] **67 grupos de equivalência** carregados; todos com dimensão única entre membros
 - [ ] Nenhum ponto do código casa pergunta por texto
-- [ ] `calcular_isg()` isolada, com teste reproduzindo 95,31% (Q68/2024)
+- [ ] `calcular_isg()` isolada, com teste reproduzindo 95,31% (Q68/2025)
 - [ ] Nenhum formulário gerado sem tempo estimado na folha de aplicação
 - [ ] Toda pergunta tem `dimensao_id`
 - [ ] Nenhum `DELETE` físico em entidade referenciada por formulário publicado
@@ -158,7 +158,7 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 
 | Incluir turma na chave da oferta, ou módulo/rótulo na chave da turma | Alto — 136 blocos em vez de 105, e alunos recebendo dois formulários | Constraints do doc 02 + testes da Fase 3 |
 | **Formulário de 88 a 168 perguntas** | Alto — abandono no meio, e só envios completos aparecem nos dados | Paginação por dimensão e por matéria, progresso, rascunho local, tempo estimado na folha (doc 04 §6, doc 07 §2) |
-| Reproduzir o ISG com fórmula errada | Alto — números incomparáveis com 2024 | `calcular_isg()` isolada, com teste que reproduz 95,31% da Q68 |
+| Reproduzir o ISG com fórmula errada | Alto — números incomparáveis com 2025.2 | `calcular_isg()` isolada, com teste que reproduz 95,31% da Q68 |
 | Agregar ISG como média de médias | Médio — distorce turmas com poucas matérias | Agregar sempre `pooled`, a partir das respostas (doc 08 §3.7) |
 | Render hibernando na hora da aplicação | Médio | Aquecer antes; avisar a coordenação |
 | Turma pequena com resultado suprimido | Médio — coordenação frustrada | Explicar o limiar na tela; é proteção, não falha |
