@@ -73,7 +73,7 @@ O bloco por matéria é exatamente o que era digitado à mão em 2025.2:
 
 ### 3.1 Use `questionGroupItem` (grade) — resolve o problema de tamanho
 
-O doc 04 §6 apontava formulários de 88 a 168 perguntas. Em **grade de múltipla escolha**,
+O doc 04 §7 aponta formulários de 88 a 168 perguntas. Em **grade de múltipla escolha**,
 cada oferta vira **um único item visual** com 10 linhas e 5 colunas:
 
 ```

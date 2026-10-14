@@ -157,7 +157,7 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 | Reescrever os enunciados das perguntas | Alto — quebra a série ano a ano, que é o que o MEC quer ver | Semear do Anexo B (textos reais do ciclo anterior); dimensões já confirmadas idênticas às da lei |
 
 | Incluir turma na chave da oferta, ou módulo/rótulo na chave da turma | Alto — 136 blocos em vez de 105, e alunos recebendo dois formulários | Constraints do doc 02 + testes da Fase 3 |
-| **Formulário de 88 a 168 perguntas** | Alto — abandono no meio, e só envios completos aparecem nos dados | Paginação por dimensão e por matéria, progresso, rascunho local, tempo estimado na folha (doc 04 §6, doc 07 §2) |
+| **Formulário de 88 a 168 perguntas** | Alto — abandono no meio, e só envios completos aparecem nos dados | Paginação por dimensão e por matéria, progresso, rascunho local, tempo estimado na folha (doc 04 §7, doc 07 §2) |
 | Reproduzir o ISG com fórmula errada | Alto — números incomparáveis com 2025.2 | `calcular_isg()` isolada, com teste que reproduz 95,31% da Q68 |
 | Agregar ISG como média de médias | Médio — distorce turmas com poucas matérias | Agregar sempre `pooled`, a partir das respostas (doc 08 §3.7) |
 | Render hibernando na hora da aplicação | Médio | Aquecer antes; avisar a coordenação |

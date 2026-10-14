@@ -263,7 +263,105 @@ Verificado no ciclo 2025.2 — zero divergências.
 - ❌ reaproveitar o código de uma pergunta desativada
 - ❌ alterar o `codigo` no snapshot de um formulário já publicado
 
-## 6. ⚠️ Tamanho do formulário — o risco central deste desenho
+## 6. Edição do banco — o que é permitido
+
+| Situação | Permitido? |
+|---|---|
+| Criar, editar, desativar, reordenar pergunta | Sempre |
+| Editar pergunta já usada em formulário `PUBLICADO` | Sim — **não afeta** o publicado (snapshot, RN-26) |
+| Reclassificar a dimensão de pergunta já usada | Sim — vale só para formulários futuros |
+| Excluir fisicamente pergunta já usada | **Não.** Só `ativo = false` |
+| Alterar `tipo` de pergunta já usada | **Não.** Desative e crie outra — invalidaria a agregação |
+| Alterar o `codigo` de qualquer pergunta | **Nunca.** É a identidade (§5.1) |
+| Reutilizar código de pergunta desativada | **Nunca.** Somaria perguntas diferentes |
+| Mover pergunta entre instrumentos após publicação | **Não.** Crie uma nova no instrumento de destino |
+
+## 6.1 ⭐ Quando o MEC (ou a CPA) muda as perguntas
+
+O instrumento **vai mudar** — por norma nova, por revisão da comissão, ou por uma
+correção de redação. O que decide a resposta do sistema não é *quantas* perguntas
+mudaram, mas **em que momento do ciclo** a mudança chega.
+
+### Matriz de decisão
+
+| Momento | Formulários | Respostas | O que o sistema faz |
+|---|---|---|---|
+| **A** — antes de gerar | — | — | Edita o banco e gera. Nada a decidir. |
+| **B** — gerados, em `RASCUNHO` | existem | 0 | Regenera o *snapshot* e o `hash_estrutura` muda; próxima sincronização aplica. |
+| **C** — `PUBLICADO`, sem resposta | publicados | 0 | Sincroniza com aviso; o Google Form é atualizado no lugar. |
+| **D** — `PUBLICADO`, **com resposta** | publicados | ≥ 1 | **Bloqueado** (RN-26, RN-42). Exige decisão explícita do admin — ver abaixo. |
+
+O caso D é o único difícil, e é o que acontece quando a norma chega "de hoje para
+amanhã". Editar um Google Forms com respostas desloca as colunas e corrompe a série;
+o sistema **não** oferece essa opção. Oferece duas:
+
+| Saída | Quando usar | Efeito |
+|---|---|---|
+| **D1 — aplicar no próximo ciclo** (padrão) | A mudança não é obrigatória agora | O banco é atualizado; os formulários vigentes seguem com o *snapshot* antigo até `fecha_em`. Comparativo intacto. |
+| **D2 — encerrar e reabrir** | A norma obriga a aplicar já | Os formulários afetados vão a `ENCERRADO`; novos são gerados com `substitui_formulario_id` apontando para os antigos. As respostas das duas fases convivem no mesmo período letivo. |
+
+⚠️ **D2 tem um custo que precisa ser dito à CPA antes de confirmar:** quem já respondeu
+não responde de novo, então as perguntas novas terão amostra menor que as antigas no
+mesmo ciclo. O relatório deve mostrar as duas fases separadas, **nunca somadas**, e o
+limiar de exibição (RN-34) se aplica a cada fase.
+
+### Campo necessário
+
+`formulario.substitui_formulario_id` FK NULL — liga a segunda fase à primeira.
+Relatórios do período agregam as duas por `codigo`, exibindo a contagem de cada fase.
+
+### "Mudou uma" e "mudaram todas" são o mesmo mecanismo
+
+O que muda é o alcance, não a regra:
+
+- **Uma pergunta** → só os formulários que a contêm entram no *diff*. Numa mudança de
+  redação, a sincronização emite **um** `updateItem` por formulário afetado.
+- **Todas as padrão** → todos os formulários do instrumento entram. Continua sendo um
+  `batchUpdate` por formulário (doc 10 §6.2); o volume não muda a mecânica.
+
+### Qual código usar — o teste continua o mesmo
+
+Antes de salvar, o sistema **pergunta** (não adivinha):
+
+```
+O enunciado mudou. As respostas antigas e as novas podem entrar na mesma média?
+
+  ( ) Sim — é correção de redação
+      → mantém Q47, versao_texto 1 → 2. Comparativo com 2025.2 preservado.
+
+  ( ) Não — o sentido mudou
+      → cria Q164, desativa Q47. No comparativo, Q47 aparece como
+        descontinuada e Q164 como nova, sem série histórica.
+```
+
+**Na dúvida, código novo.** Perder um comparativo é reparável; somar duas perguntas
+diferentes contamina o histórico em silêncio e ninguém percebe.
+
+⚠️ Mudança de sentido em **um** segmento quebra a equivalência com os outros: se a
+redação discente da E12 mudou mas a docente não, elas deixaram de ser a mesma pergunta.
+O sistema alerta e pede que o admin confirme se o código novo entra no grupo existente
+ou abre um grupo próprio.
+
+### O que o admin vê antes de confirmar
+
+Toda edição mostra o **alcance** antes de aplicar:
+
+```
+Q11 · "O docente domina o conteúdo e está atualizado?"
+
+  Usada em 17 formulários deste período
+    12 publicados   ·  7 com respostas  → 🔒 congelados
+     5 em rascunho                      → serão regenerados
+  Pertence à equivalência E11 (com Q69 docente, Q129 técnico)
+
+  ⚠️ 7 formulários congelados não receberão esta alteração.
+     [ Aplicar no próximo ciclo ]   [ Encerrar e reabrir os 7 ]
+```
+
+Sem esse alcance, o admin edita às cegas — e só descobre o efeito quando o relatório
+sai errado.
+
+## 7. ⚠️ Tamanho do formulário — o risco central deste desenho
 
 Com o banco real e a grade 2026.2:
 
@@ -286,18 +384,3 @@ Mas é longo, e o abandono no meio não aparece nos dados (só os envios complet
 **Alternativa registrada, não adotada:** separar o bloco institucional em um formulário
 próprio (17 institucionais + 102 por matéria = 119 QRs). Reduz cada formulário a 48 ou 10
 perguntas, mas multiplica por 7 a logística de aplicação em sala. Só vale se a adesão cair.
-
-## 6. Edição do banco — o que é permitido
-
-| Situação | Permitido? |
-|---|---|
-| Criar, editar, desativar, reordenar pergunta | Sempre |
-| Editar pergunta já usada em formulário `PUBLICADO` | Sim — **não afeta** o publicado (snapshot, RN-26) |
-| Reclassificar a dimensão de pergunta já usada | Sim — vale só para formulários futuros |
-| Excluir fisicamente pergunta já usada | **Não.** Só `ativo = false` |
-| Alterar `tipo` de pergunta já usada | **Não.** Desative e crie outra — invalidaria a agregação |
-| Alterar o `codigo` de qualquer pergunta | **Nunca.** É a identidade (§5.1) |
-| Reutilizar código de pergunta desativada | **Nunca.** Somaria perguntas diferentes |
-| Mover pergunta entre instrumentos após publicação | **Não.** Crie uma nova no instrumento de destino |
-
-

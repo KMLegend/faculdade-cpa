@@ -54,7 +54,7 @@ O formulário da turma tem **dois blocos**, e é essa divisão que resolve tudo:
 > de uma turma), **8,0 ofertas por turma** em média, em **164 alocações** na grade.
 
 ⚠️ **Tamanho é o risco central deste desenho** — de 88 a 168 perguntas por formulário.
-Ver `04_banco_de_perguntas.md` §6.
+Ver `04_banco_de_perguntas.md` §7.
 
 ## Ordem de leitura
 

@@ -198,6 +198,34 @@ const relatorioQuestoes = perguntas
   })
   .sort((a, b) => b.isg_pct - a.isg_pct)
 
+/**
+ * Alcance de uma alteração de pergunta (doc 04 §6.1): em quantos formulários ela
+ * entra, quantos estão publicados e quantos estão congelados por já terem resposta.
+ * É o que o admin precisa ver ANTES de confirmar a edição.
+ */
+function impactoDaPergunta(codigo) {
+  const p = perguntas.find((x) => x.codigo === Number(codigo))
+  if (!p) return null
+  const doInstrumento = formularios.filter(
+    (f) => INSTRUMENTOS[f.tipo_instrumento] === p.segmento,
+  )
+  const publicados = doInstrumento.filter((f) => f.status === 'PUBLICADO')
+  const congelados = doInstrumento.filter((f) => f.submissoes > 0)
+  return {
+    codigo: p.codigo,
+    formularios: doInstrumento.length,
+    publicados: publicados.length,
+    congelados: congelados.length,
+    rascunhos: doInstrumento.length - publicados.length,
+    formularios_congelados: congelados.map((f) => ({
+      id: f.id,
+      titulo: f.titulo,
+      submissoes: f.submissoes,
+    })),
+    proximo_codigo_livre: Math.max(...perguntas.map((x) => x.codigo)) + 1,
+  }
+}
+
 /** Prévia: a mesma estrutura de `montar`, mais o diff contra o Google. */
 function previaDe(id) {
   const f = formularios.find((x) => x.id === Number(id))
@@ -250,6 +278,7 @@ const ROTAS = [
   [/^\/api\/admin\/importacoes\/\d+$/, () => importacao],
   [/^\/api\/admin\/formularios$/, () => formularios],
   [/^\/api\/admin\/formularios\/(\d+)\/previa$/, (m) => previaDe(m[1])],
+  [/^\/api\/admin\/perguntas\/(\d+)\/impacto$/, (m) => impactoDaPergunta(m[1])],
   [/^\/api\/admin\/relatorios\/dimensoes$/, () => relatorioDimensoes],
   [/^\/api\/admin\/relatorios\/questoes$/, () => relatorioQuestoes],
   [

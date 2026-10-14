@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { Pencil, Plus } from 'lucide-react'
 import { useApi } from '../hooks/useApi'
+import { api } from '../api/client'
 import { Titulo, Tabela, Selo, Carregando } from '../components/ui'
+import ModalPergunta from '../components/ModalPergunta'
 
 const ABAS = [
   ['DISCENTE', 'Discente'],
@@ -12,6 +15,13 @@ const ABAS = [
 export default function Perguntas() {
   const { dado, carregando } = useApi('/api/admin/perguntas')
   const [aba, setAba] = useState('DISCENTE')
+  const [editando, setEditando] = useState(null)
+
+  async function abrirEdicao(p) {
+    const { data } = await api.get(`/api/admin/perguntas/${p.codigo}/impacto`)
+    setEditando({ pergunta: p, impacto: data })
+  }
+
   if (carregando) return <Carregando />
 
   const lista = dado.filter((p) => p.segmento === aba)
@@ -23,6 +33,9 @@ export default function Perguntas() {
       <td className="px-3 py-2 font-mono text-xs">Q{p.codigo}</td>
       <td className="px-3 py-2">
         {p.texto}
+        {p.versao_texto > 1 && (
+          <Selo tom="neutro"> redação v{p.versao_texto}</Selo>
+        )}
         {!p.ativo && <Selo tom="atencao"> desativada (duplicata)</Selo>}
       </td>
       <td className="px-3 py-2 text-center tabular-nums">{p.dimensao}</td>
@@ -32,14 +45,32 @@ export default function Perguntas() {
       <td className="px-3 py-2 text-center font-mono text-xs text-slate-500">
         E{p.equivalencia_id}
       </td>
+      <td className="px-3 py-2 text-right">
+        <button
+          onClick={() => abrirEdicao(p)}
+          title={`Editar Q${p.codigo}`}
+          className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2 py-1 text-xs hover:bg-slate-50"
+        >
+          <Pencil size={12} />
+          Editar
+        </button>
+      </td>
     </tr>
   )
 
+  const COLUNAS = ['Código', 'Pergunta', 'Dim.', 'Bloco', 'Equiv.', '']
+
   return (
     <>
-      <Titulo sub="163 perguntas oficiais da CPA · 67 grupos de equivalência">
-        Banco de perguntas
-      </Titulo>
+      <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+        <Titulo sub="163 perguntas oficiais da CPA · 67 grupos de equivalência">
+          Banco de perguntas
+        </Titulo>
+        <button className="inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-4 py-2 text-sm text-white">
+          <Plus size={15} />
+          Nova pergunta
+        </button>
+      </div>
 
       <div className="mb-4 rounded-lg border border-slate-200 bg-white p-3 text-sm text-slate-700">
         O <strong>código</strong> (Q1–Q163) é a identidade permanente da pergunta: nunca
@@ -68,9 +99,7 @@ export default function Perguntas() {
           <h2 className="mb-2 text-sm font-medium text-slate-700">
             Repetidas por matéria — {materia.length} perguntas × cada oferta da turma
           </h2>
-          <Tabela colunas={['Código', 'Pergunta', 'Dim.', 'Bloco', 'Equiv.']}>
-            {materia.map(linha)}
-          </Tabela>
+          <Tabela colunas={COLUNAS}>{materia.map(linha)}</Tabela>
           <p className="mb-6 mt-2 text-xs text-slate-500">
             Em 2025.2 estas apareciam com o sufixo “(Disciplina - Professor)” digitado à mão.
             Agora o rótulo vem da oferta, já conciliada.
@@ -81,9 +110,15 @@ export default function Perguntas() {
       <h2 className="mb-2 mt-6 text-sm font-medium text-slate-700">
         Bloco institucional — {institucionais.length} perguntas, uma vez por formulário
       </h2>
-      <Tabela colunas={['Código', 'Pergunta', 'Dim.', 'Bloco', 'Equiv.']}>
-        {institucionais.map(linha)}
-      </Tabela>
+      <Tabela colunas={COLUNAS}>{institucionais.map(linha)}</Tabela>
+
+      {editando && (
+        <ModalPergunta
+          pergunta={editando.pergunta}
+          impacto={editando.impacto}
+          onFechar={() => setEditando(null)}
+        />
+      )}
     </>
   )
 }
