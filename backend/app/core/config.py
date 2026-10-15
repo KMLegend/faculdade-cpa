@@ -1,6 +1,7 @@
 """Leitura única de variáveis de ambiente (doc 00, convenção 6)."""
 
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -34,6 +35,9 @@ class Settings(BaseSettings):
 
     # --- importação ---
     max_upload_mb: int = 5
+    #: Onde ficam os anexos da especificação (planilha e banco de perguntas).
+    #: No container o compose monta em /anexos; no host, resolve pelo repositório.
+    anexos_dir: str = ""
 
     # --- Google Forms (doc 10 §4) — só necessários a partir da Fase 5 ---
     google_client_id: str = ""
@@ -53,6 +57,22 @@ class Settings(BaseSettings):
     @property
     def faixas_isg(self) -> list[float]:
         return [float(x) for x in self.isg_faixas.split(",")]
+
+    @property
+    def caminho_anexos(self) -> Path:
+        """Resolve os anexos no container (/anexos) ou no repositório."""
+        if self.anexos_dir:
+            return Path(self.anexos_dir)
+        if Path("/anexos").is_dir():
+            return Path("/anexos")
+        aqui = Path(__file__).resolve()
+        for base in aqui.parents:
+            candidato = base / ".agent/02-especificacao/anexos"
+            if candidato.is_dir():
+                return candidato
+        raise FileNotFoundError(
+            "Anexos da especificação não encontrados. Defina ANEXOS_DIR."
+        )
 
 
 @lru_cache

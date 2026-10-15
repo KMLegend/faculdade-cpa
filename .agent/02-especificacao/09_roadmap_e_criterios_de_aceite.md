@@ -123,19 +123,19 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 
 ## Checklist de "pronto"
 
-- [ ] `docker compose up` sobe backend, frontend e banco sem intervenção manual
-- [ ] `.env.example` lista todas as variáveis dos docs 08 §4
+- [x] `docker compose up` sobe backend, frontend e banco sem intervenção manual
+- [x] `.env.example` lista todas as variáveis dos docs 08 §4
 - [ ] Testes do importador verdes contra o fixture real (17 turmas, 105 ofertas, 164 alocações)
-- [ ] Seed das 10 dimensões / 5 eixos aplicado
-- [ ] Banco semeado com as **163 perguntas do Anexo B**, com `codigo` e `equivalencia_id`
-- [ ] **67 grupos de equivalência** carregados; todos com dimensão única entre membros
+- [x] Seed das 10 dimensões / 5 eixos aplicado
+- [x] Banco semeado com as **163 perguntas do Anexo B**, com `codigo` e `equivalencia_id`
+- [x] **67 grupos de equivalência** carregados; todos com dimensão única entre membros
 - [ ] Nenhum ponto do código casa pergunta por texto
 - [ ] `calcular_isg()` isolada, com teste reproduzindo 95,31% (Q68/2025)
 - [ ] Nenhum formulário gerado sem tempo estimado na folha de aplicação
-- [ ] Toda pergunta tem `dimensao_id`
+- [x] Toda pergunta tem `dimensao_id`
 - [ ] Nenhum `DELETE` físico em entidade referenciada por formulário publicado
-- [ ] Schema sem IP, e-mail, matrícula ou `user_agent` em claro
-- [ ] `submissao.data_envio` é `date`
+- [x] Schema sem IP, e-mail, matrícula ou `user_agent` em claro
+- [x] `submissao.data_envio` é `date`
 - [ ] Grades do Google Forms testadas em 375px (doc 10 §3.1)
 - [ ] CORS restrito ao domínio de produção
 - [ ] `ADMIN_PASSWORD` e `GOOGLE_CREDENTIALS_JSON` fora do repositório
