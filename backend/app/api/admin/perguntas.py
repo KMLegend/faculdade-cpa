@@ -8,6 +8,7 @@ edição — é pergunta nova.
 from fastapi import APIRouter, Depends
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 from app.core.errors import ConflitoEstado, NaoEncontrado
 from app.core.security import exigir_admin
@@ -190,3 +191,53 @@ async def desativar_pergunta(codigo: int, s: AsyncSession = Depends(obter_sessao
     await s.commit()
     await s.refresh(pergunta)
     return pergunta
+
+
+@router.post("/perguntas/previa")
+async def previa_perguntas_turma(
+    dados: dict,
+    s: AsyncSession = Depends(obter_sessao),
+):
+    """Monta a estrutura para uma turma sem persistir (doc 06 §3, doc 04 §7)."""
+    turma_id = dados.get("turma_id")
+    if not turma_id:
+        raise ConflitoEstado("Campo turma_id é obrigatório.")
+
+    from app.models import Turma
+    from app.services.formularios import (
+        LIMITE_ALERTA_PERGUNTAS, SEGUNDOS_POR_PERGUNTA, montar,
+    )
+
+    turma = await s.scalar(
+        select(Turma).where(Turma.id == turma_id).options(selectinload(Turma.curso))
+    )
+    if turma is None:
+        raise NaoEncontrado(f"Turma {turma_id} não encontrada.")
+
+    dummy_form = Formulario(
+        periodo_letivo_id=turma.periodo_letivo_id,
+        tipo_instrumento=TipoInstrumento.DISCENTE_TURMA,
+        segmento=SEGMENTO_DO_INSTRUMENTO[TipoInstrumento.DISCENTE_TURMA],
+        turma_id=turma.id,
+        titulo=f"Prévia — {turma.rotulo}",
+        status=StatusFormulario.RASCUNHO,
+    )
+    dummy_form.turma = turma
+
+    itens = await montar(dummy_form, s)
+    total_perguntas = len(itens)
+    inst_count = sum(1 for it in itens if it.bloco == BlocoPergunta.INSTITUCIONAL)
+    ofertas_ids = {it.oferta_id for it in itens if it.oferta_id is not None}
+    total_ofertas = len(ofertas_ids)
+    por_materia = (total_perguntas - inst_count) // total_ofertas if total_ofertas > 0 else 0
+
+    return {
+        "turma_id": turma.id,
+        "total_perguntas": total_perguntas,
+        "perguntas_institucionais": inst_count,
+        "perguntas_por_materia": por_materia,
+        "total_ofertas": total_ofertas,
+        "tempo_estimado_min": max(1, round((total_perguntas * SEGUNDOS_POR_PERGUNTA) / 60)),
+        "acima_do_limite": total_perguntas > LIMITE_ALERTA_PERGUNTAS,
+    }
+

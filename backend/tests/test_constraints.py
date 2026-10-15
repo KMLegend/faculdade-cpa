@@ -22,10 +22,10 @@ pytestmark = [precisa_banco, pytest.mark.asyncio]
 async def _cenario(sessao):
     """Período, curso, disciplina e professor para pendurar os testes."""
     periodo = await sessao.scalar(
-        select(PeriodoLetivo).where(PeriodoLetivo.codigo == "2026.2")
+        select(PeriodoLetivo).where(PeriodoLetivo.codigo == "2099.1")
     )
     if periodo is None:
-        periodo = PeriodoLetivo(codigo="2026.2", ano=2026, semestre=2, ativo=False)
+        periodo = PeriodoLetivo(codigo="2099.1", ano=2099, semestre=1, ativo=False)
         sessao.add(periodo)
         await sessao.flush()
     curso = await sessao.scalar(select(Curso).where(Curso.slug == "BIOMEDICINA"))

@@ -63,6 +63,7 @@ class Formulario(Base, Timestamps):
         ForeignKey("formulario.id")
     )
 
+    periodo_letivo: Mapped["object"] = relationship("PeriodoLetivo")
     turma: Mapped["object | None"] = relationship("Turma")
     itens: Mapped[list[FormularioPergunta]] = relationship(
         back_populates="formulario",
@@ -143,6 +144,9 @@ class FormularioPergunta(Base):
     google_question_id: Mapped[str | None] = mapped_column(String(40), index=True)
 
     formulario: Mapped[Formulario] = relationship(back_populates="itens")
+    dimensao: Mapped["object"] = relationship("DimensaoSinaes")
+    oferta: Mapped["object | None"] = relationship("Oferta")
+    pergunta: Mapped["object | None"] = relationship("Pergunta")
 
     __table_args__ = (
         UniqueConstraint("formulario_id", "ordem", name="formulario_pergunta_ordem"),

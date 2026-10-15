@@ -277,7 +277,41 @@ const ROTAS = [
   [/^\/api\/admin\/dimensoes$/, () => dimensoes],
   [/^\/api\/admin\/importacoes\/\d+$/, () => importacao],
   [/^\/api\/admin\/formularios$/, () => formularios],
+  [/^\/api\/admin\/formularios\/gerar-lote$/, () => ({
+    criados: 20,
+    pulados: 0,
+    sem_oferta: [],
+    alertas: [{ formulario_id: 1, titulo: 'CPA 2026.2 — Biomedicina · Noturno · 6º período', total_perguntas: 168 }],
+  })],
+  [/^\/api\/admin\/formularios\/publicar-lote$/, () => ({
+    publicados: formularios.filter(f => f.status === 'RASCUNHO').length,
+    ids: formularios.map(f => f.id),
+  })],
+  [/^\/api\/admin\/formularios\/(\d+)\/publicar$/, (m) => {
+    const f = formularios.find(x => x.id === Number(m[1]))
+    if (f) f.status = 'PUBLICADO'
+    return f
+  }],
+  [/^\/api\/admin\/formularios\/(\d+)\/encerrar$/, (m) => {
+    const f = formularios.find(x => x.id === Number(m[1]))
+    if (f) f.status = 'ENCERRADO'
+    return f
+  }],
+  [/^\/api\/admin\/perguntas\/previa$/, () => ({
+    turma_id: 1,
+    total_perguntas: 148,
+    perguntas_institucionais: 48,
+    perguntas_por_materia: 10,
+    total_ofertas: 10,
+    tempo_estimado_min: 12,
+    acima_do_limite: false,
+  })],
   [/^\/api\/admin\/formularios\/(\d+)\/previa$/, (m) => previaDe(m[1])],
+  [/^\/api\/publico\/qrcode\/([a-f0-9-]+)$/, (m) => ({
+    uuid: m[1],
+    tipo: 'image/svg+xml',
+    mock_url: `https://docs.google.com/forms/d/e/${m[1]}/viewform`,
+  })],
   [/^\/api\/admin\/perguntas\/(\d+)\/impacto$/, (m) => impactoDaPergunta(m[1])],
   [/^\/api\/admin\/relatorios\/dimensoes$/, () => relatorioDimensoes],
   [/^\/api\/admin\/relatorios\/questoes$/, () => relatorioQuestoes],
