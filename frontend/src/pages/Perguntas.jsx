@@ -22,9 +22,9 @@ export default function Perguntas() {
     setEditando({ pergunta: p, impacto: data })
   }
 
-  if (carregando) return <Carregando />
+  if (carregando || !dado) return <Carregando />
 
-  const lista = dado.filter((p) => p.segmento === aba)
+  const lista = (dado || []).filter((p) => p.segmento === aba)
   const institucionais = lista.filter((p) => !p.por_materia)
   const materia = lista.filter((p) => p.por_materia)
 
@@ -89,7 +89,7 @@ export default function Perguntas() {
                 : 'border border-slate-300 bg-white hover:bg-slate-50'
             }`}
           >
-            {nome} ({dado.filter((p) => p.segmento === k).length})
+            {nome} ({(dado || []).filter((p) => p.segmento === k).length})
           </button>
         ))}
       </div>

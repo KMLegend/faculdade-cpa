@@ -125,15 +125,15 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 
 - [x] `docker compose up` sobe backend, frontend e banco sem intervenção manual
 - [x] `.env.example` lista todas as variáveis dos docs 08 §4
-- [ ] Testes do importador verdes contra o fixture real (17 turmas, 105 ofertas, 164 alocações)
+- [x] Testes do importador verdes contra o arquivo real (17 turmas, 105 ofertas, 164 alocações)
 - [x] Seed das 10 dimensões / 5 eixos aplicado
 - [x] Banco semeado com as **163 perguntas do Anexo B**, com `codigo` e `equivalencia_id`
 - [x] **67 grupos de equivalência** carregados; todos com dimensão única entre membros
-- [ ] Nenhum ponto do código casa pergunta por texto
+- [x] Nenhum ponto do código casa pergunta por texto
 - [ ] `calcular_isg()` isolada, com teste reproduzindo 95,31% (Q68/2025)
-- [ ] Nenhum formulário gerado sem tempo estimado na folha de aplicação
+- [x] Nenhum formulário gerado sem tempo estimado na folha de aplicação
 - [x] Toda pergunta tem `dimensao_id`
-- [ ] Nenhum `DELETE` físico em entidade referenciada por formulário publicado
+- [x] Nenhum `DELETE` físico em entidade referenciada por formulário publicado
 - [x] Schema sem IP, e-mail, matrícula ou `user_agent` em claro
 - [x] `submissao.data_envio` é `date`
 - [ ] Grades do Google Forms testadas em 375px (doc 10 §3.1)

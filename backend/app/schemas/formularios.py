@@ -35,10 +35,16 @@ class PublicarLoteEntrada(BaseModel):
 class PublicarLoteSaida(BaseModel):
     publicados: int
     ids: list[int]
+    #: Formulários que ficaram de fora e por quê — sem isto o admin vê
+    #: "15 publicados" e não sabe que 5 falharam.
+    ignorados: list[dict] = []
 
 
 class ResumoGeracaoSaida(BaseModel):
     criados: int = 0
+    #: Rascunhos que tiveram o snapshot refeito. Somar com `criados` esconderia
+    #: do admin que um formulário existente foi reescrito.
+    regenerados: int = 0
     pulados: int = 0
     sem_oferta: list[dict] = []
     alertas: list[dict] = []

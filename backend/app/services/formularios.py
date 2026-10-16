@@ -7,13 +7,12 @@ geração em lote e ciclo de vida.
 from __future__ import annotations
 
 import uuid as uuid_lib
-from datetime import datetime, timezone
-from typing import Sequence
 
 from sqlalchemy import delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
+from app.core.config import obter_settings
 from app.core.errors import ConflitoEstado, NaoEncontrado
 from app.core.texto import slugificar
 from app.models import (
@@ -24,7 +23,9 @@ from app.models import (
 )
 from app.schemas.formularios import JanelaEntrada
 
-LIMITE_ALERTA_PERGUNTAS = 150
+#: Lido de LIMITE_ALERTA_PERGUNTAS (doc 08 §4). Fixar no código tornaria a
+#: variável de ambiente letra morta.
+LIMITE_ALERTA_PERGUNTAS = obter_settings().limite_alerta_perguntas
 SEGUNDOS_POR_PERGUNTA = 5
 
 NOMES_SEGMENTO = {
@@ -226,6 +227,7 @@ async def gerar_lote(
         raise NaoEncontrado(f"Período letivo {periodo_letivo_id} não encontrado.")
 
     criados = 0
+    regenerados = 0
     pulados = 0
     sem_oferta = []
     alertas = []
@@ -300,6 +302,7 @@ async def gerar_lote(
             formulario.turma = turma
             s.add(formulario)
             await s.flush()
+            criados += 1
         else:
             formulario = existente
             formulario.titulo = titulo_formulario(TipoInstrumento.DISCENTE_TURMA, periodo.codigo, turma)
@@ -308,13 +311,14 @@ async def gerar_lote(
                 formulario.abre_em = abre_em
             if fecha_em:
                 formulario.fecha_em = fecha_em
-            # Limpa snapshot anterior
+            # Rascunho é regerável (doc 05 §2): refaz o snapshot do zero.
             await s.execute(
                 delete(FormularioPergunta).where(
                     FormularioPergunta.formulario_id == formulario.id
                 )
             )
             await s.flush()
+            regenerados += 1
 
         itens = await montar(formulario, s)
         for item in itens:
@@ -329,8 +333,6 @@ async def gerar_lote(
                 "total_perguntas": len(itens),
                 "limite": LIMITE_ALERTA_PERGUNTAS,
             })
-
-        criados += 1
 
     # 2) Segmentos institucionais (DOCENTE, TECNICO_ADMINISTRATIVO, COMUNIDADE)
     for ti in (
@@ -367,6 +369,7 @@ async def gerar_lote(
             )
             s.add(formulario)
             await s.flush()
+            criados += 1
         else:
             formulario = existente
             formulario.titulo = titulo_formulario(ti, periodo.codigo)
@@ -380,6 +383,7 @@ async def gerar_lote(
                 )
             )
             await s.flush()
+            regenerados += 1
 
         itens = await montar(formulario, s)
         for item in itens:
@@ -395,19 +399,16 @@ async def gerar_lote(
                 "limite": LIMITE_ALERTA_PERGUNTAS,
             })
 
-        criados += 1
-
     await s.commit()
 
     return {
         "criados": criados,
+        "regenerados": regenerados,
         "pulados": pulados,
         "sem_oferta": sem_oferta,
         "alertas": alertas,
     }
 
-
-from datetime import datetime, timedelta, timezone
 
 async def publicar_formulario(formulario_id: int, s: AsyncSession) -> Formulario:
     """Publica um formulário individualmente."""
@@ -422,14 +423,35 @@ async def publicar_formulario(formulario_id: int, s: AsyncSession) -> Formulario
     if formulario.status == StatusFormulario.PUBLICADO:
         return formulario
 
-    if not formulario.itens:
-        raise ConflitoEstado("Não é possível publicar formulário sem perguntas no snapshot.")
+    if formulario.status == StatusFormulario.ENCERRADO:
+        raise ConflitoEstado(
+            "Formulário encerrado não volta a publicado. Gere um novo, se necessário.",
+            {"formulario_id": formulario_id},
+        )
 
-    agora = datetime.now(timezone.utc)
-    if not formulario.abre_em:
-        formulario.abre_em = agora
-    if not formulario.fecha_em or formulario.fecha_em <= formulario.abre_em:
-        formulario.fecha_em = formulario.abre_em + timedelta(days=15)
+    if not formulario.itens:
+        raise ConflitoEstado(
+            "Não é possível publicar formulário sem perguntas no snapshot.",
+            {"formulario_id": formulario_id},
+        )
+
+    # doc 05 §2: publicar EXIGE janela definida. Inventar um prazo faria a CPA
+    # descobrir a data de fechamento só quando o formulário fechasse sozinho.
+    if not formulario.abre_em or not formulario.fecha_em:
+        raise ConflitoEstado(
+            "Defina a janela de aplicação (abre_em e fecha_em) antes de publicar.",
+            {
+                "formulario_id": formulario_id,
+                "abre_em": formulario.abre_em.isoformat() if formulario.abre_em else None,
+                "fecha_em": formulario.fecha_em.isoformat() if formulario.fecha_em else None,
+            },
+        )
+    if formulario.fecha_em <= formulario.abre_em:
+        raise ConflitoEstado(
+            "A data de fechamento precisa ser posterior à de abertura.",
+            {"abre_em": formulario.abre_em.isoformat(),
+             "fecha_em": formulario.fecha_em.isoformat()},
+        )
 
     formulario.status = StatusFormulario.PUBLICADO
     await s.commit()
@@ -438,10 +460,24 @@ async def publicar_formulario(formulario_id: int, s: AsyncSession) -> Formulario
 
 
 async def encerrar_formulario(formulario_id: int, s: AsyncSession) -> Formulario:
-    """Encerra um formulário."""
+    """Encerra um formulário publicado.
+
+    O ciclo é RASCUNHO → PUBLICADO → ENCERRADO (doc 05 §2). Encerrar um rascunho
+    pularia a publicação e deixaria no banco um formulário "encerrado" que nunca
+    aceitou resposta — um estado que o relatório não sabe interpretar.
+    """
     formulario = await s.get(Formulario, formulario_id)
     if formulario is None:
         raise NaoEncontrado(f"Formulário {formulario_id} não encontrado.")
+
+    if formulario.status == StatusFormulario.ENCERRADO:
+        return formulario
+    if formulario.status != StatusFormulario.PUBLICADO:
+        raise ConflitoEstado(
+            "Só um formulário PUBLICADO pode ser encerrado. "
+            f"Este está em {formulario.status.value}.",
+            {"formulario_id": formulario_id, "status": formulario.status.value},
+        )
 
     formulario.status = StatusFormulario.ENCERRADO
     await s.commit()
@@ -462,16 +498,20 @@ async def publicar_lote(
         q = q.where(Formulario.tipo_instrumento == tipo_instrumento)
 
     formularios = (await s.scalars(q.options(selectinload(Formulario.itens)))).all()
-    publicados_ids = []
+    publicados_ids: list[int] = []
+    ignorados: list[dict] = []
 
-    agora = datetime.now(timezone.utc)
     for f in formularios:
+        # Mesmas regras de publicar_formulario — nada é inventado aqui.
         if not f.itens:
+            ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": "SEM_PERGUNTAS"})
             continue
-        if not f.abre_em:
-            f.abre_em = agora
-        if not f.fecha_em or f.fecha_em <= f.abre_em:
-            f.fecha_em = f.abre_em + timedelta(days=15)
+        if not f.abre_em or not f.fecha_em:
+            ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": "SEM_JANELA"})
+            continue
+        if f.fecha_em <= f.abre_em:
+            ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": "JANELA_INVALIDA"})
+            continue
         f.status = StatusFormulario.PUBLICADO
         publicados_ids.append(f.id)
 
@@ -479,5 +519,7 @@ async def publicar_lote(
     return {
         "publicados": len(publicados_ids),
         "ids": publicados_ids,
+        # Sem isto o admin vê "15 publicados" e não sabe que 5 ficaram de fora.
+        "ignorados": ignorados,
     }
 

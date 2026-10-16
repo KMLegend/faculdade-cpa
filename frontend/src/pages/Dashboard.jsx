@@ -1,12 +1,25 @@
 import { Link } from 'react-router-dom'
 import { useApi } from '../hooks/useApi'
+import { usePeriodo } from '../hooks/usePeriodo'
 import { Titulo, Cartao, Tabela, Selo, Carregando } from '../components/ui'
+
+/** O backend devolve o enum; a tela mostra o nome legível. */
+const NOME_INSTRUMENTO = {
+  DISCENTE_TURMA: 'Turma',
+  DOCENTE: 'Docente',
+  TECNICO_ADMINISTRATIVO: 'Técnico-administrativo',
+  COMUNIDADE: 'Comunidade',
+}
 
 export default function Dashboard() {
   const turmas = useApi('/api/admin/turmas')
   const ofertas = useApi('/api/admin/ofertas')
   const forms = useApi('/api/admin/formularios')
-  const adesao = useApi('/api/admin/relatorios/adesao')
+  const { periodo } = usePeriodo()
+  const adesao = useApi(
+    periodo ? `/api/admin/relatorios/adesao?periodo_letivo_id=${periodo.id}` : null,
+    [periodo?.id],
+  )
 
   if (turmas.carregando || ofertas.carregando || forms.carregando) {
     return <Carregando />
@@ -64,25 +77,39 @@ export default function Dashboard() {
       <h2 className="mb-3 mt-8 text-sm font-medium text-slate-700">
         Adesão por instrumento
       </h2>
-      {adesao.dado && (
-        <Tabela colunas={['Instrumento', 'Formulários', 'Publicados', 'Submissões', '2025.2']}>
+      {adesao.dado?.instrumentos && (
+        <Tabela colunas={['Instrumento', 'Formulários', 'Submissões', '2025.2']}>
           {adesao.dado.instrumentos.map((i) => (
-            <tr key={i.nome}>
-              <td className="px-3 py-2">{i.nome}</td>
+            <tr key={i.tipo_instrumento ?? i.nome}>
+              <td className="px-3 py-2">
+                {NOME_INSTRUMENTO[i.tipo_instrumento] ?? i.nome ?? i.tipo_instrumento}
+              </td>
               <td className="px-3 py-2 tabular-nums">{i.formularios}</td>
-              <td className="px-3 py-2 tabular-nums">{i.publicados}</td>
-              <td className="px-3 py-2 font-medium tabular-nums">{i.submissoes}</td>
+              <td className="px-3 py-2 font-medium tabular-nums">
+                {i.submissoes || <Selo tom="atencao">nenhuma</Selo>}
+              </td>
               <td className="px-3 py-2 tabular-nums text-slate-500">
-                {i.em_2025 === 0 ? <Selo tom="atencao">nenhuma</Selo> : i.em_2025}
+                {i.em_2025 ?? '—'}
               </td>
             </tr>
           ))}
         </Tabela>
       )}
 
+      {adesao.dado?.publicados_sem_resposta?.length > 0 && (
+        <div className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm">
+          <strong className="text-amber-900">
+            {adesao.dado.publicados_sem_resposta.length} formulário(s) publicado(s)
+            sem nenhuma resposta
+          </strong>
+          <p className="mt-1 text-amber-800">
+            A aplicação não aconteceu nessas turmas — é o que a CPA precisa cobrar.
+          </p>
+        </div>
+      )}
       <p className="mt-3 text-xs text-slate-500">
-        A coluna de 2025.2 é o alvo: o ciclo anterior teve 193 respostas. A comunidade
-        externa não teve nenhuma — é a lacuna mais séria do instrumento atual.
+        Referência: o ciclo 2025.2 teve 193 respostas no total, e a comunidade externa
+        não teve nenhuma — é a lacuna mais séria do instrumento atual.
       </p>
     </>
   )

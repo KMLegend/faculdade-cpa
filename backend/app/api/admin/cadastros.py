@@ -5,8 +5,9 @@ estar referenciada por um formulário publicado (doc 00, convenção 4).
 """
 
 from fastapi import APIRouter, Depends, Query
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 from app.core.errors import ConflitoEstado, NaoEncontrado
 from app.core.security import exigir_admin
@@ -46,7 +47,23 @@ async def listar_professores(
     q = select(Professor).order_by(Professor.nome_exibicao)
     if ativo is not None:
         q = q.where(Professor.ativo.is_(ativo))
-    return (await s.scalars(q)).all()
+    professores = (await s.scalars(q)).all()
+
+    contagem = dict(
+        (
+            await s.execute(
+                select(Oferta.professor_id, func.count())
+                .where(Oferta.ativo.is_(True))
+                .group_by(Oferta.professor_id)
+            )
+        ).all()
+    )
+    return [
+        ProfessorSaida.model_validate(p).model_copy(
+            update={"ofertas": contagem.get(p.id, 0)}
+        )
+        for p in professores
+    ]
 
 
 @router.post("/professores", response_model=ProfessorSaida, status_code=201)
@@ -148,14 +165,79 @@ async def editar_disciplina(
 
 
 # ─── turmas ──────────────────────────────────────────────────────────────────
+#: Perguntas institucionais do instrumento discente, para estimar o tamanho.
+async def _institucionais_discente(s: AsyncSession) -> int:
+    from app.models import BlocoPergunta, Pergunta, TipoInstrumento
+
+    return await s.scalar(
+        select(func.count())
+        .select_from(Pergunta)
+        .where(
+            Pergunta.tipo_instrumento == TipoInstrumento.DISCENTE_TURMA,
+            Pergunta.bloco == BlocoPergunta.INSTITUCIONAL,
+            Pergunta.ativo.is_(True),
+        )
+    ) or 0
+
+
+async def _por_materia_discente(s: AsyncSession) -> int:
+    from app.models import BlocoPergunta, Pergunta, TipoInstrumento
+
+    return await s.scalar(
+        select(func.count())
+        .select_from(Pergunta)
+        .where(
+            Pergunta.tipo_instrumento == TipoInstrumento.DISCENTE_TURMA,
+            Pergunta.bloco.in_([BlocoPergunta.DISCIPLINA, BlocoPergunta.PROFESSOR]),
+            Pergunta.ativo.is_(True),
+        )
+    ) or 0
+
+
 @router.get("/turmas", response_model=list[TurmaSaida])
 async def listar_turmas(
     periodo_letivo_id: int | None = None, s: AsyncSession = Depends(obter_sessao)
 ):
-    q = select(Turma).order_by(Turma.curso_id, Turma.turno, Turma.periodo_numero)
+    q = (
+        select(Turma)
+        .options(
+            selectinload(Turma.curso),
+            # a cadeia precisa chegar na oferta: contamos as avaliáveis
+            selectinload(Turma.ofertas_turma).selectinload(OfertaTurma.oferta),
+        )
+        .order_by(Turma.curso_id, Turma.turno, Turma.periodo_numero)
+    )
     if periodo_letivo_id:
         q = q.where(Turma.periodo_letivo_id == periodo_letivo_id)
-    return (await s.scalars(q)).all()
+    turmas = (await s.scalars(q)).all()
+
+    institucionais = await _institucionais_discente(s)
+    por_materia = await _por_materia_discente(s)
+
+    saida = []
+    for t in turmas:
+        ofertas = sum(
+            1
+            for ot in t.ofertas_turma
+            if ot.oferta and ot.oferta.avaliavel and ot.oferta.ativo
+        )
+        saida.append(
+            TurmaSaida(
+                **{
+                    c: getattr(t, c)
+                    for c in (
+                        "id", "curso_id", "turno", "periodo_numero", "modulo",
+                        "rotulos_origem", "colunas_origem",
+                        "compartilhada_ciclo_basico", "total_alunos", "ativo",
+                    )
+                },
+                curso=t.curso.nome if t.curso else None,
+                rotulo=t.rotulo,
+                total_ofertas=ofertas,
+                total_perguntas=institucionais + por_materia * ofertas,
+            )
+        )
+    return saida
 
 
 # ─── ofertas ─────────────────────────────────────────────────────────────────
@@ -165,12 +247,35 @@ async def listar_ofertas(
     avaliavel: bool | None = None,
     s: AsyncSession = Depends(obter_sessao),
 ):
-    q = select(Oferta).order_by(Oferta.id)
+    q = (
+        select(Oferta)
+        .options(
+            selectinload(Oferta.disciplina),
+            selectinload(Oferta.professor),
+            selectinload(Oferta.ofertas_turma),
+        )
+        .order_by(Oferta.id)
+    )
     if periodo_letivo_id:
         q = q.where(Oferta.periodo_letivo_id == periodo_letivo_id)
     if avaliavel is not None:
         q = q.where(Oferta.avaliavel.is_(avaliavel))
-    return (await s.scalars(q)).all()
+
+    return [
+        OfertaSaida(
+            id=o.id,
+            disciplina_id=o.disciplina_id,
+            professor_id=o.professor_id,
+            disciplina=o.disciplina.nome if o.disciplina else None,
+            professor=o.professor.nome_exibicao if o.professor else None,
+            rotulo=o.rotulo,
+            turmas=sorted(ot.turma_id for ot in o.ofertas_turma),
+            qtd_turmas=len(o.ofertas_turma),
+            avaliavel=o.avaliavel,
+            ativo=o.ativo,
+        )
+        for o in (await s.scalars(q)).all()
+    ]
 
 
 @router.patch("/ofertas/{oferta_id}", response_model=OfertaSaida)

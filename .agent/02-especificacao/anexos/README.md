@@ -6,6 +6,7 @@
 | `A_catalogo_grade_20262.md` | Catálogo extraído: 17 turmas, ofertas multiturma, flags e professores | Leitura humana; base do seed de aliases |
 | `B_banco_perguntas_cpa.md` / `.json` | **As 163 perguntas oficiais da CPA** (4 questionários), com dimensão, bloco e a fórmula do ISG | **Seed do banco de perguntas** (doc 04 §5) |
 | `grade_20262_esperado.json` | *Golden fixture*: saída esperada do parser | Asserções do teste do importador (doc 03 §6) |
+| `C_configurar_google_cloud.md` | Passo a passo do Google Cloud até as 4 variáveis de ambiente | Antes da Fase 5 |
 
 ## Os números de 2026.2
 

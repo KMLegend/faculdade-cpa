@@ -1,6 +1,8 @@
+import logging
 from uuid import UUID
+
 from fastapi import APIRouter, Depends, Query, Response
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import obter_settings
@@ -8,6 +10,8 @@ from app.core.errors import NaoEncontrado
 from app.db.session import obter_sessao
 from app.models import Formulario, StatusFormulario
 from app.services.qrcode_service import gerar_qrcode
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["público"])
 
@@ -18,13 +22,14 @@ async def health(sessao: AsyncSession = Depends(obter_sessao)) -> dict:
     try:
         await sessao.execute(text("SELECT 1"))
         banco = "ok"
-    except Exception:  # noqa: BLE001 - health check não deve derrubar o serviço
+    except Exception as exc:  # noqa: BLE001 - health check não derruba o serviço
+        # Engolir a causa cega o diagnóstico: registra no log do serviço.
+        logger.warning("health: banco indisponível — %s: %s", type(exc).__name__, exc)
         banco = "indisponivel"
     return {"status": "ok", "banco": banco, "versao": obter_settings().versao}
 
 
 @router.get("/publico/qrcode/{uuid}")
-@router.get("/qrcode/{uuid}")
 async def obter_qrcode(
     uuid: UUID,
     formato: str = Query("png", regex="^(png|svg)$"),

@@ -261,25 +261,44 @@ Para professor e disciplina, nesta ordem — pare no primeiro que casar:
 
 | Etapa | Critério | Confiança | Ação |
 |---|---|---|---|
-| 1 | `professor_alias.slug_origem` / `disciplina_alias.slug_origem` | `1.00` | vincula, `OK` |
-| 2 | `slugificar(texto) == entidade.slug` | `1.00` | vincula, `OK` |
-| 3 | Levenshtein normalizado ≥ `0.95` | score | vincula, `OK` |
-| 4 | Levenshtein normalizado ≥ `0.80` | score | sugere, `REVISAR` |
+| 1 | `professor_alias.slug_origem` / `disciplina_alias.slug_origem` | `1.00` | **vincula**, `OK` |
+| 2 | `slugificar(texto) == entidade.slug` | `1.00` | **vincula**, `OK` |
+| 3 | Similaridade ≥ `0.95` | score | sugere em destaque, `REVISAR` |
+| 4 | Similaridade ≥ `0.80` | score | sugere, `REVISAR` |
 | 5 | nada | `0.00` | entidade nova, `REVISAR` |
+
+> ⚠️ **O fuzzy nunca vincula sozinho.** Uma versão anterior deste documento
+> previa vínculo automático acima de 0,95. Medir contra o arquivo real mostrou
+> que isso funde disciplinas **diferentes**:
+>
+> | Score | Par | |
+> |---|---|---|
+> | 0,971 | `Caso Problematizador … Interdisciplinar P` | `… Interdisciplinar M` |
+> | 0,978 | `Estudos Disciplinares e Projeto Integrador II` | `… Integrador IV` |
+> | 0,962 | `Caso Problematizador … AB` | `… CL` |
+>
+> São disciplinas de módulos e cursos distintos que diferem em uma ou duas
+> letras ao fim de um nome longo. A razão de similaridade mede o quanto dois
+> textos se parecem, não se significam a mesma coisa — e em nome longo uma
+> diferença decisiva pesa pouco. No sentido oposto, `washignton`→`washington`
+> dá só **0,900**, porque em nome curto uma transposição pesa muito.
+>
+> Quem funde é a pessoa. A decisão vira alias e não se repete.
 
 Implementação: `difflib.SequenceMatcher` da biblioteca padrão — **não** adicione
 dependência de fuzzy matching (restrição de pacotes leves de `01-init`).
 
-Casos que a etapa 3 resolve, comprovados no arquivo real:
+Scores **medidos** com `difflib.SequenceMatcher` sobre o arquivo real:
 
-| Texto A | Texto B | Score aprox. |
+| Texto A | Texto B | Score |
 |---|---|---|
-| `washignton` | `washington` | 0,95 |
-| `cinnesiologia e biomecanica` | `cinesiologia e biomecanica` | 0,98 |
-| `gestao de projetos em tecnologia de informacao` | `... da informacao` | 0,98 |
-| `promocao a saude` | `promocao da saude` | 0,94 → **REVISAR** |
-| `vitoria` | `victoria` | 0,93 → **REVISAR** |
-| `anatomofisiologia humana sistema nervoso urinario...` (2 grafias) | | 0,99 |
+| `cinnesiologia e biomecanica` | `cinesiologia e biomecanica` | 0,981 |
+| `gestao de projetos em tecnologia de informacao` | `… da informacao` | 0,978 |
+| `promocao a saude` | `promocao da saude` | 0,970 |
+| `vitoria` | `victoria` | 0,933 |
+| `washignton` | `washington` | 0,900 |
+
+Todos acima de 0,80, portanto sugeridos ao admin. Nenhum é vinculado sozinho.
 
 > **Nunca funde automaticamente professores que aparecem em cursos diferentes** (RN-13),
 > mesmo com score 1,00 — `Linda` da Educação Física pode não ser a `Linda` da Biomedicina.
@@ -304,17 +323,20 @@ Na primeira vez, **nada** casa: as 164 linhas chegam como `PROFESSOR_NOVO` +
   lote — essas seguem individuais.
 
 **Números esperados na primeira carga de `horario 20262.xlsx`, após a criação em lote:**
-São **164 alocações**, e o número muda entre as duas etapas do pipeline:
+São **164 alocações**. Com o seed da Fase 2 já trazendo os aliases conhecidos
+(`washignton`, `vitoria`, `cinnesiologia…`, `promocao a saude`, `gestao…de
+informacao`), a primeira carga fica assim — **medido**:
 
-| Etapa | OK | REVISAR | ERRO |
+| Momento | OK | REVISAR | ERRO |
 |---|---|---|---|
-| Após o parser (§3) | 158 | 5 | 1 |
-| Após o matching contra cadastro vazio (§4) | 154 | 9 | 1 |
+| Logo após o upload | 0 | 163 | 1 |
+| Após **"Criar todas as entidades novas"** | **158** | **5** | **1** |
 
-As 5 de revisão do parser são 4 `DISCIPLINA_AMBIGUA_OU` + 1 `SEM_PREFIXO_PROF`;
-a de erro é a célula do `Preceptor (A contratar)`. O matching acrescenta 4
-`MATCH_FUZZY` — as alocações de `Washignton` e `Vitória`, que precisam da decisão
-de fusão. Depois de criados os aliases, a próxima importação volta a 158/5/1.
+As 5 em revisão são as ambiguidades reais — 4 `DISCIPLINA_AMBIGUA_OU` e
+1 `SEM_PREFIXO_PROF` — e a de erro é o bilhete do `Preceptor (A contratar)`.
+
+Sem os aliases semeados, as grafias de `Washignton` e `Vitória` apareceriam
+como `MATCH_FUZZY` e somariam 4 linhas a revisar.
 
 ---
 

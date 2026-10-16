@@ -7,6 +7,11 @@ export function useApi(url, deps = []) {
 
   useEffect(() => {
     let vivo = true
+    // `null` = ainda não dá para consultar (ex.: período não resolvido).
+    if (!url) {
+      setEstado({ dado: null, carregando: true, erro: null })
+      return undefined
+    }
     setEstado((e) => ({ ...e, carregando: true }))
     api
       .get(url)

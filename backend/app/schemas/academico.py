@@ -20,6 +20,7 @@ class ProfessorSaida(Saida):
     slug: str
     email: str | None
     ativo: bool
+    ofertas: int = 0
 
 
 class ProfessorEntrada(BaseModel):
@@ -65,6 +66,9 @@ class PeriodoLetivoSaida(Saida):
 class TurmaSaida(Saida):
     id: int
     curso_id: int
+    #: Campos de exibição — o painel não deve precisar resolver ids (doc 06).
+    curso: str | None = None
+    rotulo: str | None = None
     turno: Turno
     periodo_numero: int
     modulo: str | None
@@ -72,6 +76,8 @@ class TurmaSaida(Saida):
     colunas_origem: list | None
     compartilhada_ciclo_basico: bool
     total_alunos: int | None
+    total_ofertas: int = 0
+    total_perguntas: int = 0
     ativo: bool
 
 
@@ -79,6 +85,11 @@ class OfertaSaida(Saida):
     id: int
     disciplina_id: int
     professor_id: int
+    disciplina: str | None = None
+    professor: str | None = None
+    rotulo: str | None = None
+    turmas: list[int] = []
+    qtd_turmas: int = 0
     avaliavel: bool
     ativo: bool
 

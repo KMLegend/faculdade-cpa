@@ -7,7 +7,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import publico
-from app.api.admin import cadastros, formularios, perguntas
+from app.api.admin import (
+    cadastros, formularios, importacoes, integracao, perguntas, relatorios,
+)
 from app.core.config import obter_settings
 from app.core.errors import registrar_handlers
 
@@ -37,3 +39,6 @@ app.include_router(publico.router, prefix="/api")
 app.include_router(cadastros.router, prefix="/api/admin")
 app.include_router(perguntas.router, prefix="/api/admin")
 app.include_router(formularios.router, prefix="/api/admin")
+app.include_router(importacoes.router, prefix="/api/admin")
+app.include_router(integracao.router, prefix="/api/admin")
+app.include_router(relatorios.router, prefix="/api/admin")

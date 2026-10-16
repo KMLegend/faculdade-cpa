@@ -124,20 +124,30 @@ doc 07 daria — só que implementada pelo Google.
 
 ## 4. Autenticação
 
-### 4.1 Escolha recomendada: conta de serviço com delegação em todo o domínio
+**Decisão do projeto: OAuth2 com *refresh token***, de uma conta Google
+institucional da CPA. O roteiro completo, do console às quatro variáveis, está em
+`anexos/C_configurar_google_cloud.md`.
 
-A instituição usa Google Workspace. Uma **conta de serviço** com *domain-wide delegation*,
-personificando uma conta dedicada (ex.: `cpa@fpm.edu.br`):
+### 4.1 ⚠️ `forms.body` é escopo sensível — e isso decide a configuração
 
-- Sem consentimento interativo, sem token expirando no meio do ciclo.
-- Os formulários pertencem a uma conta institucional, não a uma pessoa.
-- Requer um administrador do Workspace autorizar o *client ID* para os escopos abaixo.
+O Google classifica `forms.body` como **escopo sensível**. A consequência depende do
+tipo de usuário do projeto no Cloud Console:
 
-**Alternativa** (se não houver acesso de admin): OAuth2 com *refresh token* de uma conta
-da CPA, obtido uma vez e guardado cifrado. Funciona, mas o token pode ser revogado e o
-formulário fica sob a conta de quem autorizou.
+| Tipo | Situação | Consequência |
+|---|---|---|
+| **Interno** | projeto sob o Google Workspace da FPM | ✅ Sem verificação, sem expiração. **É o caminho.** |
+| **Externo**, *Testing* | conta comum | Refresh token **expira em 7 dias** — a integração para no meio do ciclo |
+| **Externo**, publicado | conta comum | Exige **verificação do Google**: semanas, política de privacidade, domínio próprio e vídeo de demonstração |
 
-⚠️ **Nunca** use uma conta de serviço *sem* delegação: os formulários ficariam sob uma
+> Publicar como *In production* **não** basta num projeto externo: dispara o processo
+> de verificação. Se houver Workspace, use **Interno** e nada disso se aplica.
+
+**Alternativa sem consentimento interativo:** conta de serviço com *domain-wide
+delegation*, personificando `cpa@fpm.edu.br`. Exige um administrador do Workspace
+autorizar o *client ID*. Mais robusta para operação contínua, mas depende de acesso
+administrativo que nem sempre existe.
+
+⚠️ **Nunca** use conta de serviço *sem* delegação: os formulários ficariam sob uma
 identidade sem Drive próprio, e ninguém da CPA conseguiria abri-los pela interface.
 
 ### 4.2 Escopos
@@ -146,15 +156,25 @@ identidade sem Drive próprio, e ninguém da CPA conseguiria abri-los pela inter
 |---|---|
 | `https://www.googleapis.com/auth/forms.body` | criar e editar formulários, `setPublishSettings` |
 | `https://www.googleapis.com/auth/forms.responses.readonly` | ler respostas |
-| `https://www.googleapis.com/auth/drive.file` | mover o formulário para a pasta do ciclo |
+| `https://www.googleapis.com/auth/drive.file` | criar e organizar os formulários na pasta do ciclo |
+
+`drive.file` dá acesso **apenas aos arquivos que o app criar** — o resto do Drive da
+conta permanece inacessível. Foi escolhido no lugar do `drive` completo por isso.
 
 ### 4.3 Variáveis de ambiente
 
 | Variável | Conteúdo |
 |---|---|
-| `GOOGLE_CREDENTIALS_JSON` | JSON da conta de serviço (ou o *refresh token*), **nunca versionado** |
-| `GOOGLE_SUBJECT_EMAIL` | conta personificada, ex.: `cpa@fpm.edu.br` |
-| `GOOGLE_DRIVE_FOLDER_ID` | pasta onde os formulários do ciclo são criados |
+| `GOOGLE_CLIENT_ID` | do cliente OAuth criado no Cloud Console |
+| `GOOGLE_CLIENT_SECRET` | idem — **nunca versionado** |
+| `GOOGLE_REFRESH_TOKEN` | gerado por `python -m scripts.autorizar_google` |
+| `GOOGLE_DRIVE_FOLDER_ID` | pasta do ciclo, criada pelo mesmo script |
+
+### 4.4 Quando o token morre
+
+`invalid_grant` é **erro fatal com alerta no painel**, nunca falha silenciosa. A
+sincronização e a ingestão param, mas **os formulários continuam no ar recebendo
+respostas** — nada se perde. Basta regerar o token e atualizar a variável.
 
 ---
 

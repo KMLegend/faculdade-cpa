@@ -157,9 +157,13 @@ async def editar_pergunta(
 
     campos = dados.model_dump(exclude_unset=True)
     correcao = campos.pop("correcao_de_redacao", None)
+    # Apara antes de comparar E antes de gravar: espaço nas pontas não é
+    # alteração de enunciado, e não pode vazar para o snapshot do formulário.
+    if campos.get("texto") is not None:
+        campos["texto"] = campos["texto"].strip()
     texto_novo = campos.get("texto")
 
-    if texto_novo is not None and texto_novo.strip() != pergunta.texto.strip():
+    if texto_novo is not None and texto_novo != pergunta.texto.strip():
         if correcao is None:
             raise ConflitoEstado(
                 "O enunciado mudou. Informe `correcao_de_redacao` para declarar se as "

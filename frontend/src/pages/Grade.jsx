@@ -25,7 +25,12 @@ export default function Grade() {
             <td className="px-3 py-2 text-slate-500">{t.id}</td>
             <td className="px-3 py-2 font-medium">
               {t.rotulo}
-              {t.compartilhada_ciclo_basico && <Selo tom="info"> ciclo básico</Selo>}
+              {t.compartilhada_ciclo_basico && (
+                <>
+                  {' '}
+                  <Selo tom="info">ciclo básico</Selo>
+                </>
+              )}
             </td>
             <td className="px-3 py-2 text-slate-600">{t.modulo ?? '—'}</td>
             <td className="px-3 py-2 tabular-nums">{t.total_ofertas}</td>
@@ -50,8 +55,8 @@ export default function Grade() {
         {multi.slice(0, 15).map((o) => (
           <tr key={o.id}>
             <td className="px-3 py-2">
-              {o.disciplina} · <strong>Prof. {o.professor}</strong>
-              <Selo tom="info"> {o.qtd_turmas}</Selo>
+              {o.disciplina} · <strong>Prof. {o.professor}</strong>{' '}
+              <Selo tom="info">{o.qtd_turmas} turmas</Selo>
             </td>
             <td className="px-3 py-2 text-xs text-slate-600">
               {o.turmas.map(nome).join(' · ')}

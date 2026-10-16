@@ -16,10 +16,10 @@ export default function Conciliacao() {
   const { dado, carregando } = useApi(`/api/admin/importacoes/${id}`, [id])
   const [filtro, setFiltro] = useState('REVISAR')
 
-  if (carregando) return <Carregando />
+  if (carregando || !dado) return <Carregando />
 
   const { resumo, linhas, avisos } = dado
-  const visiveis = filtro === 'TODOS' ? linhas : linhas.filter((l) => l.status === filtro)
+  const visiveis = filtro === 'TODOS' ? (linhas || []) : (linhas || []).filter((l) => l.status === filtro)
   const pendentes = resumo.REVISAR + resumo.ERRO
 
   return (

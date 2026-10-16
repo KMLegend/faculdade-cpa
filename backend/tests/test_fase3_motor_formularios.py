@@ -37,9 +37,10 @@ from app.models import (
     BlocoPergunta, Formulario, FormularioPergunta, Oferta, PeriodoLetivo,
     Pergunta, StatusFormulario, TipoInstrumento, Turma, Turno,
 )
+from app.core.errors import ConflitoEstado
 from app.services.formularios import (
-    LIMITE_ALERTA_PERGUNTAS, gerar_lote, montar, publicar_formulario,
-    publicar_lote,
+    LIMITE_ALERTA_PERGUNTAS, encerrar_formulario, gerar_lote, montar,
+    publicar_formulario, publicar_lote,
 )
 from app.services.pdf_service import (
     gerar_conferencia_turma_pdf, gerar_folha_pdf, gerar_folhas_lote_pdf,
@@ -84,7 +85,11 @@ class TestGeracaoLote:
         assert periodo is not None, "Periodo 2026.2 deve existir"
 
         resumo = await gerar_lote(periodo.id, None, sessao)
-        assert resumo["criados"] == 20 or (resumo["criados"] + resumo["pulados"] == 20)
+        # O "ou" original passava mesmo com 0 criados; o invariante é que os 20
+        # instrumentos do período sejam contemplados, criados, regerados ou pulados.
+        assert (
+            resumo["criados"] + resumo["regenerados"] + resumo["pulados"] == 20
+        ), resumo
 
         forms = (
             await sessao.scalars(
@@ -122,7 +127,9 @@ class TestGeracaoLote:
         assert form is not None
         # 12 ofertas * 10 perguntas + 47 institucionais ativas = 167 perguntas (> 150)
         assert len(form.itens) > LIMITE_ALERTA_PERGUNTAS
-        assert len(form.itens) in (167, 168)
+        # 47 institucionais ativas (Q29 é duplicata desativada) + 10 × 12 ofertas.
+        # Aceitar "167 ou 168" deixaria passar a regressão da desativação.
+        assert len(form.itens) == 167
 
     async def test_biomedicina_noturno_4_tem_apenas_um_formulario(self, sessao):
         """Critério 4 (RN-04): Módulo/rótulo A/B não duplica formulário da turma."""
@@ -143,16 +150,40 @@ class TestGeracaoLote:
         assert len(forms_4) == 1
 
     async def test_professores_diferentes_mesma_disciplina_geram_blocos_distintos(self, sessao):
-        """Critério 5: Ofertas com mesmo nome de disciplina mas docentes diferentes viram blocos próprios."""
-        itens_com_oferta = (
-            await sessao.scalars(
-                select(FormularioPergunta)
-                .where(FormularioPergunta.oferta_id.isnot(None))
-                .options(selectinload(FormularioPergunta.oferta).selectinload(Oferta.disciplina))
+        """RN-08 — mesma disciplina com docentes diferentes = blocos independentes.
+
+        Caso real: Bioquímica é dada por Andrea e por Vanessa na MESMA turma.
+        O aluno precisa avaliar as duas separadamente.
+        """
+        linhas = (
+            await sessao.execute(
+                select(
+                    FormularioPergunta.formulario_id,
+                    FormularioPergunta.oferta_id,
+                    FormularioPergunta.rotulo_oferta,
+                )
+                .where(FormularioPergunta.rotulo_oferta.ilike("Bioquímica%"))
+                .distinct()
             )
         ).all()
-        # Pelo menos um formulário avalia ofertas distintas com mesma disciplina
-        assert len(itens_com_oferta) > 0
+        assert linhas, "Bioquímica deveria aparecer em algum formulário"
+
+        # agrupa por formulário: a mesma turma precisa ter >1 oferta de Bioquímica
+        por_formulario: dict[int, set] = {}
+        for form_id, oferta_id, rotulo in linhas:
+            por_formulario.setdefault(form_id, set()).add((oferta_id, rotulo))
+
+        com_dois_docentes = {
+            fid: ofs for fid, ofs in por_formulario.items() if len(ofs) > 1
+        }
+        assert com_dois_docentes, (
+            "nenhuma turma avalia Bioquímica com dois docentes — RN-08 não está valendo"
+        )
+
+        # e os rótulos precisam nomear docentes DIFERENTES
+        for ofertas in com_dois_docentes.values():
+            docentes = {r.split("Prof. ")[-1] for _, r in ofertas}
+            assert len(docentes) > 1, f"blocos distintos mas mesmo docente: {ofertas}"
 
     async def test_ofertas_sem_turma_nao_entram_em_formularios(self, sessao):
         """Critério 6: As 4 ofertas sem turma não aparecem nos formulários."""
@@ -177,13 +208,24 @@ class TestGeracaoLote:
         periodo = await sessao.scalar(
             select(PeriodoLetivo).where(PeriodoLetivo.codigo == "2026.2")
         )
+        itens_antes = await sessao.scalar(select(func.count(FormularioPergunta.id)))
+
         resumo2 = await gerar_lote(periodo.id, None, sessao)
+
         total_forms = await sessao.scalar(
             select(func.count(Formulario.id)).where(
                 Formulario.periodo_letivo_id == periodo.id
             )
         )
+        itens_depois = await sessao.scalar(select(func.count(FormularioPergunta.id)))
+
+        # RN-25 garante: nenhum formulário NOVO e nenhum snapshot a mais.
+        # Rascunho pode ser regerado (doc 05 §2) — por isso `regenerados` é
+        # contado à parte de `criados`.
         assert total_forms == 20
+        assert resumo2["criados"] == 0, f"não pode criar formulário novo: {resumo2}"
+        assert resumo2["criados"] + resumo2["regenerados"] + resumo2["pulados"] == 20
+        assert itens_depois == itens_antes, "o total de snapshot não pode mudar"
 
 
 class TestQRCodeEPublico:
@@ -268,10 +310,18 @@ class TestCicloDeVidaEAPI:
     """Critério 10: Ciclo de vida e operações via API."""
 
     async def test_publicar_e_encerrar_formulario(self, cliente, sessao):
+        from datetime import datetime, timedelta, timezone
+
         form = await sessao.scalar(select(Formulario).limit(1))
         assert form is not None
 
-        # Publicar individual
+        # Publicar EXIGE janela definida (doc 05 §2) — o sistema não inventa
+        # prazo, então o teste precisa informá-lo como a CPA informaria.
+        agora = datetime.now(timezone.utc)
+        form.status = StatusFormulario.RASCUNHO
+        form.abre_em, form.fecha_em = agora, agora + timedelta(days=8)
+        await sessao.commit()
+
         resp_pub = await cliente.post(f"/api/admin/formularios/{form.id}/publicar")
         assert resp_pub.status_code == 200
         assert resp_pub.json()["status"] == "PUBLICADO"
@@ -294,7 +344,13 @@ class TestCicloDeVidaEAPI:
             json={"periodo_letivo_id": periodo.id},
         )
         assert resp.status_code == 200
-        assert "publicados" in resp.json()
+        corpo = resp.json()
+        assert "publicados" in corpo
+        # Formulário ignorado precisa aparecer COM o motivo: sem isso o admin vê
+        # "15 publicados" e não sabe que 5 ficaram de fora.
+        assert "ignorados" in corpo
+        for item in corpo["ignorados"]:
+            assert item["motivo"] in {"SEM_PERGUNTAS", "SEM_JANELA", "JANELA_INVALIDA"}
 
     async def test_previa_formulario(self, cliente, sessao):
         form = await sessao.scalar(
@@ -355,3 +411,84 @@ class TestArtefatosImpressaoPDF:
         assert resp.status_code == 200
         assert resp.headers["content-type"] == "application/pdf"
         assert resp.content.startswith(b"%PDF-")
+
+
+class TestCicloDeVidaValidado:
+    """Transições inválidas precisam ser RECUSADAS (doc 05 §2).
+
+    Estes casos passavam silenciosamente antes: `publicar` inventava uma janela
+    de 15 dias e `encerrar` aceitava um rascunho, pulando a publicação.
+    """
+
+    async def _formulario_em_rascunho(self, sessao, *, com_janela: bool):
+        from datetime import datetime, timedelta, timezone
+
+        form = await sessao.scalar(
+            select(Formulario).options(selectinload(Formulario.itens)).limit(1)
+        )
+        form.status = StatusFormulario.RASCUNHO
+        if com_janela:
+            agora = datetime.now(timezone.utc)
+            form.abre_em, form.fecha_em = agora, agora + timedelta(days=8)
+        else:
+            form.abre_em = form.fecha_em = None
+        await sessao.commit()
+        return form
+
+    async def test_publicar_sem_janela_recusa(self, sessao):
+        """Inventar prazo faria a CPA descobrir o fechamento quando acontecesse."""
+        form = await self._formulario_em_rascunho(sessao, com_janela=False)
+        with pytest.raises(ConflitoEstado) as erro:
+            await publicar_formulario(form.id, sessao)
+        assert "janela" in str(erro.value).lower()
+
+    async def test_janela_invertida_barra_no_banco(self, sessao):
+        """A constraint `janela_coerente` impede fecha_em <= abre_em.
+
+        A validação no serviço é defesa em profundidade: o banco já recusa antes.
+        """
+        from datetime import datetime, timedelta, timezone
+
+        from sqlalchemy.exc import IntegrityError
+
+        form = await self._formulario_em_rascunho(sessao, com_janela=True)
+        agora = datetime.now(timezone.utc)
+        form.abre_em, form.fecha_em = agora, agora - timedelta(days=1)
+        with pytest.raises(IntegrityError):
+            await sessao.commit()
+        await sessao.rollback()
+
+    async def test_publicar_com_janela_valida_funciona(self, sessao):
+        form = await self._formulario_em_rascunho(sessao, com_janela=True)
+        r = await publicar_formulario(form.id, sessao)
+        assert r.status == StatusFormulario.PUBLICADO
+        assert (r.fecha_em - r.abre_em).days == 8, "a janela informada é respeitada"
+
+    async def test_encerrar_rascunho_recusa(self, sessao):
+        """RASCUNHO → ENCERRADO pularia a publicação e criaria estado órfão."""
+        form = await self._formulario_em_rascunho(sessao, com_janela=True)
+        with pytest.raises(ConflitoEstado) as erro:
+            await encerrar_formulario(form.id, sessao)
+        assert "PUBLICADO" in str(erro.value)
+
+    async def test_encerrar_publicado_funciona(self, sessao):
+        form = await self._formulario_em_rascunho(sessao, com_janela=True)
+        await publicar_formulario(form.id, sessao)
+        r = await encerrar_formulario(form.id, sessao)
+        assert r.status == StatusFormulario.ENCERRADO
+
+    async def test_republicar_encerrado_recusa(self, sessao):
+        form = await self._formulario_em_rascunho(sessao, com_janela=True)
+        await publicar_formulario(form.id, sessao)
+        await encerrar_formulario(form.id, sessao)
+        with pytest.raises(ConflitoEstado):
+            await publicar_formulario(form.id, sessao)
+
+
+@pytest.mark.asyncio
+async def test_limite_de_alerta_vem_da_configuracao():
+    """Fixar 150 no código tornaria LIMITE_ALERTA_PERGUNTAS letra morta."""
+    from app.core.config import obter_settings
+    from app.services.formularios import LIMITE_ALERTA_PERGUNTAS
+
+    assert LIMITE_ALERTA_PERGUNTAS == obter_settings().limite_alerta_perguntas
