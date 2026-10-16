@@ -38,6 +38,12 @@ class FalsoGoogleForms:
             "revisionId": "r1",
             "responderUri": f"https://docs.google.com/forms/d/e/{form_id}/viewform",
             "settings": {"emailCollectionType": self.email_collection},
+            # Fiel à API real: `forms.create` devolve o formulário JÁ aberto a
+            # respostas. Foi o que deixou um rascunho no ar no primeiro teste
+            # contra o Google de verdade.
+            "publishSettings": {
+                "publishState": {"isPublished": True, "isAcceptingResponses": True}
+            },
         }
         self.chamadas.append(("criar", titulo))
         return self.formularios[form_id]

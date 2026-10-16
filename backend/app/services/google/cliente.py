@@ -75,7 +75,13 @@ class ClienteGoogleForms:
         from googleapiclient.discovery import build
 
         cred = credenciais or obter_credenciais()
-        self._forms = build("forms", "v1", credentials=cred, cache_discovery=False)
+        # `static_discovery=False` é obrigatório: o discovery embarcado no
+        # googleapiclient não traz `forms.setPublishSettings`, então abrir e
+        # fechar a janela de respostas falharia com AttributeError em produção.
+        self._forms = build(
+            "forms", "v1", credentials=cred,
+            cache_discovery=False, static_discovery=False,
+        )
         self._drive = build("drive", "v3", credentials=cred, cache_discovery=False)
 
     def criar(self, titulo: str) -> dict:

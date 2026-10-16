@@ -102,6 +102,11 @@ async def sincronizar(
         formulario.google_form_id = criado["formId"]
         formulario.google_responder_uri = criado.get("responderUri")
         criado_agora = True
+        # ⚠️ `forms.create` devolve o formulário JÁ aceitando respostas. Um
+        # rascunho no ar é risco duplo: a CPA ainda não revisou, e uma resposta
+        # precoce dispara o congelamento (RN-42) de um formulário não aprovado.
+        # Fecha na criação; só `publicar`, que exige a janela, reabre (doc 05 §2).
+        cliente.publicar(formulario.google_form_id, aceitando=False)
         if settings.google_drive_folder_id:
             cliente.mover_para_pasta(
                 formulario.google_form_id, settings.google_drive_folder_id
@@ -244,6 +249,33 @@ async def publicar_no_google(
             "Sincronize o formulário com o Google antes de publicar.",
             {"formulario_id": formulario_id},
         )
+
+    # doc 05 §2 — este é o caminho que de fato abre o formulário ao aluno;
+    # a mesma exigência de janela do `publicar` local vale aqui, senão basta
+    # chamar o endpoint do Google para contorná-la.
+    if aceitando:
+        if not formulario.abre_em or not formulario.fecha_em:
+            raise ConflitoEstado(
+                "Defina a janela de aplicação (abre_em e fecha_em) antes de "
+                "abrir o formulário no Google.",
+                {
+                    "formulario_id": formulario_id,
+                    "abre_em": (
+                        formulario.abre_em.isoformat() if formulario.abre_em else None
+                    ),
+                    "fecha_em": (
+                        formulario.fecha_em.isoformat() if formulario.fecha_em else None
+                    ),
+                },
+            )
+        if formulario.fecha_em <= formulario.abre_em:
+            raise ConflitoEstado(
+                "A data de fechamento precisa ser posterior à de abertura.",
+                {
+                    "abre_em": formulario.abre_em.isoformat(),
+                    "fecha_em": formulario.fecha_em.isoformat(),
+                },
+            )
 
     cliente = cliente or ClienteGoogleForms()
     _verificar_anonimato(formulario, cliente)

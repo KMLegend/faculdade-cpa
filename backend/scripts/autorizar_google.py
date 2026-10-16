@@ -40,6 +40,28 @@ def _exigir(nome: str) -> str:
     return valor
 
 
+def _porta_livre(preferida: int) -> int:
+    """A primeira porta livre a partir da preferida.
+
+    `google_auth_oauthlib` liga o servidor local sem `SO_REUSEADDR`, então uma
+    tentativa anterior deixa a porta em TIME_WAIT por ~60 s. Em vez de obrigar
+    a esperar, anda para a próxima — o redirect_uri é montado com a porta real.
+    """
+    import socket
+
+    for porta in range(preferida, preferida + 20):
+        with socket.socket() as sock:
+            try:
+                sock.bind(("localhost", porta))
+            except OSError:
+                continue
+        return porta
+    sys.exit(
+        f"Nenhuma porta livre entre {preferida} e {preferida + 19}. "
+        "Passe outra com --porta."
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -74,12 +96,20 @@ def main() -> None:
         }
     }
 
+    porta = _porta_livre(args.porta)
+    if porta != args.porta:
+        print(f"Porta {args.porta} ocupada (TIME_WAIT); usando {porta}.")
+
     print("Abrindo o consentimento no navegador…")
-    print("Entre com a conta INSTITUCIONAL da CPA, não com a sua pessoal.\n")
+    print(
+        "Use a conta que será DONA dos formulários. O ideal é a institucional\n"
+        "da CPA; uma conta pessoal funciona, mas os formulários nascem no Drive\n"
+        "dela e a migração depois exige transferir a propriedade de cada um.\n"
+    )
 
     flow = InstalledAppFlow.from_client_config(config, ESCOPOS)
     credenciais = flow.run_local_server(
-        port=args.porta,
+        port=porta,
         # offline + consent é o que garante o refresh token; sem os dois, o
         # Google devolve só o access token, que dura 1 hora.
         access_type="offline",

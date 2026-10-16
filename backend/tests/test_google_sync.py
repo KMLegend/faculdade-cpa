@@ -5,13 +5,15 @@ Usa o cliente falso: a suíte roda offline, no CI, sem tocar a conta da CPA.
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 import pytest
 import pytest_asyncio
 from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
-from app.core.errors import AnonimatoViolado, EstruturaCongelada
+from app.core.errors import AnonimatoViolado, ConflitoEstado, EstruturaCongelada
 from app.db.base import Base
 from app.models import (
     BlocoPergunta, EstadoSync, Formulario, FormularioPergunta, PeriodoLetivo,
@@ -124,6 +126,52 @@ class TestSincronizacao:
         ]
         assert len({i.google_question_id for i in itens}) == 4
 
+    async def test_formulario_criado_nasce_fechado(self, sandbox):
+        """Rascunho recém-criado não pode estar aceitando resposta.
+
+        `forms.create` devolve o formulário já aberto. Se ele ficar assim, uma
+        resposta precoce congela a estrutura (RN-42) de um formulário que a CPA
+        ainda não revisou — e a janela de aplicação deixa de significar algo.
+        """
+        fabrica, form_id = sandbox
+        cliente = FalsoGoogleForms()
+        async with fabrica() as s:
+            await sincronizar(form_id, s, cliente=cliente)
+
+        async with fabrica() as s:
+            form = await s.get(Formulario, form_id)
+        estado = cliente.formularios[form.google_form_id]["publishSettings"][
+            "publishState"
+        ]
+        assert estado["isAcceptingResponses"] is False, estado
+        assert ("publicar", (form.google_form_id, False)) in cliente.chamadas
+
+    async def test_abrir_no_google_exige_janela(self, sandbox):
+        """doc 05 §2 — o caminho do Google é o que abre ao aluno; trancá-lo também.
+
+        Sem esta guarda, bastava chamar `publicar-no-google` para pular a
+        exigência de janela que o `publicar` local já fazia.
+        """
+        fabrica, form_id = sandbox
+        cliente = FalsoGoogleForms()
+        async with fabrica() as s:
+            await sincronizar(form_id, s, cliente=cliente)
+
+        async with fabrica() as s:
+            form = await s.get(Formulario, form_id)
+            form.abre_em = None
+            form.fecha_em = None
+            await s.commit()
+
+        async with fabrica() as s:
+            with pytest.raises(ConflitoEstado):
+                await publicar_no_google(form_id, True, s, cliente=cliente)
+
+        # fechar nunca depende de janela — é a saída de emergência
+        async with fabrica() as s:
+            r = await publicar_no_google(form_id, False, s, cliente=cliente)
+        assert r["aceitando_respostas"] is False
+
     async def test_segunda_sincronizacao_nao_emite_request(self, sandbox):
         """RN-40 — `hash_estrutura` igual ⇒ nenhuma chamada de estrutura."""
         fabrica, form_id = sandbox
@@ -196,6 +244,11 @@ class TestPublicacao:
         cliente = FalsoGoogleForms()
         async with fabrica() as s:
             await sincronizar(form_id, s, cliente=cliente)
+            form = await s.get(Formulario, form_id)
+            form.abre_em = datetime(2026, 11, 24, tzinfo=timezone.utc)
+            form.fecha_em = datetime(2026, 12, 1, tzinfo=timezone.utc)
+            await s.commit()
+
             r = await publicar_no_google(form_id, True, s, cliente=cliente)
             assert r["aceitando_respostas"] is True
             r = await publicar_no_google(form_id, False, s, cliente=cliente)
