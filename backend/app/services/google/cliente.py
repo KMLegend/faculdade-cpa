@@ -51,6 +51,20 @@ def _com_retentativa(operacao, descricao: str):
                     "O Google recusou a credencial. Regere o refresh token (Anexo C).",
                     {"status": status, "detalhe": erro.reason},
                 ) from erro
+            # Corrida do lado do Google: logo após `forms.create`, o
+            # `setPublishSettings` às vezes enxerga o formulário como ainda não
+            # publicado e recusa com esta mensagem — que não descreve o pedido
+            # (mandamos accepting=False). Repetir resolve; medido em ~1 a cada 3.
+            if status == 400 and b"is_published" in (erro.content or b""):
+                if tentativa == TENTATIVAS - 1:
+                    raise
+                espera = ESPERA_BASE * (2**tentativa) + random.uniform(0, 0.5)
+                logger.warning(
+                    "google: %s ainda não propagou a publicação; nova tentativa "
+                    "em %.1fs", descricao, espera,
+                )
+                time.sleep(espera)
+                continue
             if status == 429 or (status and 500 <= status < 600):
                 if tentativa == TENTATIVAS - 1:
                     raise CotaExcedida(

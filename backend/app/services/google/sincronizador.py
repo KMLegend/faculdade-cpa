@@ -55,8 +55,14 @@ async def sincronizar(
     formulario_id: int, s: AsyncSession, cliente=None
 ) -> dict:
     """Aplica a estrutura desejada no Google. Uma única `batchUpdate`."""
+    # `populate_existing` é obrigatório: sem ele, um objeto já no identity map
+    # (o caso do lote, que carrega os 20 antes) volta do `get` SEM o eager load,
+    # e o primeiro acesso a `.itens` estoura MissingGreenlet.
     formulario = await s.get(
-        Formulario, formulario_id, options=[selectinload(Formulario.itens)]
+        Formulario,
+        formulario_id,
+        options=[selectinload(Formulario.itens)],
+        populate_existing=True,
     )
     if formulario is None:
         raise NaoEncontrado(f"Formulário {formulario_id} não encontrado.")
@@ -102,6 +108,10 @@ async def sincronizar(
         formulario.google_form_id = criado["formId"]
         formulario.google_responder_uri = criado.get("responderUri")
         criado_agora = True
+        # Grava o id ANTES de qualquer outra chamada. O formulário já existe no
+        # Drive; se o passo seguinte falhar e a transação voltar atrás, ele vira
+        # órfão — e a próxima tentativa cria um segundo com o mesmo título.
+        await s.commit()
         # ⚠️ `forms.create` devolve o formulário JÁ aceitando respostas. Um
         # rascunho no ar é risco duplo: a CPA ainda não revisou, e uma resposta
         # precoce dispara o congelamento (RN-42) de um formulário não aprovado.
