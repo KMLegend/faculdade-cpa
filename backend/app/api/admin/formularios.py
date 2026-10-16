@@ -70,6 +70,7 @@ def _montar_saida_formulario(f: Formulario) -> FormularioItemSaida:
         total_perguntas=total_perguntas,
         tempo_estimado_min=tempo_min,
         acima_do_limite=total_perguntas > LIMITE_ALERTA_PERGUNTAS,
+        limite_perguntas=LIMITE_ALERTA_PERGUNTAS,
         submissoes=total_submissoes,
         anonimato_ok=True,
     )
@@ -258,6 +259,7 @@ async def previa_formulario(id: int, s: AsyncSession = Depends(obter_sessao)):
             segmento=f.segmento,
             estado_sync=f.estado_sync,
             acima_do_limite=total_perguntas > LIMITE_ALERTA_PERGUNTAS,
+            limite_perguntas=LIMITE_ALERTA_PERGUNTAS,
         ),
         turma=turma_previa,
         perguntas_institucionais=len(itens_inst),

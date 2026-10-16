@@ -20,6 +20,8 @@ export default function Dashboard() {
     periodo ? `/api/admin/relatorios/adesao?periodo_letivo_id=${periodo.id}` : null,
     [periodo?.id],
   )
+  // A última importação aplicada é o que data a grade em uso.
+  const importacoes = useApi('/api/admin/importacoes')
 
   if (turmas.carregando || ofertas.carregando || forms.carregando) {
     return <Carregando />
@@ -30,11 +32,19 @@ export default function Dashboard() {
   const semResposta = publicados.filter((f) => f.submissoes === 0).length
   const alertaAnonimato = forms.dado.filter((f) => !f.anonimato_ok)
 
+  const aplicada = importacoes.dado?.find((i) => i.aplicada_em)
+  const subtitulo = [
+    periodo ? `Período letivo ${periodo.codigo}` : null,
+    aplicada
+      ? `grade aplicada em ${new Date(aplicada.aplicada_em).toLocaleDateString('pt-BR')}`
+      : 'nenhuma importação de grade aplicada',
+  ]
+    .filter(Boolean)
+    .join(' · ')
+
   return (
     <>
-      <Titulo sub="Período letivo 2026.2 · grade importada em 23/09/2026">
-        Painel
-      </Titulo>
+      <Titulo sub={subtitulo}>Painel</Titulo>
 
       {alertaAnonimato.length > 0 && (
         <div className="mb-6 rounded-lg border border-red-300 bg-red-50 p-4">
@@ -66,7 +76,12 @@ export default function Dashboard() {
           valor={forms.dado.length}
           detalhe={`${publicados.length} publicados`}
         />
-        <Cartao rotulo="Submissões" valor={submissoes} detalhe="2025.2: 193" destaque />
+        <Cartao
+          rotulo="Submissões"
+          valor={submissoes}
+          detalhe="referência externa 2025.2: 193"
+          destaque
+        />
         <Cartao
           rotulo="Sem resposta"
           valor={semResposta}
@@ -77,8 +92,10 @@ export default function Dashboard() {
       <h2 className="mb-3 mt-8 text-sm font-medium text-slate-700">
         Adesão por instrumento
       </h2>
+      {/* Sem coluna de 2025.2: as respostas daquele ciclo não estão no sistema
+          (ficaram fora do MVP), então ela só sabia mostrar "—". */}
       {adesao.dado?.instrumentos && (
-        <Tabela colunas={['Instrumento', 'Formulários', 'Submissões', '2025.2']}>
+        <Tabela colunas={['Instrumento', 'Formulários', 'Submissões']}>
           {adesao.dado.instrumentos.map((i) => (
             <tr key={i.tipo_instrumento ?? i.nome}>
               <td className="px-3 py-2">
@@ -87,9 +104,6 @@ export default function Dashboard() {
               <td className="px-3 py-2 tabular-nums">{i.formularios}</td>
               <td className="px-3 py-2 font-medium tabular-nums">
                 {i.submissoes || <Selo tom="atencao">nenhuma</Selo>}
-              </td>
-              <td className="px-3 py-2 tabular-nums text-slate-500">
-                {i.em_2025 ?? '—'}
               </td>
             </tr>
           ))}
@@ -108,8 +122,11 @@ export default function Dashboard() {
         </div>
       )}
       <p className="mt-3 text-xs text-slate-500">
-        Referência: o ciclo 2025.2 teve 193 respostas no total, e a comunidade externa
-        não teve nenhuma — é a lacuna mais séria do instrumento atual.
+        Referência do ciclo anterior (2025.2, aplicado de 24/11 a 01/12/2025):{' '}
+        <strong>193 respostas</strong> no total, nenhuma da comunidade externa — a
+        lacuna mais séria do instrumento atual. Número vindo do{' '}
+        <code>consolidado_cpa.xlsx</code>; aquelas respostas não estão neste banco,
+        por isso não há comparação por instrumento.
       </p>
     </>
   )

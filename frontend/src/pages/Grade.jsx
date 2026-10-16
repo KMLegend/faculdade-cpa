@@ -1,10 +1,26 @@
 import { useApi } from '../hooks/useApi'
-import { Titulo, Tabela, Selo, Carregando } from '../components/ui'
+import { usePeriodo } from '../hooks/usePeriodo'
+import { Titulo, Tabela, Selo, Carregando, Erro } from '../components/ui'
 
 export default function Grade() {
   const turmas = useApi('/api/admin/turmas')
   const ofertas = useApi('/api/admin/ofertas')
+  const importacoes = useApi('/api/admin/importacoes')
+  const { periodo } = usePeriodo()
+
+  const falha = turmas.erro ?? ofertas.erro
+  if (falha) return <Erro>{falha}</Erro>
   if (turmas.carregando || ofertas.carregando) return <Carregando />
+
+  // Período e arquivo vinham fixos no código — e o nome trazia a grafia da
+  // fixture do mock ("horario 20262.xlsx"), não a do arquivo realmente enviado.
+  const aplicada = importacoes.dado?.find((i) => i.aplicada_em)
+  const origem = [
+    periodo ? `Período ${periodo.codigo}` : null,
+    aplicada ? `importado de ${aplicada.nome_arquivo}` : 'nenhuma grade aplicada',
+  ]
+    .filter(Boolean)
+    .join(' · ')
 
   const multi = ofertas.dado.filter((o) => o.qtd_turmas > 1)
   const semTurma = ofertas.dado.filter((o) => o.qtd_turmas === 0)
@@ -12,9 +28,7 @@ export default function Grade() {
 
   return (
     <>
-      <Titulo sub="Período 2026.2 · importado de horario 20262.xlsx">
-        Grade do período
-      </Titulo>
+      <Titulo sub={origem}>Grade do período</Titulo>
 
       <h2 className="mb-2 text-sm font-medium text-slate-700">
         {turmas.dado.length} turmas — chave: curso + turno + período

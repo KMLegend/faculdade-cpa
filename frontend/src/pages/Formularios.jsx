@@ -183,7 +183,10 @@ export default function Formularios() {
               <td className="px-3 py-2 tabular-nums">
                 {f.total_perguntas}
                 {f.acima_do_limite && (
-                  <span title="acima do limite de alerta (150 perguntas)" className="cursor-help">
+                  <span
+                    title={`acima do limite de alerta (${f.limite_perguntas} perguntas)`}
+                    className="cursor-help"
+                  >
                     {' '}⚠️
                   </span>
                 )}

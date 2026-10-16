@@ -70,6 +70,10 @@ class FormularioItemSaida(Saida):
     total_perguntas: int = 0
     tempo_estimado_min: int = 0
     acima_do_limite: bool = False
+    #: O valor do limite, não só se passou dele: a tela precisa dizer "acima de
+    #: N" sem repetir N no código do frontend, que ficaria defasado se a
+    #: configuração mudasse.
+    limite_perguntas: int = 0
     submissoes: int = 0
     anonimato_ok: bool = True
 
@@ -107,6 +111,7 @@ class FormularioCabecalhoPrevia(BaseModel):
     segmento: Segmento
     estado_sync: EstadoSync
     acima_do_limite: bool
+    limite_perguntas: int = 0
 
 
 class DiffPrevia(BaseModel):
