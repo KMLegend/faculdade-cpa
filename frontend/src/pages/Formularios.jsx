@@ -115,6 +115,41 @@ export default function Formularios() {
     }
   }
 
+  async function importarRespostas(f) {
+    setMensagemSucesso(null)
+    try {
+      const { data } = await api.post(
+        `/api/admin/formularios/${f.id}/importar-respostas`,
+      )
+      setMensagemSucesso(
+        `${f.turma || f.titulo}: ${data.novas} resposta(s) importada(s)` +
+          (data.ja_importadas ? `, ${data.ja_importadas} já estavam` : '') +
+          (data.orfas ? ` · ⚠️ ${data.orfas} órfã(s)` : '') +
+          '.',
+      )
+      recarregar()
+    } catch (err) {
+      setMensagemSucesso(err.mensagem || 'Falha ao importar respostas.')
+    }
+  }
+
+  async function importarTodas() {
+    setMensagemSucesso(null)
+    try {
+      const { data } = await api.post(
+        `/api/admin/periodos/${periodo?.id}/importar-respostas`,
+      )
+      setMensagemSucesso(
+        `${data.novas ?? 0} resposta(s) importada(s) em ${
+          data.formularios ?? 0
+        } formulário(s).`,
+      )
+      recarregar()
+    } catch (err) {
+      setMensagemSucesso(err.mensagem || 'Falha ao importar respostas.')
+    }
+  }
+
   function handleCopiarLink(url) {
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(url)
@@ -157,6 +192,12 @@ export default function Formularios() {
           className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50"
         >
           Publicar em lote ({aba})
+        </button>
+        <button
+          onClick={importarTodas}
+          className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50"
+        >
+          Importar respostas
         </button>
         <button
           onClick={() =>
@@ -293,6 +334,19 @@ export default function Formularios() {
                         title="Baixar lista de conferência da turma"
                       >
                         Conferência
+                      </button>
+                    </>
+                  )}
+
+                  {f.google_form_id && (
+                    <>
+                      <span className="text-slate-300">·</span>
+                      <button
+                        onClick={() => importarRespostas(f)}
+                        className="text-slate-700 underline hover:text-slate-900"
+                        title="Buscar no Google as respostas ainda não importadas"
+                      >
+                        Importar
                       </button>
                     </>
                   )}

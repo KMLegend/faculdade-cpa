@@ -87,6 +87,29 @@ async def sincronizar(
 
     # doc 10 §6.4 — editar um form com respostas desloca colunas e corrompe a série.
     respostas = await _tem_respostas(formulario_id, s)
+    if not respostas and formulario.google_form_id:
+        # ⚠️ Olhar só o nosso banco é cego para a janela entre o aluno responder
+        # e a CPA importar. Nela, reconstruir a estrutura apaga as respostas no
+        # Google sem que nada no sistema indique perda.
+        cliente = cliente or ClienteGoogleForms()
+        try:
+            no_google = len(
+                (cliente.listar_respostas(formulario.google_form_id) or {}).get(
+                    "responses", []
+                )
+            )
+        except Exception:  # noqa: BLE001 — indisponibilidade não deve travar o sync
+            no_google = 0
+        if no_google:
+            formulario.estado_sync = EstadoSync.CONGELADO
+            await _registrar(s, formulario, ResultadoSync.BLOQUEADO, 0)
+            await s.commit()
+            raise EstruturaCongelada(
+                f"O formulário já tem {no_google} resposta(s) no Google que ainda "
+                "não foram importadas. Importe antes de alterar a estrutura — "
+                "recriar os itens agora apagaria essas respostas.",
+                {"formulario_id": formulario_id, "respostas_no_google": no_google},
+            )
     if respostas and formulario.google_form_id:
         formulario.estado_sync = EstadoSync.CONGELADO
         await _registrar(s, formulario, ResultadoSync.BLOQUEADO, 0)
@@ -175,11 +198,32 @@ def _remover_itens(form_google: dict) -> list[dict]:
 
 
 def _gravar_ids(formulario: Formulario, estrutura, form_google: dict) -> None:
+    """Casa cada item do snapshot ao `questionId` que o Google devolveu.
+
+    ⚠️ Falhar aqui em silêncio é caro: o formulário fica no ar, o aluno
+    responde, e só na ingestão se descobre que não há como cruzar resposta com
+    pergunta — quando reconstruir a estrutura já destruiria as respostas. Por
+    isso cobertura parcial é erro, não aviso.
+    """
     mapa = mapear_question_ids(estrutura, form_google)
+    sem_id = []
     for item in formulario.itens:
         par = mapa.get(item.id)
-        if par:
+        if par and par[1]:
             item.google_item_id, item.google_question_id = par
+        else:
+            sem_id.append(item.codigo)
+    if sem_id:
+        raise ConflitoEstado(
+            "O Google não devolveu identificador para "
+            f"{len(sem_id)} de {len(formulario.itens)} perguntas. Sem eles as "
+            "respostas não podem ser cruzadas. Nada foi gravado.",
+            {
+                "formulario_id": formulario.id,
+                "perguntas_sem_id": sem_id[:10],
+                "total_sem_id": len(sem_id),
+            },
+        )
 
 
 def _verificar_anonimato(formulario: Formulario, cliente) -> None:

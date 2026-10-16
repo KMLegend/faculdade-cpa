@@ -255,6 +255,57 @@ class TestPublicacao:
             assert r["status"] == "ENCERRADO"
 
 
+class TestIntegridadeDoMapeamento:
+    async def test_sem_question_id_falha_em_vez_de_gravar_meio(self, sandbox):
+        """Mapeamento incompleto é erro, não aviso.
+
+        Aconteceu de verdade: 19 formulários foram sincronizados sem nenhum
+        `google_question_id`. Ninguém percebeu até alguém responder — e aí
+        reconstruir a estrutura para corrigir já destruiria a resposta.
+        """
+        fabrica, form_id = sandbox
+        cliente = FalsoGoogleForms()
+        # Google devolve a grade sem questionId nas linhas
+        original = cliente.atualizar
+
+        def sem_ids(form_id_g, requests, revision_id=None):
+            r = original(form_id_g, requests, revision_id)
+            for item in r["form"].get("items", []):
+                for q in item.get("questionGroupItem", {}).get("questions", []):
+                    q.pop("questionId", None)
+            return r
+
+        cliente.atualizar = sem_ids
+        async with fabrica() as s:
+            with pytest.raises(ConflitoEstado):
+                await sincronizar(form_id, s, cliente=cliente)
+
+        async with fabrica() as s:
+            form = await s.get(Formulario, form_id)
+        assert form.hash_estrutura is None, "não pode marcar como sincronizado"
+
+    async def test_resposta_no_google_nao_importada_congela(self, sandbox):
+        """RN-42 precisa enxergar o Google, não só o nosso banco.
+
+        Entre o aluno responder e a CPA importar, nosso banco tem zero
+        submissões. Ressincronizar nessa janela apagaria as respostas no
+        Google sem deixar rastro.
+        """
+        fabrica, form_id = sandbox
+        cliente = FalsoGoogleForms()
+        async with fabrica() as s:
+            await sincronizar(form_id, s, cliente=cliente)
+            form = await s.get(Formulario, form_id)
+            form.hash_estrutura = None  # força nova sincronização
+            await s.commit()
+            gid = form.google_form_id
+
+        cliente.respostas[gid] = [{"responseId": "r1", "answers": {}}]
+        async with fabrica() as s:
+            with pytest.raises(EstruturaCongelada):
+                await sincronizar(form_id, s, cliente=cliente)
+
+
 class TestPublicacaoEmLote:
     async def test_lote_abre_no_google_e_aceita_janela(self, sandbox):
         """Publicar precisa ABRIR no Google, não só marcar PUBLICADO.
