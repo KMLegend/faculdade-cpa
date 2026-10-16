@@ -5,16 +5,22 @@ import { api } from '../api/client'
 import { Titulo, Tabela, Selo, Carregando, Erro } from '../components/ui'
 import ModalPergunta from '../components/ModalPergunta'
 
+// A aba é o instrumento. A pergunta não carrega `segmento`: o backend expõe
+// `tipo_instrumento`, e é dele que o segmento decorre.
 const ABAS = [
-  ['DISCENTE', 'Discente'],
+  ['DISCENTE_TURMA', 'Discente'],
   ['DOCENTE', 'Docente'],
   ['TECNICO_ADMINISTRATIVO', 'Técnico-adm.'],
   ['COMUNIDADE', 'Comunidade'],
 ]
 
+/** Repetida por oferta. `bloco` é quem diz isso — não existe `por_materia`. */
+const porMateria = (p) => p.bloco !== 'INSTITUCIONAL'
+
 export default function Perguntas() {
   const { dado, carregando, erro } = useApi('/api/admin/perguntas')
-  const [aba, setAba] = useState('DISCENTE')
+  const dimensoes = useApi('/api/admin/dimensoes')
+  const [aba, setAba] = useState('DISCENTE_TURMA')
   const [editando, setEditando] = useState(null)
 
   async function abrirEdicao(p) {
@@ -25,9 +31,12 @@ export default function Perguntas() {
   if (erro) return <Erro>{erro}</Erro>
   if (carregando || !dado) return <Carregando />
 
-  const lista = (dado || []).filter((p) => p.segmento === aba)
-  const institucionais = lista.filter((p) => !p.por_materia)
-  const materia = lista.filter((p) => p.por_materia)
+  // `dimensao_id` é a chave da tabela; o número SINAES (1 a 10) vem do catálogo.
+  const numeroDim = (id) => dimensoes.dado?.find((d) => d.id === id)?.numero ?? '—'
+  const lista = dado.filter((p) => p.tipo_instrumento === aba)
+  const institucionais = lista.filter((p) => !porMateria(p))
+  const materia = lista.filter(porMateria)
+  const equivalencias = new Set(dado.map((p) => p.equivalencia_id)).size
 
   const linha = (p) => (
     <tr key={p.codigo} className={!p.ativo ? 'bg-slate-50 text-slate-400' : undefined}>
@@ -39,7 +48,7 @@ export default function Perguntas() {
         )}
         {!p.ativo && <Selo tom="atencao"> desativada (duplicata)</Selo>}
       </td>
-      <td className="px-3 py-2 text-center tabular-nums">{p.dimensao}</td>
+      <td className="px-3 py-2 text-center tabular-nums">{numeroDim(p.dimensao_id)}</td>
       <td className="px-3 py-2">
         <Selo tom={p.bloco === 'INSTITUCIONAL' ? 'neutro' : 'info'}>{p.bloco}</Selo>
       </td>
@@ -64,7 +73,9 @@ export default function Perguntas() {
   return (
     <>
       <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
-        <Titulo sub="163 perguntas oficiais da CPA · 67 grupos de equivalência">
+        <Titulo
+          sub={`${dado.length} perguntas oficiais da CPA · ${equivalencias} grupos de equivalência`}
+        >
           Banco de perguntas
         </Titulo>
         <button className="inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-4 py-2 text-sm text-white">
@@ -90,7 +101,7 @@ export default function Perguntas() {
                 : 'border border-slate-300 bg-white hover:bg-slate-50'
             }`}
           >
-            {nome} ({(dado || []).filter((p) => p.segmento === k).length})
+            {nome} ({dado.filter((p) => p.tipo_instrumento === k).length})
           </button>
         ))}
       </div>
@@ -117,6 +128,11 @@ export default function Perguntas() {
         <ModalPergunta
           pergunta={editando.pergunta}
           impacto={editando.impacto}
+          dimensao={numeroDim(editando.pergunta.dimensao_id)}
+          segmento={
+            ABAS.find(([k]) => k === editando.pergunta.tipo_instrumento)?.[1] ??
+            'deste segmento'
+          }
           onFechar={() => setEditando(null)}
         />
       )}

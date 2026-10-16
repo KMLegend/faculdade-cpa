@@ -8,7 +8,15 @@ import { Selo } from './ui'
  * redação (mesmo código) ou mudança de sentido (código novo). Não adivinha — errar
  * aqui contamina o histórico em silêncio.
  */
-export default function ModalPergunta({ pergunta, impacto, onFechar }) {
+export default function ModalPergunta({
+  pergunta,
+  impacto,
+  onFechar,
+  // Vêm resolvidos de fora: a pergunta traz `dimensao_id` e
+  // `tipo_instrumento`, não o número da dimensão nem o nome do segmento.
+  dimensao = '—',
+  segmento = 'deste segmento',
+}) {
   const [texto, setTexto] = useState(pergunta.texto)
   const [decisao, setDecisao] = useState(null)
   const mudou = texto.trim() !== pergunta.texto.trim()
@@ -19,7 +27,7 @@ export default function ModalPergunta({ pergunta, impacto, onFechar }) {
         <header className="border-b border-slate-200 p-4">
           <p className="font-mono text-xs text-slate-500">
             Q{pergunta.codigo} · equivalência E{pergunta.equivalencia_id} · dimensão{' '}
-            {pergunta.dimensao} · versão de texto {pergunta.versao_texto}
+            {dimensao} · versão de texto {pergunta.versao_texto}
           </p>
           <h2 className="mt-1 text-lg font-semibold">Editar pergunta</h2>
         </header>
@@ -88,7 +96,7 @@ export default function ModalPergunta({ pergunta, impacto, onFechar }) {
             <div className="rounded-lg border border-slate-300 bg-slate-50 p-3 text-sm">
               ⚠️ A equivalência <strong>E{pergunta.equivalencia_id}</strong> liga esta
               pergunta às versões dos outros segmentos. Se só a versão{' '}
-              {pergunta.segmento.toLowerCase()} mudou de sentido, elas deixaram de ser a
+              {segmento.toLowerCase()} mudou de sentido, elas deixaram de ser a
               mesma pergunta.
               <div className="mt-2 flex gap-3">
                 <label className="flex items-center gap-1.5">
