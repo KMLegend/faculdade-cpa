@@ -21,6 +21,24 @@ const ABAS = [
 
 const BASE_API_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000'
 
+/** Baixa um PDF protegido.
+ *
+ * Um `<a href>` para rota /api/admin não carrega o cabeçalho de autenticação —
+ * o servidor devolve 401 e o navegador abre seu próprio diálogo de senha.
+ * Buscar pelo cliente já autenticado e salvar o blob evita isso.
+ */
+async function baixarPdf(url, nome) {
+  const { data } = await api.get(url, { responseType: 'blob' })
+  const href = URL.createObjectURL(data)
+  const a = document.createElement('a')
+  a.href = href
+  a.download = nome
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
+  URL.revokeObjectURL(href)
+}
+
 export default function Formularios() {
   const { dado, carregando, erro, recarregar } = useApi('/api/admin/formularios')
   const [aba, setAba] = useState('DISCENTE_TURMA')
@@ -91,7 +109,11 @@ export default function Formularios() {
 
   return (
     <>
-      <Titulo sub="20 formulários no período · sincronizados com o Google Forms">
+      <Titulo
+        sub={`${(dado || []).length} formulários no período · ${
+          (dado || []).filter((f) => f.google_form_id).length
+        } no Google Forms`}
+      >
         Formulários
       </Titulo>
 
@@ -120,14 +142,17 @@ export default function Formularios() {
         >
           Publicar em lote ({aba})
         </button>
-        <a
-          href={`${BASE_API_URL}/api/admin/periodos/1/folhas.pdf?tipo_instrumento=${aba}`}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          onClick={() =>
+            baixarPdf(
+              `/api/admin/periodos/1/folhas.pdf?tipo_instrumento=${aba}`,
+              `folhas_${aba}.pdf`,
+            ).catch((e) => setMensagemSucesso(e.mensagem ?? 'Falha ao gerar o PDF.'))
+          }
           className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 inline-flex items-center"
         >
           Imprimir todas as folhas (PDF)
-        </a>
+        </button>
       </div>
 
       {bloqueados.length > 0 && (
@@ -221,28 +246,38 @@ export default function Formularios() {
 
                   <span className="text-slate-300">·</span>
 
-                  <a
-                    href={`${BASE_API_URL}/api/admin/formularios/${f.id}/folha.pdf`}
-                    target="_blank"
-                    rel="noreferrer"
+                  <button
+                    onClick={() =>
+                      baixarPdf(
+                        `/api/admin/formularios/${f.id}/folha.pdf`,
+                        `folha_${f.id}.pdf`,
+                      ).catch((e) =>
+                        setMensagemSucesso(e.mensagem ?? 'Falha ao gerar o PDF.'),
+                      )
+                    }
                     className="text-slate-700 underline hover:text-slate-900"
                     title="Baixar folha A4 de aplicação"
                   >
                     Folha
-                  </a>
+                  </button>
 
                   {f.turma_id && (
                     <>
                       <span className="text-slate-300">·</span>
-                      <a
-                        href={`${BASE_API_URL}/api/admin/turmas/${f.turma_id}/conferencia.pdf`}
-                        target="_blank"
-                        rel="noreferrer"
+                      <button
+                        onClick={() =>
+                          baixarPdf(
+                            `/api/admin/turmas/${f.turma_id}/conferencia.pdf`,
+                            `conferencia_turma_${f.turma_id}.pdf`,
+                          ).catch((e) =>
+                            setMensagemSucesso(e.mensagem ?? 'Falha ao gerar o PDF.'),
+                          )
+                        }
                         className="text-slate-700 underline hover:text-slate-900"
                         title="Baixar lista de conferência da turma"
                       >
                         Conferência
-                      </a>
+                      </button>
                     </>
                   )}
 

@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useApi } from '../hooks/useApi'
+import { api } from '../api/client'
 import { Titulo, Cartao, Selo, Carregando, Erro } from '../components/ui'
 
 const NOME_INSTRUMENTO = {
@@ -40,7 +42,34 @@ function BlocoPerguntas({ titulo, selo, sufixo, perguntas }) {
 
 export default function Previa() {
   const { id = '1' } = useParams()
-  const { dado, carregando, erro } = useApi(`/api/admin/formularios/${id}/previa`, [id])
+  const { dado, carregando, erro, recarregar } = useApi(
+    `/api/admin/formularios/${id}/previa`,
+    [id],
+  )
+  const [sincronizando, setSincronizando] = useState(false)
+  const [resultado, setResultado] = useState(null)
+
+  async function sincronizar() {
+    setSincronizando(true)
+    setResultado(null)
+    try {
+      const { data } = await api.post(`/api/admin/formularios/${id}/sincronizar`)
+      const texto = {
+        CRIADO: 'Formulário criado no Google.',
+        ATUALIZADO: 'Estrutura atualizada no Google.',
+        SEM_MUDANCA: 'Nada a enviar — a estrutura no Google já está igual.',
+      }[data.resultado] ?? data.resultado
+      setResultado({
+        tom: 'ok',
+        texto: `${texto}${data.requests ? ` (${data.requests} alterações)` : ''}`,
+      })
+      recarregar()
+    } catch (e) {
+      setResultado({ tom: 'erro', texto: e.mensagem ?? 'Falha ao sincronizar.' })
+    } finally {
+      setSincronizando(false)
+    }
+  }
 
   if (carregando) return <Carregando />
   if (erro || !dado) return <Erro>{erro ?? 'Formulário não encontrado.'}</Erro>
@@ -164,10 +193,25 @@ export default function Previa() {
         >
           Voltar
         </Link>
-        <button className="rounded-md bg-slate-900 px-4 py-2 text-sm text-white">
-          Sincronizar com o Google ▸
+        <button
+          onClick={sincronizar}
+          disabled={sincronizando}
+          className="rounded-md bg-slate-900 px-4 py-2 text-sm text-white disabled:opacity-50"
+        >
+          {sincronizando ? 'Sincronizando…' : 'Sincronizar com o Google ▸'}
         </button>
       </div>
+      {resultado && (
+        <p
+          className={`mt-3 rounded-md border p-2 text-sm ${
+            resultado.tom === 'erro'
+              ? 'border-red-200 bg-red-50 text-red-900'
+              : 'border-emerald-200 bg-emerald-50 text-emerald-900'
+          }`}
+        >
+          {resultado.texto}
+        </p>
+      )}
     </>
   )
 }
