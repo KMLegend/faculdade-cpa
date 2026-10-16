@@ -350,7 +350,10 @@ class TestCicloDeVidaEAPI:
         # "15 publicados" e não sabe que 5 ficaram de fora.
         assert "ignorados" in corpo
         for item in corpo["ignorados"]:
-            assert item["motivo"] in {"SEM_PERGUNTAS", "SEM_JANELA", "JANELA_INVALIDA"}
+            assert item["motivo"] in {
+                "SEM_PERGUNTAS", "SEM_JANELA", "JANELA_INVALIDA", "NAO_SINCRONIZADO",
+                "CONFLITO_ESTADO", "ANONIMATO_VIOLADO",
+            }
 
     async def test_previa_formulario(self, cliente, sessao):
         form = await sessao.scalar(

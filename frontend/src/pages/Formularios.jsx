@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useApi } from '../hooks/useApi'
+import { usePeriodo } from '../hooks/usePeriodo'
 import { api, USANDO_MOCK } from '../api/client'
 import { Titulo, Tabela, Selo, Carregando, Erro } from '../components/ui'
 
@@ -48,9 +49,12 @@ export default function Formularios() {
   const [mensagemSucesso, setMensagemSucesso] = useState(null)
   const [copiado, setCopiado] = useState(false)
 
-  // Janela de datas no modal de geração
+  // Janela de datas — usada na geração e na publicação
   const [abreEm, setAbreEm] = useState('2026-10-01')
   const [fechaEm, setFechaEm] = useState('2026-10-15')
+  const [modalPublicar, setModalPublicar] = useState(false)
+  const { periodo } = usePeriodo()
+  const [publicando, setPublicando] = useState(false)
 
   if (erro) return <Erro>{erro}</Erro>
   if (carregando) return <Carregando />
@@ -84,18 +88,30 @@ export default function Formularios() {
     }
   }
 
-  async function handlePublicarLote() {
-    if (!confirm(`Deseja publicar em lote todos os formulários da aba "${aba}"?`)) {
-      return
-    }
+  async function handlePublicarLote(e) {
+    e.preventDefault()
+    setPublicando(true)
     try {
-      const resp = await api.post('/api/admin/formularios/publicar-lote', {
+      const { data } = await api.post('/api/admin/formularios/publicar-lote', {
+        periodo_letivo_id: periodo?.id,
         tipo_instrumento: aba,
+        abre_em: `${abreEm}T08:00:00Z`,
+        fecha_em: `${fechaEm}T23:59:59Z`,
       })
-      alert(`Publicação concluída! ${resp.data?.publicados ?? 0} formulários publicados.`)
-      if (recarregar) recarregar()
+      const fora = data.ignorados ?? []
+      setMensagemSucesso(
+        `${data.publicados} formulário(s) publicado(s) e abertos no Google.` +
+          (fora.length
+            ? ` ${fora.length} ficaram de fora: ` +
+              fora.map((i) => `#${i.id} (${i.motivo})`).join(', ')
+            : ''),
+      )
+      setModalPublicar(false)
+      recarregar()
     } catch (err) {
-      alert(err.mensagem || 'Erro ao publicar formulários.')
+      setMensagemSucesso(err.mensagem || 'Erro ao publicar formulários.')
+    } finally {
+      setPublicando(false)
     }
   }
 
@@ -137,7 +153,7 @@ export default function Formularios() {
           Gerar formulários do período
         </button>
         <button
-          onClick={handlePublicarLote}
+          onClick={() => setModalPublicar(true)}
           className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50"
         >
           Publicar em lote ({aba})
@@ -358,6 +374,64 @@ export default function Formularios() {
                   className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 disabled:opacity-50"
                 >
                   {gerando ? 'Gerando…' : 'Gerar Formulários'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {modalPublicar && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
+            <h2 className="text-base font-bold text-slate-900">
+              Publicar {aba}
+            </h2>
+            <p className="mt-1 text-xs text-slate-600">
+              Publicar abre o formulário para respostas <strong>no Google</strong>, não
+              só no painel. Só depois disso o QR Code passa a funcionar. Formulários
+              ainda não sincronizados ficam de fora e são listados.
+            </p>
+
+            <form onSubmit={handlePublicarLote} className="mt-4 space-y-4">
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-600">
+                  Abre em
+                </label>
+                <input
+                  type="date"
+                  value={abreEm}
+                  onChange={(e) => setAbreEm(e.target.value)}
+                  className="mt-1 w-full rounded border border-slate-300 p-2 text-sm"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-600">
+                  Fecha em
+                </label>
+                <input
+                  type="date"
+                  value={fechaEm}
+                  onChange={(e) => setFechaEm(e.target.value)}
+                  className="mt-1 w-full rounded border border-slate-300 p-2 text-sm"
+                  required
+                />
+              </div>
+              <div className="mt-6 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setModalPublicar(false)}
+                  className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={publicando}
+                  className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+                >
+                  {publicando ? 'Publicando…' : 'Publicar e abrir no Google'}
                 </button>
               </div>
             </form>

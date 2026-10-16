@@ -92,7 +92,12 @@ async def api_publicar_lote(
     s: AsyncSession = Depends(obter_sessao),
 ):
     """Publica em lote formulários em RASCUNHO (doc 05 §2)."""
-    res = await publicar_lote(dados.periodo_letivo_id, dados.tipo_instrumento, s)
+    janela = (
+        (dados.abre_em, dados.fecha_em) if dados.abre_em and dados.fecha_em else None
+    )
+    res = await publicar_lote(
+        dados.periodo_letivo_id, dados.tipo_instrumento, s, janela=janela
+    )
     return PublicarLoteSaida(**res)
 
 

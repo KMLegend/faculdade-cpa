@@ -255,6 +255,57 @@ class TestPublicacao:
             assert r["status"] == "ENCERRADO"
 
 
+class TestPublicacaoEmLote:
+    async def test_lote_abre_no_google_e_aceita_janela(self, sandbox):
+        """Publicar precisa ABRIR no Google, não só marcar PUBLICADO.
+
+        Enquanto `publicar_lote` só mudava o status, o painel anunciava
+        formulários publicados que no Google seguiam recusando respostas: a CPA
+        imprimiria os QR Codes e a turma não conseguiria responder.
+        """
+        from app.services.formularios import publicar_lote
+
+        fabrica, form_id = sandbox
+        cliente = FalsoGoogleForms()
+        async with fabrica() as s:
+            await sincronizar(form_id, s, cliente=cliente)
+            # sem janela definida em lugar nenhum — ela chega na publicação
+            form = await s.get(Formulario, form_id)
+            form.abre_em = form.fecha_em = None
+            await s.commit()
+
+        janela = (
+            datetime(2026, 11, 24, tzinfo=timezone.utc),
+            datetime(2026, 12, 1, tzinfo=timezone.utc),
+        )
+        async with fabrica() as s:
+            r = await publicar_lote(None, None, s, janela=janela, cliente=cliente)
+
+        assert r["publicados"] == 1, r
+        async with fabrica() as s:
+            form = await s.get(Formulario, form_id)
+        assert form.abre_em == janela[0], "a janela da publicação precisa ser gravada"
+        estado = cliente.formularios[form.google_form_id]["publishSettings"][
+            "publishState"
+        ]
+        assert estado["isAcceptingResponses"] is True, estado
+
+    async def test_lote_ignora_nao_sincronizado_com_motivo(self, sandbox):
+        """Formulário fora do Google não pode contar como publicado."""
+        from app.services.formularios import publicar_lote
+
+        fabrica, form_id = sandbox
+        janela = (
+            datetime(2026, 11, 24, tzinfo=timezone.utc),
+            datetime(2026, 12, 1, tzinfo=timezone.utc),
+        )
+        async with fabrica() as s:
+            r = await publicar_lote(None, None, s, janela=janela)
+
+        assert r["publicados"] == 0
+        assert [i["motivo"] for i in r["ignorados"]] == ["NAO_SINCRONIZADO"], r
+
+
 class TestIngestao:
     async def test_ingere_por_question_id(self, sandbox):
         fabrica, form_id = sandbox

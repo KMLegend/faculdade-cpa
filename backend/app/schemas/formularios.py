@@ -30,6 +30,11 @@ class GerarLoteEntrada(BaseModel):
 class PublicarLoteEntrada(BaseModel):
     periodo_letivo_id: int | None = None
     tipo_instrumento: TipoInstrumento | None = None
+    #: Remarca a janela de aplicação no ato da publicação. Sem isto, as datas
+    #: só podiam ser definidas na geração — adiar a aplicação exigiria regerar
+    #: os formulários, perdendo os que já estavam no Google.
+    abre_em: datetime | None = None
+    fecha_em: datetime | None = None
 
 
 class PublicarLoteSaida(BaseModel):

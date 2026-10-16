@@ -6,6 +6,8 @@ geração em lote e ciclo de vida.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 import uuid as uuid_lib
 
 from sqlalchemy import delete, func, select
@@ -13,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from app.core.config import obter_settings
-from app.core.errors import ConflitoEstado, NaoEncontrado
+from app.core.errors import ConflitoEstado, ErroCPA, NaoEncontrado
 from app.core.texto import slugificar
 from app.models import (
     AplicacaoPergunta, BlocoPergunta, DimensaoSinaes, EixoSinaes, Formulario,
@@ -489,8 +491,23 @@ async def publicar_lote(
     periodo_letivo_id: int | None,
     tipo_instrumento: TipoInstrumento | None,
     s: AsyncSession,
+    janela: tuple[datetime, datetime] | None = None,
+    cliente=None,
 ) -> dict:
-    """Publica em lote formulários em RASCUNHO (doc 05 §2)."""
+    """Publica em lote formulários em RASCUNHO (doc 05 §2).
+
+    ⚠️ Publicar NÃO é só mudar o status: quem decide se o aluno consegue
+    responder é o Google. Enquanto esta função apenas marcava PUBLICADO, o
+    painel anunciava formulários abertos que no Google seguiam fechados — a
+    CPA imprimiria os QR Codes e a turma encontraria o formulário recusando
+    respostas. Por isso aqui se chama `publicar_no_google`, que valida a
+    janela e o anonimato antes de abrir.
+
+    `janela` permite remarcar a aplicação sem regerar os formulários, que era
+    a única forma de definir as datas até aqui.
+    """
+    from app.services.google.sincronizador import publicar_no_google
+
     q = select(Formulario).where(Formulario.status == StatusFormulario.RASCUNHO)
     if periodo_letivo_id:
         q = q.where(Formulario.periodo_letivo_id == periodo_letivo_id)
@@ -502,17 +519,27 @@ async def publicar_lote(
     ignorados: list[dict] = []
 
     for f in formularios:
-        # Mesmas regras de publicar_formulario — nada é inventado aqui.
         if not f.itens:
             ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": "SEM_PERGUNTAS"})
             continue
+        if janela:
+            f.abre_em, f.fecha_em = janela
         if not f.abre_em or not f.fecha_em:
             ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": "SEM_JANELA"})
             continue
         if f.fecha_em <= f.abre_em:
             ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": "JANELA_INVALIDA"})
             continue
-        f.status = StatusFormulario.PUBLICADO
+        if not f.google_form_id:
+            ignorados.append(
+                {"id": f.id, "titulo": f.titulo, "motivo": "NAO_SINCRONIZADO"}
+            )
+            continue
+        try:
+            await publicar_no_google(f.id, True, s, cliente=cliente)
+        except ErroCPA as erro:
+            ignorados.append({"id": f.id, "titulo": f.titulo, "motivo": erro.codigo})
+            continue
         publicados_ids.append(f.id)
 
     await s.commit()
