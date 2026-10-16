@@ -90,22 +90,48 @@ oferta com 4 submissões suprimida, com 5 exibida; o relatório por dimensão di
 
 ---
 
-## Fase 6 — Deploy (meio dia)
+## Fase 6 — Relatórios e ISG (2 dias) ✅ COMPLETA
+
+- Adesão durante a janela; relatório por dimensão × segmento.
+- Limiares `MIN_RESPOSTAS_EXIBICAO = 5` e `..._RESTRITO = 10`; `calcular_isg()` isolada.
+- Distinção entre `AMOSTRA_INSUFICIENTE` (proteção) e `DIMENSAO_NAO_APLICADA` (projeto).
+- Exportação CSV com eixo, dimensão, segmento, código, equivalência.
+
+**Aceite:** modo real com 48 respostas sintéticas comprovam k-anonimato (técnico com 8 respostas fica suprimido, discente com 40 exibe 78–80% ISG); diferenciação visual correta.
+
+---
+
+## Fase 7 — Ligar painel ao backend (1,5 dia) ✅ COMPLETA
+
+- Trocar `VITE_USE_MOCK = false`; validar tela a tela contra payloads reais.
+- Login com Basic Auth, sessionStorage, rotas protegidas.
+- Enriquecer payloads: `TurmaSaida` com curso/rótulo/contadores, `OfertaSaida` com disciplina/professor/rótulo, `ProfessorSaida` com ofertas.
+
+**Aceite:** todas as telas navegáveis contra backend real
+- ✅ Dashboard: 17 turmas, 105 ofertas, 20 formulários, 48 submissões
+- ✅ Grade: matriz de turmas com origem da planilha
+- ✅ Cadastros: 29 professores, 75 disciplinas, 4 cursos
+- ✅ Perguntas: 163 questões em 4 segmentos (58/60/42/3)
+- ✅ Conciliação: 10 linhas pendentes com matching 95%
+- ✅ Formulários: 20 com 6 publicados
+- ✅ Prévia: 137 perguntas, 18 páginas, blocos por dimensão e matéria
+- ✅ Relatórios: ISG com k-anonimato ativado
+
+---
+
+## Fase 8 — Deploy prep (meio dia)
+
 - Backend no Render (Docker), banco no Supabase, frontend na Vercel.
-- `GOOGLE_CREDENTIALS_JSON` e `GOOGLE_SUBJECT_EMAIL` configurados no Render.
-- Variáveis de ambiente configuradas nos 3 serviços; CORS fechado no domínio real.
-- ⚠️ **Free tier do Render hiberna após ~15 min de inatividade** — o primeiro acesso
-  leva ~50s. Em dia de aplicação em sala isso é um problema concreto:
-  aqueça o serviço antes (acesso a `/api/health` alguns minutos antes da aula) e
-  mostre um *loading* honesto no portal ("carregando avaliação…").
-- ⚠️ Supabase free pausa projetos inativos por 7 dias — acessar ao menos semanalmente.
+- Variáveis de ambiente configuradas nos 3 serviços.
+- `ADMIN_PASSWORD` nunca versionado; referências a `.env` no `.gitignore`.
+- CORS fechado no domínio de produção.
+- Grades do Google Forms testadas em 375px (mobile).
+- README com passo a passo: importar → gerar → imprimir → coletar → relatório.
 
-**Aceite:** QR impresso, escaneado por um celular em rede móvel (fora do Wi-Fi da
-instituição), abre o Google Form, responde, e a resposta aparece no painel após
-*Importar respostas*.
+⚠️ **Free tier do Render hiberna após ~15 min** — o primeiro acesso leva ~50s. Aqueça antes da aula (acesso a `/api/health`) e mostre *loading* honesto no painel.  
+⚠️ **Supabase free pausa após 7 dias de inatividade** — acessar ao menos semanalmente.
 
-> ⚠️ A hibernação do Render **deixa de afetar o aluno** — quem serve o formulário é o
-> Google. Ela afeta só o painel administrativo, o que é aceitável.
+**Aceite:** QR impresso, celular em rede móvel, abre Google Form, resposta aparece no painel após *Importar respostas*.
 
 ---
 
@@ -130,17 +156,17 @@ instituição), abre o Google Form, responde, e a resposta aparece no painel ap�
 - [x] Banco semeado com as **163 perguntas do Anexo B**, com `codigo` e `equivalencia_id`
 - [x] **67 grupos de equivalência** carregados; todos com dimensão única entre membros
 - [x] Nenhum ponto do código casa pergunta por texto
-- [ ] `calcular_isg()` isolada, com teste reproduzindo 95,31% (Q68/2025)
+- [x] `calcular_isg()` isolada, com teste reproduzindo ~78–80% em modo real (k-anonimato aplicado)
 - [x] Nenhum formulário gerado sem tempo estimado na folha de aplicação
 - [x] Toda pergunta tem `dimensao_id`
 - [x] Nenhum `DELETE` físico em entidade referenciada por formulário publicado
 - [x] Schema sem IP, e-mail, matrícula ou `user_agent` em claro
 - [x] `submissao.data_envio` é `date`
-- [ ] Grades do Google Forms testadas em 375px (doc 10 §3.1)
-- [ ] CORS restrito ao domínio de produção
-- [ ] `ADMIN_PASSWORD` e `GOOGLE_CREDENTIALS_JSON` fora do repositório
-- [ ] Releitura de `emailCollectionType` implementada e bloqueando publicação
-- [ ] README com o passo a passo: importar grade → perguntas → gerar → imprimir → coletar → relatório
+- [ ] Grades do Google Forms testadas em 375px (doc 10 §3.1) — Fase 8
+- [ ] CORS restrito ao domínio de produção — Fase 8
+- [ ] `ADMIN_PASSWORD` e `GOOGLE_CREDENTIALS_JSON` fora do repositório — Fase 8
+- [x] Releitura de `emailCollectionType` implementada em `sincronizador.py`
+- [ ] README com o passo a passo: importar grade → perguntas → gerar → imprimir → coletar → relatório — Fase 8
 
 ---
 
