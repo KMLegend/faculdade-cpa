@@ -22,6 +22,7 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="grade" element={<Grade />} />
           <Route path="grade/importar" element={<ImportarGrade />} />
+          <Route path="grade/conciliacao" element={<Conciliacao />} />
           <Route path="grade/importar/:id/conciliar" element={<Conciliacao />} />
           <Route path="cadastros" element={<Cadastros />} />
           <Route path="perguntas" element={<Perguntas />} />

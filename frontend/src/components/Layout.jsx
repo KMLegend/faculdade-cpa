@@ -8,7 +8,7 @@ import { USANDO_MOCK } from '../api/client'
 const LINKS = [
   { to: '/admin', end: true, icone: LayoutDashboard, texto: 'Painel' },
   { to: '/admin/grade/importar', icone: FileSpreadsheet, texto: 'Importar grade' },
-  { to: '/admin/grade/importar/12/conciliar', icone: GitCompareArrows, texto: 'Conciliação' },
+  { to: '/admin/grade/conciliacao', icone: GitCompareArrows, texto: 'Conciliação' },
   { to: '/admin/grade', icone: ListChecks, texto: 'Grade do período' },
   { to: '/admin/cadastros', icone: Users, texto: 'Cadastros' },
   { to: '/admin/perguntas', icone: ClipboardList, texto: 'Perguntas' },

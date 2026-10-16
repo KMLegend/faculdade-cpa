@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useApi } from '../hooks/useApi'
 import { api, USANDO_MOCK } from '../api/client'
-import { Titulo, Tabela, Selo, Carregando } from '../components/ui'
+import { Titulo, Tabela, Selo, Carregando, Erro } from '../components/ui'
 
 const SYNC = {
   NAO_CRIADO: ['⚪', 'neutro', 'não existe no Google'],
@@ -22,7 +22,7 @@ const ABAS = [
 const BASE_API_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000'
 
 export default function Formularios() {
-  const { dado, carregando, recarregar } = useApi('/api/admin/formularios')
+  const { dado, carregando, erro, recarregar } = useApi('/api/admin/formularios')
   const [aba, setAba] = useState('DISCENTE_TURMA')
   const [modalGerar, setModalGerar] = useState(false)
   const [modalQr, setModalQr] = useState(null)
@@ -34,6 +34,7 @@ export default function Formularios() {
   const [abreEm, setAbreEm] = useState('2026-10-01')
   const [fechaEm, setFechaEm] = useState('2026-10-15')
 
+  if (erro) return <Erro>{erro}</Erro>
   if (carregando) return <Carregando />
 
   const lista = (dado || []).filter((f) => f.tipo_instrumento === aba)

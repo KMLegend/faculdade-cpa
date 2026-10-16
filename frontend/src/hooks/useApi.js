@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { api } from '../api/client'
 
-/** Busca simples: devolve {dado, carregando, erro}. */
+/** Busca simples: devolve {dado, carregando, erro, recarregar}. */
 export function useApi(url, deps = []) {
   const [estado, setEstado] = useState({ dado: null, carregando: true, erro: null })
+  // Trocar este número força o efeito a rodar de novo sem mexer nas deps.
+  const [gatilho, setGatilho] = useState(0)
+
+  const recarregar = useCallback(() => setGatilho((n) => n + 1), [])
 
   useEffect(() => {
     let vivo = true
@@ -25,7 +29,7 @@ export function useApi(url, deps = []) {
       vivo = false
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
+  }, [...deps, gatilho])
 
-  return estado
+  return { ...estado, recarregar }
 }

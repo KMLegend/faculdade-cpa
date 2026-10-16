@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useApi } from '../hooks/useApi'
-import { Titulo, Cartao, Selo, Carregando } from '../components/ui'
+import { Titulo, Cartao, Selo, Carregando, Erro } from '../components/ui'
 
 const NOME_INSTRUMENTO = {
   DISCENTE_TURMA: 'Formulário da turma',
@@ -43,7 +43,7 @@ export default function Previa() {
   const { dado, carregando, erro } = useApi(`/api/admin/formularios/${id}/previa`, [id])
 
   if (carregando) return <Carregando />
-  if (erro || !dado) return <Carregando>Formulário não encontrado.</Carregando>
+  if (erro || !dado) return <Erro>{erro ?? 'Formulário não encontrado.'}</Erro>
 
   const {
     formulario,

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Pencil, Plus } from 'lucide-react'
 import { useApi } from '../hooks/useApi'
 import { api } from '../api/client'
-import { Titulo, Tabela, Selo, Carregando } from '../components/ui'
+import { Titulo, Tabela, Selo, Carregando, Erro } from '../components/ui'
 import ModalPergunta from '../components/ModalPergunta'
 
 const ABAS = [
@@ -13,7 +13,7 @@ const ABAS = [
 ]
 
 export default function Perguntas() {
-  const { dado, carregando } = useApi('/api/admin/perguntas')
+  const { dado, carregando, erro } = useApi('/api/admin/perguntas')
   const [aba, setAba] = useState('DISCENTE')
   const [editando, setEditando] = useState(null)
 
@@ -22,6 +22,7 @@ export default function Perguntas() {
     setEditando({ pergunta: p, impacto: data })
   }
 
+  if (erro) return <Erro>{erro}</Erro>
   if (carregando || !dado) return <Carregando />
 
   const lista = (dado || []).filter((p) => p.segmento === aba)

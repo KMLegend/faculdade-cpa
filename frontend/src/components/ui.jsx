@@ -59,3 +59,15 @@ export function Tabela({ colunas, children }) {
 export function Carregando({ children = 'Carregando…' }) {
   return <p className="py-8 text-center text-sm text-slate-500">{children}</p>
 }
+
+/** Falha de carregamento. Nunca deixe um erro virar spinner eterno: a tela
+ *  precisa dizer o que não funcionou, senão a CPA fica esperando por nada. */
+export function Erro({ titulo = 'Não foi possível carregar', children, acao }) {
+  return (
+    <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+      <p className="font-medium text-red-900">{titulo}</p>
+      {children && <p className="mt-1 text-sm text-red-800">{children}</p>}
+      {acao && <div className="mt-3">{acao}</div>}
+    </div>
+  )
+}
